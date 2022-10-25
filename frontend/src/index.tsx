@@ -5,7 +5,8 @@ import App from './App';
 import { BrowserRouter } from "react-router-dom";
 
 const rootElement = document.getElementById("root");
-const root = createRoot(rootElement);
+
+const root = createRoot(rootElement!); //alternativa: as HTMLElement
 root.render(
   <React.StrictMode>
     <BrowserRouter>
