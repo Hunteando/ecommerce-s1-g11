@@ -3,15 +3,21 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
 import Link from '@mui/material/Link';
 import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
-import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+
+interface ICredentials {
+  username: string,
+  password: string
+}
+
+interface IErrors extends ICredentials {}
+
+type ReactEvent = React.ChangeEvent<HTMLInputElement>;
 
 function Copyright(props: any) {
   return (
@@ -33,15 +39,43 @@ function Copyright(props: any) {
 const theme = createTheme();
 
 export default function Login() {
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const [credentials, setCredentials] = React.useState<ICredentials>({} as ICredentials);
+  const [errors, setErrors] = React.useState<IErrors>({} as IErrors);
+
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) : void => {
     event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
+    alert(JSON.stringify(credentials));
+    //TODO: Agregar funcionalidad de login una vez se cuente con el backend
   };
 
+  const validateEmail = (email: string) : boolean => {
+    const regex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    return regex.test(email) ? true : false;
+  }
+
+  const validatePassword = (password: string) : boolean => {
+    const regex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/;
+    return regex.test(password) ? true : false;
+  }
+
+  const handleChangeUser = (event: ReactEvent): void => {
+    const { name, value } = event.target;
+    setCredentials({ ...credentials, [name]: value });
+    validateEmail(value) ? 
+    setErrors({ ...errors, [name]: "" }) : 
+    setErrors({ ...errors, [name]: "Porfavor introduce un email valido" });
+  };
+
+   const handleChangePassword = (event: ReactEvent): void => {
+    const { name, value } = event.target;
+    setCredentials({ ...credentials, [name]: value });
+    validatePassword(value) ?
+    setErrors({ ...errors, [name]: "" }) :
+    setErrors({ ...errors, [name]: "Porfavor introduce una contraseña valida: al menos 1 numero, 1 mayuscula, 1 minuscula, no caracteres especiales, en total 8 caracteres." });
+
+  };
+
+  
   return (
     <ThemeProvider theme={theme}>
       <Grid container component="main" sx={{ height: '100vh' }}>
@@ -71,22 +105,27 @@ export default function Login() {
               maxWidth: '90%',
             }}
           >
-            <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-              <LockOutlinedIcon />
-            </Avatar>
+            <Avatar 
+              sx={{ m: 1, width: 200, height: 200}} 
+              variant="rounded" 
+              src="https://scontent.ftrc3-1.fna.fbcdn.net/v/t39.30808-6/292705260_355423520102615_5360930653742585650_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=1wFvGuPuKhsAX_bJHqU&_nc_ht=scontent.ftrc3-1.fna&oh=00_AT9x8rnZGSGuVgwDe_qbuM8TwJ_Wssc6xrNLpCtLZPRwzw&oe=635DA5E4">
+            </Avatar> 
             <Typography component="h1" variant="h5">
               Login
             </Typography>
-            <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1 }}>
+            <Box component="form" onSubmit={handleSubmit} sx={{ mt: 1 }}>
               <TextField
                 margin="normal"
                 required
                 fullWidth
                 id="email"
                 label="Email Address"
-                name="email"
+                name="username"
                 autoComplete="email"
                 autoFocus
+                onChange={handleChangeUser}
+                error={errors.username ? true : false}
+                helperText={errors.username}
               />
               <TextField
                 margin="normal"
@@ -97,10 +136,9 @@ export default function Login() {
                 type="password"
                 id="password"
                 autoComplete="current-password"
-              />
-              <FormControlLabel
-                control={<Checkbox value="remember" color="primary" />}
-                label="Remember me"
+                onChange={handleChangePassword}
+                error={errors.password ? true : false}
+                helperText={errors.password}
               />
               <Button
                 type="submit"
