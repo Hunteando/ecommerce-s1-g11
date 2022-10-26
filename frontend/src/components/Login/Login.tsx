@@ -9,7 +9,7 @@ import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-
+import { Copyright, validateEmail, validatePassword } from '../../utils/utils';
 interface ICredentials {
   username: string,
   password: string
@@ -18,23 +18,6 @@ interface ICredentials {
 interface IErrors extends ICredentials {}
 
 type ReactEvent = React.ChangeEvent<HTMLInputElement>;
-
-function Copyright(props: any) {
-  return (
-    <Typography variant="body2" color="text.secondary" align="center" {...props}>
-      {'Copyright © '}
-      <Link 
-        color="inherit" 
-        href="https://www.instagram.com/melinda.muriel3/"
-        target={"_blank"}
-      >
-        Melinda Muriel
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}
 
 const theme = createTheme();
 
@@ -47,16 +30,6 @@ export default function Login() {
     alert(JSON.stringify(credentials));
     //TODO: Agregar funcionalidad de login una vez se cuente con el backend
   };
-
-  const validateEmail = (email: string) : boolean => {
-    const regex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-    return regex.test(email) ? true : false;
-  }
-
-  const validatePassword = (password: string) : boolean => {
-    const regex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/;
-    return regex.test(password) ? true : false;
-  }
 
   const handleChangeUser = (event: ReactEvent): void => {
     const { name, value } = event.target;
@@ -75,7 +48,6 @@ export default function Login() {
 
   };
 
-  
   return (
     <ThemeProvider theme={theme}>
       <Grid container component="main" sx={{ height: '100vh' }}>
@@ -111,7 +83,7 @@ export default function Login() {
               src="https://scontent.ftrc3-1.fna.fbcdn.net/v/t39.30808-6/292705260_355423520102615_5360930653742585650_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=1wFvGuPuKhsAX_bJHqU&_nc_ht=scontent.ftrc3-1.fna&oh=00_AT9x8rnZGSGuVgwDe_qbuM8TwJ_Wssc6xrNLpCtLZPRwzw&oe=635DA5E4">
             </Avatar> 
             <Typography component="h1" variant="h5">
-              Login
+              Acceso
             </Typography>
             <Box component="form" onSubmit={handleSubmit} sx={{ mt: 1 }}>
               <TextField
@@ -119,7 +91,7 @@ export default function Login() {
                 required
                 fullWidth
                 id="email"
-                label="Email Address"
+                label="Email"
                 name="username"
                 autoComplete="email"
                 autoFocus
@@ -132,7 +104,7 @@ export default function Login() {
                 required
                 fullWidth
                 name="password"
-                label="Password"
+                label="Contraseña"
                 type="password"
                 id="password"
                 autoComplete="current-password"
@@ -150,12 +122,12 @@ export default function Login() {
               </Button>
               <Grid container>
                 <Grid item>
-                  <Link href="#" variant="body2">
+                  <Link href="/registrarse" variant="body2">
                     {"No tienes una cuenta? Registrate aqui"}
                   </Link>
                 </Grid>
               </Grid>
-              <Copyright sx={{ mt: 5 }} />
+              <Copyright sx={{ mt: 10 }} />
             </Box>
           </Box>
         </Grid>
