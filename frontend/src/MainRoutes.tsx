@@ -5,6 +5,7 @@ import { Routes, Route } from 'react-router-dom';
 //import Products from './components/Products';
 import Login from './components/Login/Login';
 import Register from './components/Register/Register';
+import HomePage from './pages/Home/index';
 
 function MainRoutes() {
 
@@ -13,8 +14,8 @@ function MainRoutes() {
       {/* <Navbar /> */}
         <Routes >
           {/* <Route path="/" element={ <Products /> } /> */}
-          {/* cambiar path de ruta de abajo por /login */}
-          <Route path="/" element={ <Login /> } />
+          <Route path="/" element={ <HomePage /> } />
+          <Route path="/login" element={ <Login /> } />
           <Route path="/registrarse" element={ <Register /> } />
         </Routes>  
       {/* <Footer /> */}
