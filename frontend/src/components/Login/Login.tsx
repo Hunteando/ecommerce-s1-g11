@@ -3,43 +3,49 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
 import Link from '@mui/material/Link';
 import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
-import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-
-function Copyright(props: any) {
-  return (
-    <Typography variant="body2" color="text.secondary" align="center" {...props}>
-      {'Copyright © '}
-      <Link 
-        color="inherit" 
-        href="https://www.instagram.com/melinda.muriel3/"
-        target={"_blank"}
-      >
-        Melinda Muriel
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
+import { Copyright, validateEmail, validatePassword } from '../../utils/utils';
+interface ICredentials {
+  username: string,
+  password: string
 }
+
+interface IErrors extends ICredentials {}
+
+type ReactEvent = React.ChangeEvent<HTMLInputElement>;
 
 const theme = createTheme();
 
 export default function Login() {
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const [credentials, setCredentials] = React.useState<ICredentials>({} as ICredentials);
+  const [errors, setErrors] = React.useState<IErrors>({} as IErrors);
+
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) : void => {
     event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
+    alert(JSON.stringify(credentials));
+    //TODO: Agregar funcionalidad de login una vez se cuente con el backend
+  };
+
+  const handleChangeUser = (event: ReactEvent): void => {
+    const { name, value } = event.target;
+    setCredentials({ ...credentials, [name]: value });
+    validateEmail(value) ? 
+    setErrors({ ...errors, [name]: "" }) : 
+    setErrors({ ...errors, [name]: "Porfavor introduce un email valido" });
+  };
+
+   const handleChangePassword = (event: ReactEvent): void => {
+    const { name, value } = event.target;
+    setCredentials({ ...credentials, [name]: value });
+    validatePassword(value) ?
+    setErrors({ ...errors, [name]: "" }) :
+    setErrors({ ...errors, [name]: "Porfavor introduce una contraseña valida: al menos 1 numero, 1 mayuscula, 1 minuscula, no caracteres especiales, en total 8 caracteres." });
+
   };
 
   return (
@@ -71,36 +77,40 @@ export default function Login() {
               maxWidth: '90%',
             }}
           >
-            <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-              <LockOutlinedIcon />
-            </Avatar>
+            <Avatar 
+              sx={{ m: 1, width: 200, height: 200}} 
+              variant="rounded" 
+              src="https://scontent.ftrc3-1.fna.fbcdn.net/v/t39.30808-6/292705260_355423520102615_5360930653742585650_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=1wFvGuPuKhsAX_bJHqU&_nc_ht=scontent.ftrc3-1.fna&oh=00_AT9x8rnZGSGuVgwDe_qbuM8TwJ_Wssc6xrNLpCtLZPRwzw&oe=635DA5E4">
+            </Avatar> 
             <Typography component="h1" variant="h5">
-              Login
+              Acceso
             </Typography>
-            <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1 }}>
+            <Box component="form" onSubmit={handleSubmit} sx={{ mt: 1 }}>
               <TextField
                 margin="normal"
                 required
                 fullWidth
                 id="email"
-                label="Email Address"
-                name="email"
+                label="Email"
+                name="username"
                 autoComplete="email"
                 autoFocus
+                onChange={handleChangeUser}
+                error={errors.username ? true : false}
+                helperText={errors.username}
               />
               <TextField
                 margin="normal"
                 required
                 fullWidth
                 name="password"
-                label="Password"
+                label="Contraseña"
                 type="password"
                 id="password"
                 autoComplete="current-password"
-              />
-              <FormControlLabel
-                control={<Checkbox value="remember" color="primary" />}
-                label="Remember me"
+                onChange={handleChangePassword}
+                error={errors.password ? true : false}
+                helperText={errors.password}
               />
               <Button
                 type="submit"
@@ -112,12 +122,12 @@ export default function Login() {
               </Button>
               <Grid container>
                 <Grid item>
-                  <Link href="#" variant="body2">
+                  <Link href="/registrarse" variant="body2">
                     {"No tienes una cuenta? Registrate aqui"}
                   </Link>
                 </Grid>
               </Grid>
-              <Copyright sx={{ mt: 5 }} />
+              <Copyright sx={{ mt: 10 }} />
             </Box>
           </Box>
         </Grid>
