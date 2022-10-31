@@ -1,4 +1,4 @@
-const dotenv = require('dotenv');
+import dotenv from 'dotenv';
 
 const envFound = dotenv.config();
 
@@ -8,6 +8,6 @@ if (!envFound) {
 
 process.env.NODE_ENV = process.env.NODE_ENV || 'development'
 
-module.exports = {
+export default {
     port: process.env.PORT,
 }
