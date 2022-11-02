@@ -9,12 +9,13 @@ import InputBase from '@mui/material/InputBase';
 import Badge from '@mui/material/Badge';
 import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
-import MenuIcon from '@mui/icons-material/Menu';
-import SearchIcon from '@mui/icons-material/Search';
+//import MenuIcon from '@mui/icons-material/Menu';
+//import SearchIcon from '@mui/icons-material/Search';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import MailIcon from '@mui/icons-material/Mail';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import MoreIcon from '@mui/icons-material/MoreVert';
+import { Link } from 'react-router-dom';
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -172,9 +173,18 @@ export default function PrimarySearchAppBar() {
             variant="h6"
             noWrap
             component="div"
-            sx={{ display: { xs: 'none', sm: 'block' }, color: 'black', fontFamily: 'arsenale-white', fontSize: '36px' }}
+            sx={{ 
+              display: { xs: 'none', sm: 'block' }, 
+              color: 'black', 
+              fontFamily: 'arsenale-white', 
+              fontSize: '36px',
+              marginLeft: '36px',
+              marginTop: '10px'
+            }}
           >
-            Melinda Muriel
+            <Link to="/" style={{textDecoration: 'none', color:'black'}}>
+              melinda muriel
+            </Link>
           </Typography>
           {/* <Search>
             <SearchIconWrapper>
@@ -186,7 +196,7 @@ export default function PrimarySearchAppBar() {
             />
           </Search> */}
           <Box sx={{ flexGrow: 1 }} />
-          <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
+          <Box sx={{ display: { xs: 'none', md: 'flex' }}}>
             {/* <IconButton
               size="large"
               edge="end"
@@ -198,14 +208,26 @@ export default function PrimarySearchAppBar() {
             >
               <AccountCircle />
             </IconButton> */}
-            <Typography
-            variant="h6"
-            noWrap
-            component="div"
-            sx={{ display: { xs: 'none', sm: 'block' }, color: 'black', fontFamily: 'cambria', fontSize: '24px' }}
-          >
-            Iniciar Sesion
-          </Typography>
+            
+              <Typography
+                variant="subtitle2"
+                noWrap
+                component="div"
+                sx={{ 
+                  display: { xs: 'none', sm: 'block' }, 
+                  color: 'black', 
+                  fontFamily: 'cambria', 
+                  fontSize: '18px',
+                  marginRight: '36px',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  textAlign: 'center',
+                }}
+              >
+                <Link to="/login" style={{textDecoration: 'none', color:'black'}}>
+                  Iniciar Sesion
+                </Link>
+              </Typography>
           </Box>
           <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
             <IconButton
