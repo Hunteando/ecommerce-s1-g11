@@ -1,6 +1,6 @@
-import ExpressServer from './server/expressServer';
-import config from '../config';
-//import sequelize from './sequelize';
+const ExpressServer = require('./server/expressServer');
+const config = require( '../config');
+
 
 const startServer = async () => {
 
@@ -12,4 +12,4 @@ const startServer = async () => {
     console.log(`Server listening on port ${config.port}`);
 }
 
-export default startServer;
+module.exports = startServer;
