@@ -1,5 +1,5 @@
 const ExpressServer = require('./server/expressServer');
-const config = require( '../config');
+// const config = require( '../config');
 
 
 const startServer = async () => {
