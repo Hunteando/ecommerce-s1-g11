@@ -1,10 +1,8 @@
 import React from 'react';
-import ImageListItem from '@mui/material/ImageListItem';
-import ImageListItemBar from '@mui/material/ImageListItemBar';
+import { ImageListItem, ImageListItemBar, IconButton } from '@mui/material';
 import Box from '@mui/material/Box';
 import './ProductItem.css';
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
-import IconButton from '@mui/material/IconButton';
 
 const ProductItem = (data: any) => {
   return (
