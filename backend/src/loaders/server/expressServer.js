@@ -1,7 +1,7 @@
 const express = require('express')
-// const config = require('../../config')
-// const sequelize = require('../sequelize')
-// const mysql = require('mysql2/promise')
+const config = require('../../config/serverConfig')
+const { sequelize } = require('../../models')
+const mysql = require('mysql2/promise')
 // require('../../libs/relations')
 
 class ExpressServer {

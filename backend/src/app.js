@@ -13,6 +13,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(morgan("dev"));
 app.use(cors(corsOptions));
 
+app.use("/api",require("./routes"));
 app.get("/", (req, res) => {
   res.json({
     name: app.get("pkg").name,
@@ -21,7 +22,7 @@ app.get("/", (req, res) => {
     version: app.get("pkg").version,
   });
 });
-app.use("/api",require("./routes"));
+
 
 
 module.exports = app;
