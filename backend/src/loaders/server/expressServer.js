@@ -1,7 +1,7 @@
 const express = require('express')
 const config = require('../../config/serverConfig')
-const { sequelize } = require('../../models')
-const mysql = require('mysql2/promise')
+// const sequelize = require('../sequelize')
+// const mysql = require('mysql2/promise')
 // require('../../libs/relations')
 
 class ExpressServer {
@@ -24,20 +24,25 @@ class ExpressServer {
   //     )
   //     await sequelize.authenticate()
   //     await sequelize.sync()
-  //     console.log('Connection has been stablished successfully.')
+  //     console.log('Connection has been established successfully.')
   //   } catch (error) {
   //     console.error('Unable to connect to the database:', error)
   //   }
   // }
 
-  async start() {
-    this.app.listen(this.port, (error) => {
-      if (error) {
-        console.error(err)
-        process.exit(1)
-      }
-    })
-  }
+
+
+    async start() {
+        this.app.listen(this.port, (error) => {
+
+            if (error) {
+                console.error(err);
+                process.exit(1);
+
+            }
+
+        })
+    }
 }
 
-module.exports = ExpressServer
+module.exports = ExpressServer;
