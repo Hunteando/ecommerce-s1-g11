@@ -1,6 +1,5 @@
-import React from 'react';
-import { Box, ImageListItem, ImageListItemBar, IconButton } from '@mui/material';
-import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
+import * as React from 'react';
+import { Box, ImageListItem, ImageListItemBar, IconButton, Button, Typography } from '@mui/material';
 
 const ProductsItemOutstanding = (data: any) => {
   return (
@@ -8,13 +7,23 @@ const ProductsItemOutstanding = (data: any) => {
       <ImageListItem key={data.data.image}>
         <img src={data.data.image} alt={data.data.title} loading="lazy" style={{ width: '100%', height: '250px' }} />
         <ImageListItemBar
-          title={data.data.title}
-          subtitle={data.data.description}
-          actionIcon={
-            <IconButton>
-              <ShoppingCartOutlinedIcon sx={{ color: 'white' }} />
-            </IconButton>
-          }></ImageListItemBar>
+               sx={{ top: '40px', padding: '20px' }}
+               position="top"
+               title={data.data.title}
+               subtitle={data.data.description}
+               actionIcon={
+                 <Button
+                   sx={{
+                     position: 'absolute',
+                     top: '110px',
+                     left: '20px',
+                     width: '100px',
+                   }}>
+                   <Typography sx={{ color: 'white' }} variant="body1" color="initial">
+                     VER  →
+                   </Typography>
+                 </Button>
+               }></ImageListItemBar>
       </ImageListItem>
     </Box>
   );

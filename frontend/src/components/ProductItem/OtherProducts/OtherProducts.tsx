@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import { Box, ImageListItem, ImageListItemBar, IconButton } from '@mui/material';
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import Typography from '@mui/material/Typography';

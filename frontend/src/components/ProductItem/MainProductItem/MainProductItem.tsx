@@ -1,6 +1,8 @@
-import React from 'react';
+import * as React from 'react';
 import { Box, ImageListItem, ImageListItemBar, IconButton } from '@mui/material';
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
+import Typography from '@mui/material/Typography';
+import Button from '@mui/material/Button';
 
 const MainProductItem = (data: any) => {
   return (
@@ -8,12 +10,24 @@ const MainProductItem = (data: any) => {
       <ImageListItem key={data.data.image}>
         <img src={data.data.image} alt={data.data.title} loading="lazy" style={{ width: '100%', height: '250px' }} />
         <ImageListItemBar
+          sx={{ top: '40px', padding: '20px' }}
+          position="top"
           title={data.data.title}
           subtitle={data.data.description}
           actionIcon={
-            <IconButton>
-              <ShoppingCartOutlinedIcon sx={{ color: 'white' }} />
-            </IconButton>
+            <Button
+              sx={{
+                position: 'absolute',
+                top: '110px',
+                left: '30px',
+                backgroundColor: '#2A7AE4',
+                width: '120px',
+                opacity: '0.9'
+              }}>
+              <Typography sx={{ color: 'white' }} variant="h5" color="initial">
+                VER  →
+              </Typography>
+            </Button>
           }></ImageListItemBar>
       </ImageListItem>
     </Box>

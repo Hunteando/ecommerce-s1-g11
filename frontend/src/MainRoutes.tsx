@@ -1,11 +1,11 @@
-import './App.css';
-import React from 'react';
+import * as React from 'react';
 import { Box } from '@mui/material';
 import { Routes, Route } from 'react-router-dom';
-import {Products} from './components/containers/Products';
+import {Products} from './containers/Products';
 import Login from './components/Login/Login';
 import Register from './components/Register/Register';
 import HomePage from './pages/Home/index';
+import ProductDetail from './components/ProductDetail/ProductDetail';
 
 function MainRoutes() {
 
@@ -13,6 +13,7 @@ function MainRoutes() {
     <Box>  
       {/* <Navbar /> */}
         <Routes >
+          {/* <Route path="/" element={ <ProductDetail /> } /> */}
           <Route path="/" element={ <Products /> } />
           {/* <Route path="/" element={ <HomePage /> } /> */}
           <Route path="/login" element={ <Login /> } />

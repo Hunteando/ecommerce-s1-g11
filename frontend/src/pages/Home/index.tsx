@@ -1,4 +1,4 @@
-import React from 'react'
+import * as React from 'react'
 import HomeSlider from '../../components/HomeSlider/HomeSlider'
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
