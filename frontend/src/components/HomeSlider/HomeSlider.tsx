@@ -1,10 +1,9 @@
-import React from 'react'
+import * as React from 'react'
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import './HomeSlider.css'
+import './HomeSlider.scss'
 const home1 = require('../../assets/images/home1.png')
-
 
 const HomeSlider = () => {
   const settings = {
