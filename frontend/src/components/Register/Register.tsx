@@ -122,11 +122,11 @@ export default function Login() {
           sm={4}
           md={7}
           sx={{
-            backgroundImage: 'url(https://scontent.ftrc3-1.fna.fbcdn.net/v/t39.30808-6/310437216_413859047592395_3560829447993387725_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=730e14&_nc_ohc=UmuIn8I1SHEAX830Pui&_nc_ht=scontent.ftrc3-1.fna&oh=00_AT9F7oQ7mchQ9Fh59RRg1ipJVSqd2LkFEoYeDQHwYaH4Tw&oe=635DDA9D)',
+            backgroundImage: 'url(https://media.discordapp.net/attachments/1034877183283437568/1037083411778646146/unknown.png?width=473&height=473)',
             backgroundRepeat: 'no-repeat',
             backgroundColor: (t) =>
               t.palette.mode === 'light' ? t.palette.grey[50] : t.palette.grey[900],
-            backgroundSize: 'cover',
+            backgroundSize: 'contain',
             backgroundPosition: 'center',
           }}
         />
