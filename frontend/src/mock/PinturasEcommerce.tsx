@@ -1,4 +1,5 @@
-const data = [
+import { ProductsI } from '../interfaces/ProductsI';
+const data: ProductsI[] = [
   {
     id: 1,
     title: 'Pintura1',
