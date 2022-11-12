@@ -5,13 +5,13 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
-const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 
 module.exports = {
     entry: './src/index.tsx',
     output: {
         path: path.resolve(__dirname, 'dist'),
         filename: '[name].[contenthash].js',
+        assetModuleFilename: 'assets/images/[hash][ext][query]',
         publicPath: '/'
     },
     mode: 'development',
@@ -56,7 +56,6 @@ module.exports = {
                 use: [
                     "style-loader", {
                         loader: MiniCssExtractPlugin.loader,
-
                         options: {
                             esModule: false
                         },
@@ -66,34 +65,38 @@ module.exports = {
                 ],
             },
             {
-                test: /\.(png|svg|jpg|gif|jpeg|web)$/,
+                test: /\.(png|jpg|gif|jpeg|web)$/i,
                 type: 'asset/resource',
+                use: ['file-loader?name=[name].[ext]'],
                 generator: {
                     filename: "public/[hash][ext][query]",
                 },
             },
             {
-                test: /\.ttf$/,
+                test: /\.svg$/,
                 use: [
                     {
-                        loader: 'ttf-loader',
+                        loader: 'svg-url-loader',
                         options: {
-                            limit: 1000,
-                            mimetype: "application/font-ttf",
-                            outputPath: "./assets/fonts/",
-                            publicPath: "./assets/fonts/",
-                            esModule: false,
-                            name: './font/[hash].[ext]',
+                            limit: 10000,
                         },
                     },
-                ]
+                ],
+            },
+            {
+                test: /\.ttf|ttc$/,
+                type: "asset/resource",
+                generator: {
+                    filename: "assets/fonts/[hash][ext]",
+                },
             }
         ]
     },
     plugins: [
         new HtmlWebpackPlugin({
-            template: './public/index.html',
-            filename: './index.html'
+            template: path.resolve(__dirname, "public", "index.html"),
+            filename: './index.html',
+            favicon: './public/favicon.ico',
         }),
         new MiniCssExtractPlugin({
             filename: 'assets/[name].[contenthash].css'
@@ -113,7 +116,6 @@ module.exports = {
         minimizer: [
             new CssMinimizerPlugin(),
             new TerserPlugin(),
-            new BundleAnalyzerPlugin(),
         ]
     },
     devServer: {
