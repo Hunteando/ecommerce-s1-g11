@@ -5,9 +5,10 @@ import Grid from '@mui/material/Grid';
 import useMock from '../hooks/useMock';
 import ProductsItemOutstanding from '../components/ProductItem/ProductsItemOutstanding/ProductItemOutstanding';
 import OtherProducts from '../components/ProductItem/OtherProducts/OtherProducts';
+import { ProductsI } from '../interfaces/ProductsI';
 
 export const Products = () => {
-  const data: any = useMock();
+  const data: ProductsI[] = useMock();
   return (
     <Container>
       <Grid container rowSpacing={2} columnSpacing={{ xs: 1, sm: 3, md: 3, lg: 5 }} justifyContent="flex-start">
