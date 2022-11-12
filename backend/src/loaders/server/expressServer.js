@@ -1,5 +1,5 @@
 const express = require('express')
-const config = require('../../config')
+const config = require('../../config/environment')
 const sequelize = require('../sequelize')
 const mysql = require('mysql2/promise')
 require('../../libs/relations')
