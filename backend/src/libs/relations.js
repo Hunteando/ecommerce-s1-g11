@@ -1,6 +1,6 @@
 const User = require('../models/users')
 const UserDetails = require('../models/usersdetails')
-User.id
+
 UserDetails.hasOne(User, {
   onDelete: 'CASCADE',
 })
