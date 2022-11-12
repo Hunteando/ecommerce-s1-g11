@@ -1,0 +1,23 @@
+.container {
+  padding: 30px;
+  width: 75%;
+  height: 400px;
+  margin: 0 auto;
+}
+
+.slick-slide img {
+  margin: auto;
+  width:100%;
+  height: 400px;
+}
+
+/* make the arrows black */
+.slick-prev:before,
+.slick-next:before {
+  color: black;
+}
+
+/*.slick-dots li.slick-active button:before {
+  color: white;
+}*/
+

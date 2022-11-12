@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+<<<<<<< HEAD
     /* Visit https://aka.ms/tsconfig to read more about this file */
 
     /* Projects */
@@ -102,3 +103,24 @@
     "jsx": "react"                                       /* Specify JSX code generation: 'preserve', 'react-native', or 'react'. */  
   }
 }
+=======
+    "outDir": "./dist/",
+    "allowSyntheticDefaultImports": true,
+    "noImplicitAny": true,
+    "moduleResolution": "node",
+    "baseUrl": "./",
+    "sourceMap": true,
+    "module": "esnext",
+    "target": "esnext",
+    "jsx": "react",
+    "allowJs": true,
+    "noEmit": false,
+    "noImplicitThis": true,
+    "strictNullChecks": true,
+    "lib": [
+      "es6",
+      "dom"
+    ],
+  },
+}
+>>>>>>> 5502920722398a9864f4237585c0d845aa0191df

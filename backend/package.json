@@ -1,12 +1,12 @@
 {
   "name": "ecommerce-s1-g11",
   "version": "1.0.0",
-  "description": "Tienda de Maira Muriel",
+  "description": "Tienda de Melinda Muriel",
   "main": "index.js",
+  "type": "commonjs",
   "scripts": {
-    "dev": "ts-node-dev src/index.ts",
-    "tsc": "tsc",
-    "start": "node build/index.js",
+    "dev": "nodemon src/index.js",
+    "start": "node src/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -20,28 +20,35 @@
     "pictures",
     "artist"
   ],
-  "author": "",
+  "authors": {
+    "Scrum Master": "Camila Vieyra",
+    "Team Leader": "Eng. Demin Santana",
+    "Frontend 1": "Leonardo Puebla",
+    "Frontend 2": "Martin Setaro",
+    "Backend 1": "Gonzalo Cochetto",
+    "Backend 2": "Oscar Torres",
+    "QA 1": "Julieta Martinez",
+    "QA 2": "Lucas Gómez"
+  },
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/Hunteando/ecommerce-s1-g11/issues"
   },
   "homepage": "https://github.com/Hunteando/ecommerce-s1-g11#readme",
   "devDependencies": {
-    "@types/dotenv": "^8.2.0",
-    "@types/express": "^4.17.14",
-    "@types/node": "^18.11.7",
-    "@types/tedious": "^4.0.9",
-    "@types/validator": "^13.7.9",
-    "chai": "^4.3.6",
-    "mocha": "^10.1.0",
-    "ts-node-dev": "^2.0.0",
-    "typescript": "^4.8.4"
+    "nodemon": "^2.0.20",
+    "sequelize-cli": "^6.5.2"
   },
   "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
+    "express-validator": "^6.14.2",
+    "jsonwebtoken": "^8.5.1",
+    "morgan": "^1.10.0",
+    "multer": "^1.4.5-lts.1",
     "mysql2": "^2.3.3",
-    "sequelize": "^6.25.3",
-    "tedious": "^15.1.0"
+    "sequelize": "^6.25.3"
   }
 }
