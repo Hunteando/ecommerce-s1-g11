@@ -8,10 +8,10 @@ const TerserPlugin = require('terser-webpack-plugin');
 module.exports = {
     entry: './src/index.tsx',
     output: {
-        path: path.resolve(__dirname, 'dist'),
+        path: path.resolve(__dirname, 'dist/'),
         filename: 'bundle.js',
         assetModuleFilename: 'assets/images/[hash][ext][query]',
-        publicPath: '/'
+        publicPath: '/dist/'
     },
     mode: 'development',
     resolve: {
@@ -98,7 +98,7 @@ module.exports = {
     devServer: {
         historyApiFallback: true,
         static: {
-            directory: path.join(__dirname, 'public'),
+            directory: path.join(__dirname, 'dist'),
         },
         compress: true,
         port: 64340

@@ -9,24 +9,26 @@ const TerserPlugin = require('terser-webpack-plugin');
 module.exports = {
     entry: './src/index.tsx',
     output: {
-        path: path.resolve(__dirname, 'dist'),
+        path: path.resolve(__dirname, 'dist/'),
         filename: 'bundle.js',
         assetModuleFilename: 'assets/images/[hash][ext][query]',
-        publicPath: '/'
+        publicPath: '/dist/'
     },
     resolve: {
-        extensions: ['.js', '.tsx', '.ts', '.jsx'],
+        extensions: ['.js', '.jsx', '.ts', '.tsx'],
         alias: {
             '@component': path.resolve(__dirname, 'src/components/'),
             '@context': path.resolve(__dirname, 'src/context/'),
             '@hooks': path.resolve(__dirname, 'src/hooks/'),
             '@containers': path.resolve(__dirname, 'src/containers/'),
             '@pages': path.resolve(__dirname, 'src/pages/'),
-            '@icons': path.resolve(__dirname, 'src/assets/icons/'),
-            '@logos': path.resolve(__dirname, 'src/assets/logos/'),
-            '@styles': path.resolve(__dirname, 'src/styles/'),
             '@utils': path.resolve(__dirname, 'src/utils/')
         }
+    },
+    performance: {
+        hints: false,
+        maxEntrypointSize: 512000,
+        maxAssetSize: 512000,
     },
     mode: 'production',
     module: {
@@ -36,7 +38,7 @@ module.exports = {
                 exclude: /node_modules/,
                 use: {
                     loader: 'babel-loader'
-                }
+                },
             },
             {
                 test: /\.tsx?$/,
