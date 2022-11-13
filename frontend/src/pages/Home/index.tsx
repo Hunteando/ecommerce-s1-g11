@@ -1,31 +1,25 @@
-import * as React from 'react';
-import HomeSlider from '../../components/HomeSlider/HomeSlider';
+import React from 'react'
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import { Link } from 'react-router-dom';
+import SecondComponent from './SecondComponent';
+import ThirtComponent from './ThirtComponent';
+import FourComponent from './FourComponent';
 
 const HomePage = () => {
-  return (
-    <>
-      <Box
-        sx={{
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          justifyContent: 'center',
-          height: '100vh',
-          width: '100%',
-          marginTop: '10px'
-        }}>
-        <HomeSlider />
-        <Link to="/login">
-          <Button variant="outlined" color="info">
-            Comenzar
-          </Button>
-        </Link>
-      </Box>
-    </>
-  );
-};
 
-export default HomePage;
+
+  
+  return (
+    <Box>
+      <Box>
+      
+      </Box>
+      <SecondComponent/>
+      <ThirtComponent/>
+      <FourComponent/>
+    </Box>
+  )
+}
+
+export default HomePage

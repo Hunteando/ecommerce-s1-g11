@@ -1,0 +1,85 @@
+
+
+@font-face {
+    font-family: arsenale;
+    src: url('../../assets/fonts/arsenale_white.ttf');
+}
+@font-face {
+     font-family: comspotM;
+    src: url('../../assets/fonts/Comspot-Medium.ttf');
+}
+
+
+.header{
+    max-width: 1200px;
+    height: 70px;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+
+.decoracionTexto {
+    text-decoration: none;
+    
+}
+.contenedorTitulo{
+    width: 100%;
+    height: 100%;
+}
+
+.btnInicio {
+	background-color: aqua;
+}
+
+.tituloLogo{
+ font-family: arsenale;
+ font-size: 65px;
+ font-weight: 900;
+ margin-top: 20px;
+ margin-left: 30px;
+ color: #252525;
+ 
+}
+.navegacion{
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 30px;
+}
+.inputEstilo{
+    width: 130px;
+    height: 20px;
+    padding: 5px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    border: 1px solid #1e1e1e;
+    font-family: comspotM;
+    
+
+}
+.input {
+    border: none;
+    background-color: transparent;
+    margin-left: 10px;
+    outline: none;
+    width: 90px;
+}
+.imgSearch{
+    width: 15px;
+    height: 15px;
+}
+
+.selectorEstilo{
+    border-radius: 10px;
+    padding: 5px;
+    font-family: comspotM;
+}
+.texto 
+{
+    font-family: arsenale;
+}

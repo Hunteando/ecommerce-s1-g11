@@ -4,7 +4,7 @@ import { Routes, Route } from 'react-router-dom';
 import {Products} from './containers/Products';
 import Login from './components/Login/Login';
 import Register from './components/Register/Register';
-import HomePage from './pages/Home/index';
+import HomePage from '../src/pages/Home'
 import ProductDetail from './components/ProductDetail/ProductDetail';
 
 function MainRoutes() {
