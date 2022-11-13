@@ -39,23 +39,23 @@ const AppBar = () => {
 
   return (
 
-    <Box sx={{width:'100%' , height:'7rem', display:'flex', justifyContent:'space-around', pt:5 }}>
+    <Box sx={{width:'100%' , height:'7rem', display:'flex',justifyContent:'space-around', pt:5 }}>
       <Box sx={{widht:'30rem'}}>
         <Link to="/" className='decoracionTexto'>
         <Typography component='h1' variant='h2' sx={{fontFamily:'arsenale' , color:'#1e1e1e', fontWeight:'700', fontSize:'4rem'}}>Melinda Muriel</Typography>
         </Link>
       </Box>
 
-    
+    <Box sx={{display:'flex', justifyContent:'space-around', gap:2}}>
         <Link to="/viewCart" title='Cart'>
           <ShoppingCart
           fontSize="large"
-          sx={{ marginLeft: 10 }}
+          sx={{ marginLeft: 12 }}
           />
         </Link>
      
       
-        <Box sx={{width:'15rem' , display:'flex' , height:'2rem' , alignItem:'center'}} style={style.btnBorde}>
+        <Box sx={{width:'8rem' , display:'flex' , height:'2rem' , alignItem:'center', backgroundColor:'#f5f5f5'}} style={style.btnBorde}>
               <Box 
               component="img" 
               src='https://cdn-icons-png.flaticon.com/512/64/64673.png' 
@@ -63,28 +63,24 @@ const AppBar = () => {
               sx={{width:'1.5rem', height:'1.5rem'}}
               style={style.imagen}
               />
-              <TextField id="standard-basic" placeholder='Buscar' variant="standard" style={style.input}/>
+              <input type='text'placeholder='Buscar' style={style.input}/>
         </Box>
-        <Box sx={{width:'15rem'}}>
-            <FormControl fullWidth >
-               <InputLabel id="demo-simple-select-label" sx={{width:'15rem'}}></InputLabel>
-               <Select
-                >
-                <MenuItem >Seleccione idioma</MenuItem>
-                 <MenuItem value={'español'}>Español (Latinoaméricano)</MenuItem>
-                 <MenuItem value={'english'}>English (U.S)</MenuItem>
-                 <MenuItem value={'portugues'}>Portugues (Europa)</MenuItem>
-                </Select>
-              </FormControl>
+        <Box sx={{width:'12rem'}}>
+            <select style={style.select}>
+               <option>Español (Latinoaméricano)</option>
+               <option>English (U.S)</option>
+               <option>Portugues (Europa)</option>
+            </select>
+               
         </Box>
       
-        <Box sx={{width:'8rem'}}>
+        <Box sx={{width:'8rem',heigth:'3rem'}}>
         <Link to="/login" className='decoracionTexto'>
             <CustomButton>Iniciar sesión</CustomButton>
         </Link>
     </Box>
             
-       
+       </Box>
       
     </Box>
     
@@ -95,11 +91,12 @@ const AppBar = () => {
 
 const style = {
   input:{
-    height:'7rem',
-    backgroundColor:'transparent',
+    height:'2rem',
     marginLeft:'15px',
-    borderBottom:'none',
-    marginTop:'3px'
+    outline:'none',
+    backgroundColor:'transparent',
+    border:0
+   
 
    
     
@@ -115,6 +112,11 @@ const style = {
    
     marginLeft:'10px',
     marginTop:'8px'
+  },
+  select:{
+    width:'12rem',
+    height:'2.5rem',
+    fontFamily:'comspotM'
   }
 }
 
