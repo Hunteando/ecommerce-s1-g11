@@ -60,8 +60,8 @@ module.exports = {
                             esModule: false
                         },
                     },
-                    "css-loader",
-                    "sass-loader"
+                    {loader: "css-loader"},
+                    {loader: "sass-loader"}
                 ],
             },
             {
