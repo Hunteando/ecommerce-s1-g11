@@ -38,21 +38,21 @@ const SecondComponent = () => {
 
   return (
 
-    <Box component='div' sx={{width:'100%' , display:'flex'}}>
-      <Box component='div' sx={{width:'100%' , height:'40rem'}}>
-        <Box component="img" sx={{width:'100%', height:'100%'}} src='../../assets/images/pic1.jpg' alt="img1"/>
-      </Box>
+    <Box component='div' sx={{width:'100%' , height:'45rem', display:'flex'}}>
       <Box component='div' sx={{width:'100%' , height:'100%'}}>
-        <Typography component="h2" variant='h3' className='textoCom'>Expo Teré en el @ccu.unne</Typography>
-        <Typography component="h6" variant='h6'>¡Gracias a quienes apoyan el trabajo artístico!  
+        <Box component="img" sx={{width:'50rem', height:'100%', ml:'-6rem'}} src='../../assets/images/picture1.png' alt="img1"/>
+      </Box>
+      <Box component='div' sx={{width:'100%' , height:'100%',pr:5}}>
+        <Typography component="h2" variant='h3' sx={{fontFamily:'comspotM' , fontSize:'5rem'}}>Expo Teré en el @ccu.unne</Typography>
+        <Typography component="h6" variant='h6' sx={{fontFamily:'comspotM', mt:3 , color:'#6d6d6d'}}>¡Gracias a quienes apoyan el trabajo artístico!  
          Si aún no pudieron ir de lunes a viernes de 9 a 12 y de 17 a 20 en Córdoba 794, esquina 9 de julio, permanece la muestra. </Typography>
          <CustomButton>Ver Más</CustomButton>
 
-         <Typography component="h4" variant='h4'>01</Typography>
-         <Typography component="h6" variant='h6'>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nostrum officia dolore.sit amet consectetur adipisicing elit
+         <Typography component="h4" variant='h4'sx={{fontFamily:'comspotM', mt:3 , color:'#6d6d6d'}} >01</Typography>
+         <Typography component="h6" variant='h6'sx={{fontFamily:'comspotM',  color:'#1e1e1e'}}>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nostrum officia dolore.sit amet consectetur adipisicing elit
          </Typography>
-         <Typography component="h4" variant='h4'>02</Typography>
-         <Typography component="h6" variant='h6'>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nostrum officia dolore. sit amet consectetur adipisicing elit
+         <Typography component="h4" variant='h4'sx={{fontFamily:'comspotM', mt:3 , color:'#6d6d6d'}} >02</Typography>
+         <Typography component="h6" variant='h6'sx={{fontFamily:'comspotM', color:'#1e1e1e'}} >Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nostrum officia dolore. sit amet consectetur adipisicing elit
          </Typography>
       </Box>
     </Box>

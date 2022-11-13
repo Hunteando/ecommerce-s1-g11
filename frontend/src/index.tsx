@@ -4,6 +4,8 @@ import './index.scss';
 import App from './App';
 import { BrowserRouter } from "react-router-dom";
 import AppBar from './components/AppBar/AppBar';
+import Footer from './components/Footer/Footer';
+
 
 const rootElement = document.getElementById("root");
 
@@ -13,6 +15,7 @@ root.render(
     <BrowserRouter>
     <AppBar/>
       <App />
+     <Footer/>
     </BrowserRouter>
   </React.StrictMode>
 );
