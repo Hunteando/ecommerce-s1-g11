@@ -13,7 +13,7 @@ module.exports = {
         path: path.resolve(__dirname, 'dist/'),
         filename: 'bundle.js',
         assetModuleFilename: 'assets/images/[hash][ext][query]',
-        publicPath: '/'
+        publicPath: '/dist/'
     },
     resolve: {
         extensions: ['.js', '.jsx', '.ts', '.tsx'],
@@ -36,7 +36,7 @@ module.exports = {
         rules: [
             {
                 test: /\.js|jsx$/,
-                exclude: /node_modules/,
+                exclude: /(node_modules|bower_components)/,
                 use: {
                     loader: 'babel-loader'
                 },
