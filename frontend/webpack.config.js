@@ -9,13 +9,13 @@ const TerserPlugin = require('terser-webpack-plugin');
 module.exports = {
     entry: './src/index.tsx',
     output: {
-        path: path.resolve(__dirname, 'dist'),
+        path: path.resolve(__dirname, 'dist/'),
         filename: 'bundle.js',
         assetModuleFilename: 'assets/images/[hash][ext][query]',
-        publicPath: '/'
+        publicPath: '/dist/'
     },
     resolve: {
-        extensions: ['.js', '.tsx', '.ts', '.jsx'],
+        extensions: ['.js', '.jsx', '.ts', '.tsx'],
         alias: {
             '@component': path.resolve(__dirname, 'src/components/'),
             '@context': path.resolve(__dirname, 'src/context/'),
@@ -35,10 +35,10 @@ module.exports = {
         rules: [
             {
                 test: /\.js|jsx$/,
-                exclude: /node_modules/,
+                exclude: /(node_modules|bower_components)/,
                 use: {
                     loader: 'babel-loader'
-                }
+                },
             },
             {
                 test: /\.tsx?$/,
