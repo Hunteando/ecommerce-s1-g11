@@ -1,9 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const CopyPlugin = require('copy-webpack-plugin');
-const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
-const TerserPlugin = require('terser-webpack-plugin');
 
 module.exports = {
     entry: './src/index.tsx',
@@ -11,11 +8,10 @@ module.exports = {
         path: path.resolve(__dirname, 'dist/'),
         filename: 'bundle.js',
         assetModuleFilename: 'assets/images/[hash][ext][query]',
-        publicPath: '/dist/'
+        publicPath: '/'
     },
-    mode: 'development',
     resolve: {
-        extensions: ['.js', '.tsx', 'ts'],
+        extensions: ['.js', '.jsx', '.ts', '.tsx'],
         alias: {
             '@component': path.resolve(__dirname, 'src/components/'),
             '@context': path.resolve(__dirname, 'src/context/'),
@@ -61,18 +57,13 @@ module.exports = {
                 test: /\.(png|jpg|gif|jpeg|web)$/i,
                 type: 'asset/resource',
                 use: ['file-loader?name=[name].[ext]'],
-                generator: {
-                    filename: "public/[hash][ext][query]",
-                },
             },
             {
                 test: /\.svg$/,
                 use: [
                     {
                         loader: 'svg-url-loader',
-                        options: {
-                            limit: 10000,
-                        },
+                        options: {},
                     },
                 ],
             },
@@ -87,12 +78,12 @@ module.exports = {
     },
     plugins: [
         new HtmlWebpackPlugin({
-            template: path.resolve(__dirname, "public", "index.html"),
+            template: './public/index.html',
             filename: './index.html',
             favicon: './public/favicon.ico',
         }),
         new MiniCssExtractPlugin({
-            filename: 'assets/[name].[contenthash].css'
+            filename: '[name].[contenthash].css'
         }),
     ],
     devServer: {

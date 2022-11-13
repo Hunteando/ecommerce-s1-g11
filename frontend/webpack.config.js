@@ -2,9 +2,10 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const CopyPlugin = require('copy-webpack-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
+const CopyPlugin = require('copy-webpack-plugin')
+
 
 module.exports = {
     entry: './src/index.tsx',
@@ -12,7 +13,7 @@ module.exports = {
         path: path.resolve(__dirname, 'dist/'),
         filename: 'bundle.js',
         assetModuleFilename: 'assets/images/[hash][ext][query]',
-        publicPath: '/dist/'
+        publicPath: '/'
     },
     resolve: {
         extensions: ['.js', '.jsx', '.ts', '.tsx'],
@@ -65,9 +66,6 @@ module.exports = {
                 test: /\.(png|jpg|gif|jpeg|web)$/i,
                 type: 'asset/resource',
                 use: ['file-loader?name=[name].[ext]'],
-                generator: {
-                    filename: "public/[hash][ext][query]",
-                },
             },
             {
                 test: /\.svg$/,
@@ -89,14 +87,13 @@ module.exports = {
     },
     plugins: [
         new HtmlWebpackPlugin({
-            template: path.resolve(__dirname, "public", "index.html"),
+            template: './public/index.html',
             filename: './index.html',
             favicon: './public/favicon.ico',
         }),
         new MiniCssExtractPlugin({
-            filename: 'assets/[name].[contenthash].css'
+            filename: '[name].[contenthash].css'
         }),
-        new CleanWebpackPlugin(),
         new CopyPlugin({
             patterns: [
                 {
@@ -105,6 +102,7 @@ module.exports = {
                 }
             ]
         }),
+        new CleanWebpackPlugin(),
     ],
     optimization: {
         minimize: true,
