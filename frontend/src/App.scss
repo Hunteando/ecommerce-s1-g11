@@ -18,40 +18,40 @@
 
 @font-face {
   font-family: 'Compost Light';
-  src: url('assets/fonts/Comspot-Light.ttf') format('truetype'),
+  src: local('Compost Light') url('assets/fonts/Comspot-Light.ttf') format('truetype'),
 }
 
 @font-face {
   font-family: 'Compost Light Italic';
-  src: url('assets/fonts/Comspot-LightItalic.ttf') format('truetype'),
+  src: local('Compost Light Italic') url('assets/fonts/Comspot-LightItalic.ttf') format('truetype'),
 }
 
 @font-face {
   font-family: 'Compost Medium';
-  src: url('assets/fonts/Comspot-Medium.ttf') format('truetype'),
+  src: local('Compost Medium') url('assets/fonts/Comspot-Medium.ttf') format('truetype'),
 }
 
 @font-face {
   font-family: 'Compost Medium Italic';
-  src: url('assets/fonts/Comspot-MediumItalic.ttf') format('truetype'),
+  src: local('Compost Medium Italic') url('assets/fonts/Comspot-MediumItalic.ttf') format('truetype'),
 }
 
 @font-face {
   font-family: 'Compost Regular';
-  src: url('assets/fonts/Comspot-Regular.ttf') format('truetype');
+  src: local('Compost Regular') url('assets/fonts/Comspot-Regular.ttf') format('truetype');
 }
 
 @font-face {
   font-family: 'Compost Bold';
-  src: url('assets/fonts/Comspot-Bold.ttf') format('truetype'),
+  src: local('Compos Bold') url('assets/fonts/Comspot-Bold.ttf') format('truetype'),
 }
 
 @font-face {
-  font-family: 'arsenale_white';
-  src: url('assets/fonts/arsenale_white.ttf') format('truetype');
+  font-family: 'arsenale-white';
+  src: local('arsenale-white') url('assets/fonts/arsenale_white.ttf') format('truetype');
 }
 
 @font-face {
   font-family: 'cambria';
-  src: url('assets/fonts/cambria.ttc') format('truetype');
+  src: local('cambria') url('assets/fonts/cambria.ttc') format('truetype');
 }
