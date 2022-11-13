@@ -15,19 +15,19 @@ const ThirtComponent = () => {
             <div className='card'>
                 <h3>01</h3>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias, asperiores atque consequatur molestias at natus id dolorem quaerat ut dolorum</p>
-                <img src={img1} alt="img1"/>
+                <img src='../../assets/images/img1.png' alt="img1"/>
                 <h4>Ver Producto</h4>
             </div>
             <div className='card'>
                 <h3>02</h3>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias, asperiores atque consequatur molestias at natus id dolorem quaerat ut dolorum</p>
-                <img src={img2} alt="img1"/>
+                <img src='../../assets/images/img2.png' alt="img2"/>
                 <h4>Ver Producto</h4>
             </div>
             <div className='card'>
                 <h3>03</h3>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias, asperiores atque consequatur molestias at natus id dolorem quaerat ut dolorum magni</p>
-                <img src={img3} alt="img1"/>
+                <img src='../../assets/images/img3.png' alt="img3"/>
                 <h4>Ver Producto</h4>
             </div>
         </div>

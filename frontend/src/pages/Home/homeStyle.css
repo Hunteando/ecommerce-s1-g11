@@ -93,7 +93,7 @@
 .contenedor_main_card{
 	max-width: 1200px;
 	margin: 50px auto;
-	height: 700px;
+	height: 60rem;
 	display: flex;
 	flex-direction: column;
 }

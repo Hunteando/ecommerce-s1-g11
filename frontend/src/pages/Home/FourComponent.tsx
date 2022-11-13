@@ -21,7 +21,7 @@ const CustomButton = styled(ButtonUnstyled)`
   cursor: pointer;
   margin-top:20px;
   margin-bottom:50px;
-  margin-left:600px;
+  margin-left:320px;
   text-transform:uppercase;
   border:none;
   &:hover {
@@ -39,12 +39,12 @@ const FourComponent = () => {
 
 
   return (
-    <Box className="contenedor_sobremi">
-      <Typography component='h2' variant='h3'>Sobre mi obra</Typography>
-      <Typography component='p' variant='h4'>Un recorrido que trae las formas de lo onírico e inicia por los duelos y el dejar ir.</Typography>
+    <Box sx={{marginTop:'5rem' , display:'flex', flexDirection:'column', alignItems:'center', pb:4}}>
+      <Typography component='h2' variant='h3' sx={{fontFamily:'comspotM', marginLeft:'-45rem'}}>Sobre mi obra</Typography>
+      <Typography component='p' variant='h4' sx={{fontFamily:'comspotExI', color:'#7d7d7d',widht:'40%', fontSize:'26px',marginLeft:'45rem'}}>Un recorrido que trae las formas de lo onírico e inicia por los duelos y el dejar ir.</Typography>
       <CustomButton>Acerca de mi</CustomButton>
 
-      <Box component="img" src={sobreMi} alt="sobre mi obra"/>
+      <Box component="img" src='../../assets/images/Sobremi.png' alt="sobre mi obra"/>
     </Box>
   )
 }
