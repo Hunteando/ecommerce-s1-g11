@@ -4,7 +4,9 @@ import Typography from '@mui/material/Typography';
 import ButtonUnstyled  from '@mui/base/ButtonUnstyled';
 import { styled } from '@mui/system';
 import { TextField } from '@mui/material';
-import Arsenale from '../../assets/fonts/arsenale_white.ttf'
+import facebook from '../../assets/images/facebook.png'
+import twitter from '../../assets/images/twitter.png'
+import instagram from '../../assets/images/instagram.png'
 
 const CustomButton = styled(ButtonUnstyled)`
     font-family: comspotM;
@@ -41,9 +43,9 @@ const Footer = () => {
           <Typography component="h2" variant="h2" sx={{fontFamily:'arsenale', textAlign:'center'}}>Melinda Muriel</Typography>
           <Typography component="h5" variant="h5" sx={{fontFamily:'comspotExI', textAlign:'center'}}>¡Sígueme en mis redes sociales!</Typography>
              <Box sx={{width:'100', display:'flex', justifyContent:'space-around',marginTop:'2rem'}}>
-                <Box style={style.imagenes} component="img" src='../../assets/images/facebook.png' alt="iconImg"/>
-                <Box style={style.imagenes} component="img" src='../../assets/images/twitter.png' alt="iconImg"/>
-                <Box style={style.imagenes} component="img" src='../../assets/images/instagram.png' alt="iconImg"/>
+                <Box style={style.imagenes} component="img" src={facebook} alt="iconImg"/>
+                <Box style={style.imagenes} component="img" src={twitter} alt="iconImg"/>
+                <Box style={style.imagenes} component="img" src={instagram} alt="iconImg"/>
            </Box>
         </Box>
   
@@ -64,7 +66,7 @@ const Footer = () => {
           
           <Box sx={{width:'20rem',display:'flex',flexDirection:'column'}}>
               <Typography component="h5" variant="h5"  sx={{fontFamily:'comspotM', marginBottom:'3rem'}} >Únete a mí comunidad</Typography>
-              <TextField id="standard-basic" placeholder='Ingres tu email' variant="standard" sx={{width:'70%'}}/>
+              <TextField id="standard-basic" placeholder='Ingresa tu email' variant="standard" sx={{width:'70%'}}/>
               <CustomButton>Subscríbete</CustomButton>
   
           </Box>

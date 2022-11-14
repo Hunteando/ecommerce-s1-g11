@@ -41,7 +41,7 @@ const AppBar = () => {
     <Box sx={{width:'100%' , height:'7rem', display:'flex',justifyContent:'space-around', pt:5 }}>
       <Box sx={{widht:'30rem'}}>
         <Link to="/" className='decoracionTexto'>
-        <Typography component='h1' variant='h2' sx={{fontFamily:'arsenale' , color:'#1e1e1e', fontWeight:'700', fontSize:'4rem'}}>Melinda Muriel</Typography>
+        <Typography component='h1' variant='h2' sx={{fontFamily:'arsenale' , color:'#1e1e1e', fontWeight:'500', fontSize:'4rem'}}>Melinda Muriel</Typography>
         </Link>
       </Box>
 

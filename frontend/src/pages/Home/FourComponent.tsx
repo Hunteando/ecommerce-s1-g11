@@ -2,9 +2,10 @@ import React from 'react';
 import '../Home/homeStyle.css'
 import ButtonUnstyled  from '@mui/base/ButtonUnstyled';
 import { styled } from '@mui/system';
-import sobreMi from '../../assets/img/Sobremi.png'
+import sobreMi from '../../assets/images/Sobremi.png'
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
+
 
 
 
@@ -40,11 +41,11 @@ const FourComponent = () => {
 
   return (
     <Box sx={{marginTop:'5rem' , display:'flex', flexDirection:'column', alignItems:'center', pb:4}}>
-      <Typography component='h2' variant='h3' sx={{fontFamily:'comspotM', marginLeft:'-45rem'}}>Sobre mi obra</Typography>
+      <Typography component='h2' variant='h3' sx={{ marginLeft:'-45rem'}}>Sobre mi obra</Typography>
       <Typography component='p' variant='h4' sx={{fontFamily:'comspotExI', color:'#7d7d7d',widht:'40%', fontSize:'26px',marginLeft:'45rem'}}>Un recorrido que trae las formas de lo onírico e inicia por los duelos y el dejar ir.</Typography>
       <CustomButton>Acerca de mi</CustomButton>
 
-      <Box component="img" src='../../assets/images/Sobremi.png' alt="sobre mi obra"/>
+      <Box component="img" src={sobreMi} alt="sobre mi obra"/>
     </Box>
   )
 }

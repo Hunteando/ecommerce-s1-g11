@@ -2,7 +2,7 @@
 import React , {useState , useEffect} from 'react'
 import '../Cart/viewCart.css'
 import DeleteIcon from '@mui/icons-material/Delete'
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import ButtonUnstyled  from '@mui/base/ButtonUnstyled';
 import { styled } from '@mui/system';
 import Counter from '../Counter/Counter'
@@ -176,7 +176,9 @@ cart.length === 0 ?
         
 
     </div>
-        <CustomButton>Volver a comprar</CustomButton>
+        <Link to ="/">
+          <CustomButton>Volver a comprar</CustomButton>
+          </Link>
         <CustomButton
         onClick={handlerVaciar}
         sx={{backgroundColor:'red'}}

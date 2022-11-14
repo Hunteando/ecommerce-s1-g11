@@ -5,6 +5,7 @@ import { styled } from '@mui/system';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import '../Home/homeStyle.css'
+import picture1 from '../../assets/images/picture1.png'
 
 
 
@@ -40,7 +41,7 @@ const SecondComponent = () => {
 
     <Box component='div' sx={{width:'100%' , height:'45rem', display:'flex'}}>
       <Box component='div' sx={{width:'100%' , height:'100%'}}>
-        <Box component="img" sx={{width:'50rem', height:'100%', ml:'-6rem'}} src='../../assets/images/picture1.png' alt="img1"/>
+        <Box component="img" sx={{width:'50rem', height:'100%', ml:'-6rem'}} src={picture1} alt="img1"/>
       </Box>
       <Box component='div' sx={{width:'100%' , height:'100%',pr:5}}>
         <Typography component="h2" variant='h3' sx={{fontFamily:'comspotM' , fontSize:'5rem'}}>Expo Teré en el @ccu.unne</Typography>

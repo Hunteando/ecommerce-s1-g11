@@ -30,7 +30,6 @@ module.exports = {
         }
     },
     mode: 'production',
-    watch: true,
     module: {
         rules: [
             {
@@ -62,7 +61,7 @@ module.exports = {
                 ],
             },
             {
-                test: /\.(png|jpg|gif|jpeg|web)$/i,
+                test: /.(png|jpg|gif|jpeg|web)$/i,
                 type: 'asset/resource',
             },
             {
