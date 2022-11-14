@@ -16,15 +16,7 @@ module.exports = {
         publicPath: '/'
     },
     resolve: {
-        extensions: ['.js', '.jsx', '.ts', '.tsx'],
-        alias: {
-            '@component': path.resolve(__dirname, 'src/components/'),
-            '@context': path.resolve(__dirname, 'src/context/'),
-            '@hooks': path.resolve(__dirname, 'src/hooks/'),
-            '@containers': path.resolve(__dirname, 'src/containers/'),
-            '@pages': path.resolve(__dirname, 'src/pages/'),
-            '@utils': path.resolve(__dirname, 'src/utils/')
-        }
+        extensions: ['.js', '.jsx', '.ts', '.tsx']
     },
     performance: {
         hints: false,
@@ -32,6 +24,7 @@ module.exports = {
         maxAssetSize: 512000,
     },
     mode: 'production',
+    watch: true,
     module: {
         rules: [
             {
@@ -64,8 +57,7 @@ module.exports = {
             },
             {
                 test: /\.(png|jpg|gif|jpeg|web)$/i,
-                loader: 'file-loader',
-                options: {}
+                type: 'asset/resource',
             },
             {
                 test: /\.svg$/,
@@ -93,14 +85,6 @@ module.exports = {
         }),
         new MiniCssExtractPlugin({
             filename: '[name].[contenthash].css'
-        }),
-        new CopyPlugin({
-            patterns: [
-                {
-                    from: path.resolve(__dirname, "src", "assets/images"),
-                    to: "assets/images"
-                }
-            ]
         }),
         new CleanWebpackPlugin(),
     ],
