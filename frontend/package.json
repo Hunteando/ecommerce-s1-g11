@@ -21,7 +21,7 @@
   },
   "scripts": {
     "start": "webpack serve --open",
-    "build": "webpack serve --config webpack.config.js",
+    "build": "webpack --config webpack.config.js",
     "dev": "webpack --config webpack.config.dev.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
