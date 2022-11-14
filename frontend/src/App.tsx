@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import MainRoutes from './MainRoutes';
+import './App.scss'
 
 const App = () => {
   return (

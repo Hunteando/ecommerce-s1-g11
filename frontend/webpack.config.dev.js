@@ -1,11 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
-const TerserPlugin = require('terser-webpack-plugin');
-const CopyPlugin = require('copy-webpack-plugin')
-
 
 module.exports = {
     entry: './src/index.tsx',
@@ -16,21 +11,10 @@ module.exports = {
         publicPath: '/'
     },
     resolve: {
-        extensions: ['.js', '.tsx', 'ts'],
-        alias: {
-            '@component': path.resolve(__dirname, 'src/components/'),
-            '@context': path.resolve(__dirname, 'src/context/'),
-            '@hooks': path.resolve(__dirname, 'src/hooks/'),
-            '@containers': path.resolve(__dirname, 'src/containers/'),
-            '@pages': path.resolve(__dirname, 'src/pages/'),
-            '@icons': path.resolve(__dirname, 'src/assets/icons/'),
-            '@logos': path.resolve(__dirname, 'src/assets/logos/'),
-            '@styles': path.resolve(__dirname, 'src/styles/'),
-            '@utils': path.resolve(__dirname, 'src/utils/')
-        }
+        extensions: ['.js', '.jsx', '.ts', '.tsx'],
     },
-    mode: 'production',
     watch: true,
+    mode: 'development',
     module: {
         rules: [
             {
@@ -38,7 +22,7 @@ module.exports = {
                 exclude: /node_modules/,
                 use: {
                     loader: 'babel-loader'
-                },
+                }
             },
             {
                 test: /\.tsx?$/,
@@ -63,7 +47,8 @@ module.exports = {
             },
             {
                 test: /\.(png|jpg|gif|jpeg|web)$/i,
-                type: 'asset/resource',
+                loader: 'file-loader',
+                options: {}
             },
             {
                 test: /\.svg$/,
@@ -92,13 +77,13 @@ module.exports = {
         new MiniCssExtractPlugin({
             filename: '[name].[contenthash].css'
         }),
-        new CleanWebpackPlugin(),
     ],
-    optimization: {
-        minimize: true,
-        minimizer: [
-            new CssMinimizerPlugin(),
-            new TerserPlugin(),
-        ]
-    },
+    devServer: {
+        historyApiFallback: true,
+        static: {
+            directory: path.join(__dirname, 'dist'),
+        },
+        compress: true,
+        port: 64340
+    }
 }

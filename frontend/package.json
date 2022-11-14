@@ -21,9 +21,9 @@
   },
   "scripts": {
     "start": "webpack serve --open",
-    "build": "webpack --mode production",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "build": "webpack --config webpack.config.js",
+    "dev": "webpack --config webpack.config.dev.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "browserslist": {
     "production": [
@@ -66,6 +66,7 @@
     "prettier": "^2.7.1",
     "sass": "^1.56.1",
     "sass-loader": "^13.2.0",
+    "svg-url-loader": "^8.0.0",
     "terser-webpack-plugin": "^5.3.6",
     "ts-loader": "^9.4.1",
     "ttf-loader": "^1.0.2",
