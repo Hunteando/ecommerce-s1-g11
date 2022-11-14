@@ -1,7 +1,6 @@
 
 import { Button } from '@mui/material'
-import TextField from '@mui/material/TextField';
-import {FormControl , InputLabel , Select , MenuItem} from '@mui/material'
+
 import './appBar.css'
 import ButtonUnstyled  from '@mui/base/ButtonUnstyled';
 import { styled } from '@mui/system';
@@ -95,7 +94,9 @@ const style = {
     marginLeft:'15px',
     outline:'none',
     backgroundColor:'transparent',
-    border:0
+    border:0,
+    marginTop:'-5px',
+    width:'4rem'
    
 
    
@@ -111,12 +112,13 @@ const style = {
   imagen:{
    
     marginLeft:'10px',
-    marginTop:'8px'
+   
   },
   select:{
     width:'12rem',
     height:'2.5rem',
-    fontFamily:'comspotM'
+    fontFamily:'comspotM',
+    border:'0'
   }
 }
 
