@@ -24,7 +24,6 @@ module.exports = {
         maxAssetSize: 512000,
     },
     mode: 'production',
-    watch: true,
     module: {
         rules: [
             {
