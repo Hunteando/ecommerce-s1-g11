@@ -1,4 +1,4 @@
-import { CartElement } from '@stripe/react-stripe-js'
+
 import React , {useState , useEffect} from 'react'
 import '../Cart/viewCart.css'
 import DeleteIcon from '@mui/icons-material/Delete'
@@ -52,7 +52,7 @@ const CustomButton = styled(ButtonUnstyled)`
   `
 
 
-const productos = [
+const productos =  [
     {
         id:1,
         nombre:"remera",
@@ -84,10 +84,10 @@ const productos = [
 ]
 
 
-const ViewCart = () => {
+const ViewCart = ():JSX.Element => {
 
     const [cart,setCart] = useState(productos)
-    const[total,setTotal] = useState(0)
+    const[total,setTotal] = useState<number>(0)
 
 
     const handlerVaciar = ()=>{
@@ -111,6 +111,7 @@ const ViewCart = () => {
 
  
   return (
+    
 cart.length === 0 ? 
     <Box component="div"
      style={style.sombras}
@@ -183,6 +184,7 @@ cart.length === 0 ?
         
       
     </div>
+    
   )
 }
 

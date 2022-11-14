@@ -26,29 +26,27 @@ const CustomButton = styled(ButtonUnstyled)`
 
 
 
-const Counter = () => {
+
+const Counter = (): JSX.Element => {
 
 
-    const [counter,setCounter] = useState(1)
+    const [counter,setCounter] = useState<number>(1)
 
-const handlerSumar = ()=>{
+    const handlerSumar =  (event: React.MouseEvent<HTMLButtonElement>) => {
     
         setCounter(counter + 1)
-    
-    
+    }
 
-}
-
-const handlerRestar = ()=>{
-   if(counter > 0 ){
-    setCounter(counter - 1)
-   }
-}
+    const handlerRestar = (event: React.MouseEvent<HTMLButtonElement>) => {
+          if(counter > 0 ){
+        setCounter(counter - 1)
+    }
+    }
 
 
   return (
     <Box component="div" sx={{display:'flex' , justifyContent:'space-around',width:'10rem'}}>
-        <CustomButton onClick={handlerSumar}>+</CustomButton>
+        <CustomButton onClick = {handlerSumar}>+</CustomButton>
         <Typography component="h5" variant="h5">{counter}</Typography>
         <CustomButton onClick={handlerRestar}>-</CustomButton>
       
