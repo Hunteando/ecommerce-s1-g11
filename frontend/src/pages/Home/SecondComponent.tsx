@@ -6,6 +6,7 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import '../Home/homeStyle.css'
 import picture1 from '../../assets/images/picture1.png'
+import { Link } from 'react-router-dom'
 
 
 

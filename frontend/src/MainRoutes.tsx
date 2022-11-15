@@ -8,11 +8,12 @@ import HomePage from '../src/pages/Home'
 import ProductDetail from './components/ProductDetail/ProductDetail';
 import ViewCart from './components/Cart/ViewCart';
 
+
 function MainRoutes() {
 
   return (
     <Box>  
-      {/* <Navbar /> */}
+     
         <Routes >
           {/* <Route path="/" element={ <ProductDetail /> } /> */}
           {/* <Route path="/" element={ <Products /> } /> */}
@@ -20,8 +21,9 @@ function MainRoutes() {
           <Route path="/login" element={ <Login /> } />
           <Route path="/registrarse" element={ <Register /> } />
           <Route path='/viewCart' element={<ViewCart/>}/>
+         
         </Routes>  
-      {/* <Footer /> */}
+      
     </Box>    
   );
 }
