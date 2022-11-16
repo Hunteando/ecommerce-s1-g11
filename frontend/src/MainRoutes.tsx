@@ -14,8 +14,8 @@ function MainRoutes() {
       {/* <Navbar /> */}
         <Routes >
           {/* <Route path="/" element={ <ProductDetail /> } /> */}
-          {/* <Route path="/" element={ <Products /> } /> */}
-          <Route path="/" element={ <HomePage /> } />
+          <Route path="/" element={ <Products /> } />
+          {/* <Route path="/" element={ <HomePage /> } /> */}
           <Route path="/login" element={ <Login /> } />
           <Route path="/registrarse" element={ <Register /> } />
         </Routes>  
