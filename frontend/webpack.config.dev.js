@@ -13,7 +13,6 @@ module.exports = {
     resolve: {
         extensions: ['.js', '.jsx', '.ts', '.tsx'],
     },
-    watch: true,
     mode: 'development',
     module: {
         rules: [
@@ -46,9 +45,8 @@ module.exports = {
                 ],
             },
             {
-                test: /\.(png|jpg|gif|jpeg|web)$/i,
-                loader: 'file-loader',
-                options: {}
+                test: /.(png|jpg|gif|jpeg|web)$/i,
+                type: 'asset/resource',
             },
             {
                 test: /\.svg$/,

@@ -16,12 +16,7 @@ module.exports = {
         publicPath: '/'
     },
     resolve: {
-        extensions: ['.js', '.jsx', '.ts', '.tsx']
-    },
-    performance: {
-        hints: false,
-        maxEntrypointSize: 512000,
-        maxAssetSize: 512000,
+        extensions: ['.js', '.tsx', 'ts'],
     },
     mode: 'production',
     module: {
@@ -55,7 +50,7 @@ module.exports = {
                 ],
             },
             {
-                test: /\.(png|jpg|gif|jpeg|web)$/i,
+                test: /.(png|jpg|gif|jpeg|web)$/i,
                 type: 'asset/resource',
             },
             {
