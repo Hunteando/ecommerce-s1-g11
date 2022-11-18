@@ -7,6 +7,7 @@ import ButtonUnstyled  from '@mui/base/ButtonUnstyled';
 import { styled } from '@mui/system';
 import Counter from '../Counter/Counter'
 import { Box, Typography } from '@mui/material'
+import vacio from '../../assets/images/vacio.jpg'
 
 
 
@@ -117,7 +118,7 @@ cart.length === 0 ?
      style={style.sombras}
      sx={{width:'30rem' , height:'30rem', display:'flex', flexDirection:'column',alignItems:'center'}}>
         <Typography component="h3" variant="h3" sx={{fontFamily:'comspotM'}}>Carro vacio</Typography>
-        <Box component="img" src='../../assets/images/vacio.jpg' alt="vacio" sx={{width:'20rem', height:'20rem'}}/>
+        <Box component="img" src={vacio} alt="vacio" sx={{width:'20rem', height:'20rem'}}/>
 
         <Link to="/">
         <CustomButton>Volver a comprar</CustomButton>

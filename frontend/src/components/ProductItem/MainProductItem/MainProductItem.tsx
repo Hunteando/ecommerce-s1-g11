@@ -4,12 +4,15 @@ import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 
+
 const MainProductItem = (data: any) => {
+
+  
   return (
     <Box sx={{ marginTop: '20px' }}>
-      <ImageListItem key={data.data.image}>
-        <img src={data.data.image} alt={data.data.title} loading="lazy" style={{ width: '100%', height: '250px' }} />
-        <ImageListItemBar
+      {/* <ImageListItem key={data.data.image}> */}
+        {/* <Box component="img" src={data.data.image} alt={data.data.title} loading="lazy" style={{ width: '100%', height: '250px' }} /> */}
+        {/* <ImageListItemBar
           sx={{ top: '40px', padding: '20px' }}
           position="top"
           title={data.data.title}
@@ -23,13 +26,13 @@ const MainProductItem = (data: any) => {
                 backgroundColor: '#2A7AE4',
                 width: '120px',
                 opacity: '0.9'
-              }}>
-              <Typography sx={{ color: 'white' }} variant="h5" color="initial">
+              }}> */}
+              {/* <Typography sx={{ color: 'white' }} variant="h5" color="initial">
                 VER  →
               </Typography>
             </Button>
-          }></ImageListItemBar>
-      </ImageListItem>
+          }></ImageListItemBar> */}
+      {/* </ImageListItem> */}
     </Box>
   );
 };
