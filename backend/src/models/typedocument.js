@@ -1,17 +1,16 @@
 const { DataTypes } = require('sequelize')
 const sequelize = require('../loaders/sequelize')
-const UserDetails = sequelize.define('UserDetails', {
+const TypeDocument = sequelize.define('TypeDocument', {
   id: {
     type: DataTypes.INTEGER,
     autoIncrement: true,
     primaryKey: true,
     allowNull: false,
   },
-  firstname: DataTypes.STRING(16),
-  lastname: {
-    type: DataTypes.STRING(255),
-    unique: true,
+  nameTD: {
+    type: DataTypes.ENUM('DNI', 'Passport'),
+    default: 'DNI',
   },
 })
 
-module.exports = UserDetails
+module.exports = TypeDocument

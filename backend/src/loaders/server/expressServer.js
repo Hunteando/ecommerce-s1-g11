@@ -2,6 +2,8 @@ const express = require('express')
 const config = require('../../config/environment')
 const sequelize = require('../sequelize')
 const mysql = require('mysql2/promise')
+const userRouter = require('../../routes/user')
+const authRouter = require('../../routes/auth')
 require('../../libs/relations')
 
 class ExpressServer {
@@ -23,13 +25,19 @@ class ExpressServer {
         `CREATE DATABASE IF NOT EXISTS \`${config.dataBase.name}\`;`
       )
       await sequelize.authenticate()
-      await sequelize.sync()
+      await sequelize.sync({ alter: true, force: true })
+      // TODO:alter y force solo deben ser usados en desarrollo
       console.log('Connection has been established successfully.')
     } catch (error) {
       console.error('Unable to connect to the database:', error)
     }
   }
 
+  routes() {
+    this.app.use(express.json())
+    this.app.use('/auth', userRouter)
+    this.app.use('/auth', authRouter)
+  }
   async start() {
     this.app.listen(this.port, (error) => {
       if (error) {

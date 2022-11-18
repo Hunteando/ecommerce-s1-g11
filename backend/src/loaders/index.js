@@ -5,6 +5,7 @@ const startServer = async () => {
   const server = new ExpressServer()
   console.log('Express Loaded')
 
+  server.routes()
   server.start()
   console.log(`Server listening on port ${config.port}`)
 }
