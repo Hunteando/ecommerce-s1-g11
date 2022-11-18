@@ -1,0 +1,13 @@
+
+
+
+.boxHover {
+   transition: all .3s linear;
+   background-color: #ffffff;
+}
+.boxHover:hover
+{
+    transform: scale(1.1,1.1);
+    box-shadow: 0 0 1rem #7d7d7d;
+    z-index: 44;
+}
