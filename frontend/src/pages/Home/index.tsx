@@ -16,31 +16,31 @@ const HomePage = () => {
 
   
   return (
-    <>
+    <Box>
       <Box component="div" sx={{width:'100%', height:'30rem', marginTop:'2rem'}}>
-      <div className="slider">
+      <Box component="div" className="slider">
 			<ul>
 				<li>
-       <img src={img1} alt="img1"/>
+       <Box component="img" src={img1} alt="img1"/>
         </li>
 				<li>
-        <img src={img2} alt="img2"/>
+        <Box component="img" src={img2} alt="img2"/>
            </li>
 				<li>
-         <img src={img3} alt="img3"/>
+         <Box component="img" src={img3} alt="img3"/>
           </li>
 				<li>
-          <img src={img4} alt="img4"/>
+          <Box component="img" src={img4} alt="img4"/>
          </li>
 			</ul>
-		</div>
-
+		</Box>
+     
       
       </Box>
-      <SecondComponent/>
+       <SecondComponent/>
       <ThirtComponent/>
       <FourComponent/>
-    </>
+    </Box>
   )
 }
 
