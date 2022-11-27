@@ -64,7 +64,7 @@ useEffect(()=>{
                                         <td>{item.description}</td>
                                         <td>{item.price}</td>
                                         <td>{item.stock}</td>
-                                        <td><Link to={`/editar/productos/${item.id}`}><Button >Editar</Button></Link></td>
+                                        <td><Link to={`/dashboard/admin/editarProducto/${item.id}`} style={style.underline}><Button >Editar</Button></Link></td>
                                     </tr>
                                 )
                             })}

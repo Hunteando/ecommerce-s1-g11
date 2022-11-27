@@ -10,6 +10,7 @@ import Login from './components/Login/Login';
 import Register from './components/Register/Register';
 import DashBoardAdmin from './components/DashBoardAdmin/DashBoardAdmin';
 import AgregarProducto from './components/DashBoardAdmin/AgregarProducto';
+import EditarProducto from './components/DashBoardAdmin/EditarProducto';
 
 function MainRoutes() {
 
@@ -25,6 +26,7 @@ function MainRoutes() {
           <Route path="/register" element={<Register/>}/>
           <Route path='/dashboard/admin' element={<DashBoardAdmin/>}/>
           <Route path="/dashboard/admin/agregarProducto" element={<AgregarProducto/>}/>
+          <Route path="/dashboard/admin/editarProducto/:id" element={<EditarProducto/>}/>
           <Route path='/DetalleProducto/elementos/:id' element={<ProductDetail/>}/>
          
         </Routes>  
