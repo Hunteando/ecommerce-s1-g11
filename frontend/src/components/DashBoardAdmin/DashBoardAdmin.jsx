@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Box, Typography , Button } from '@mui/material'
 import { Link } from 'react-router-dom'
 
@@ -10,14 +10,18 @@ const DashBoardAdmin = () => {
  // description , name , price , stock
     const [ productos, setProductos] = useState([])
 
+   
+
+useEffect(()=>{
+
     fetch('https://ecommercehunt-production.up.railway.app/dashboard/admin',{
         method:"GET"
        
     }).then(res => res.json()).then(data => {
-
+        console.log(data.products)
         setProductos(data.products)}).catch(err => console.log(err))
-
-
+   
+},[])
 
 
   return (
@@ -31,7 +35,7 @@ const DashBoardAdmin = () => {
                <Typography component="h4" variant="h4" sx={{fontFamily:'comspotExI'}}>
                 Administrador
                </Typography>
-               <Button sx={{marginTop:'1rem', width:'70%'}} variant="outlined">Agregar Producto</Button>
+               <Link to="/dashboard/admin/agregarProducto" style={style.underline}><Button sx={{marginTop:'1rem', width:'70%'}} variant="outlined">Agregar Producto</Button></Link>
                <Button sx={{marginTop:'1rem', width:'70%'}} variant="outlined">Ver usuarios</Button>
 
             </Box>
@@ -93,6 +97,9 @@ const style={
     tbody :{
         backgroundColor:'#f7f7f7',
         fontFamily:'comspotExI'
+    },
+    underline:{
+        textDecoration:'none'
     }
    
 }
