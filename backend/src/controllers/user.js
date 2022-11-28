@@ -2,17 +2,12 @@ const User = require('../models/users')
 
 const getAllUsers = async (req, res) => {
   try {
-    const users = await User.findAll({
-      // where: {
-      //   role: 'admin',
-      // },
-    })
+    const users = await User.findAll()
     return res.json({
       message: 'succesfully',
       users,
     })
   } catch (error) {
-    console.log(error)
     return {
       message: error,
     }
@@ -27,12 +22,13 @@ const getUserByUsername = async (req, res) => {
       },
     })
     return res.status(200).json({
-      message: 'Successfully',
+      success: true,
       user,
     })
   } catch (error) {
     return res.status(404).json({
-      Error: 'User not exist',
+      success: false,
+      message: 'User not exist',
     })
   }
 }
@@ -44,16 +40,20 @@ const getUserByEmail = async (req, res) => {
     const user = await User.findOne({
       where: { email: email },
     })
-    console.log(user)
-    return res.status(200).json({
-      message: 'Successfully',
-      user,
-    })
+    if (user) {
+      const newUser = user.toJSON()
+      delete user.password
+
+      return res.status(200).json({
+        success: true,
+        user: newUser,
+      })
+    } else throw new Error('User not exist')
   } catch (error) {
     console.log(error)
     res.json({
-      message: 'Error ocurred',
-      error,
+      success: false,
+      message: error.message,
     })
   }
 }
@@ -68,17 +68,21 @@ const getUserById = async (req, res) => {
       },
     })
 
-    delete user.password
-    res.status(200).json({
-      message: 'Successfully',
-      user,
-    })
+    if (user) {
+      const newUser = user.toJSON()
+      delete newUser.password
+      return res.status(200).json({
+        success: true,
+        newUser,
+      })
+    } else throw new Error('User not exist')
   } catch (error) {
-    console.log(error)
-    res.status(404).json({
-      Error: 'User not exist',
+    return res.status(404).json({
+      success: false,
+      message: error.message,
     })
   }
 }
+const getUserData = (user) => {}
 
 module.exports = { getAllUsers, getUserByEmail, getUserById, getUserByUsername }
