@@ -1,8 +1,9 @@
 const express = require('express')
-const config = require('../../config/serverConfig')
-// const sequelize = require('../sequelize')
-// const mysql = require('mysql2/promise')
-// require('../../libs/relations')
+
+const config = require('../../config/environment')
+const sequelize = require('../sequelize')
+const mysql = require('mysql2/promise')
+require('../../libs/relations')
 
 class ExpressServer {
   constructor() {
@@ -30,19 +31,14 @@ class ExpressServer {
   //   }
   // }
 
-
-
-    async start() {
-        this.app.listen(this.port, (error) => {
-
-            if (error) {
-                console.error(err);
-                process.exit(1);
-
-            }
-
-        })
-    }
+  async start() {
+    this.app.listen(this.port, (error) => {
+      if (error) {
+        console.error(err)
+        process.exit(1)
+      }
+    })
+  }
 }
 
-module.exports = ExpressServer;
+module.exports = ExpressServer
