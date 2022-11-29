@@ -1,0 +1,8 @@
+#node
+node_modules/
+
+#vscode
+.vscode/
+
+#build
+.vercel

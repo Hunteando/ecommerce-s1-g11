@@ -107,7 +107,7 @@ export default function Login() {
             </Button>
             <Grid container justifyContent="flex-end">
               <Grid item>
-                <Link href="/login" variant="body2">
+                <Link href="/" variant="body2">
                   Ya tienes una cuenta? Inicia sesion aqui.
                 </Link>
               </Grid>

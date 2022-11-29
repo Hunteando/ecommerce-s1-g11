@@ -50,7 +50,7 @@ export default function Login() {
 
   return (
     <ThemeProvider theme={theme}>
-      <Grid container component="main" sx={{ height: '100vh' }}>
+      <Grid container component="main" sx={{ height: '60rem', marginBottom:'4rem', marginTop:'3rem' }}>
         <CssBaseline />
         <Grid
           item
@@ -62,11 +62,11 @@ export default function Login() {
             backgroundRepeat: 'no-repeat',
             backgroundColor: (t) =>
               t.palette.mode === 'light' ? t.palette.grey[50] : t.palette.grey[900],
-            backgroundSize: 'cover',
+            backgroundSize: 'contain',
             backgroundPosition: 'center',
           }}
         />
-        <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
+        <Grid item xs={12} sm={8} md={5} component={Paper} square>
           <Box
             sx={{
               my: 12,
