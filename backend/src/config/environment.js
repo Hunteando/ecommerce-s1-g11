@@ -18,4 +18,9 @@ module.exports = {
     host: process.env.DB_HOST,
     port: process.env.DB_PORT,
   },
+  cloud: {
+    cloudName: process.env.CLOUD_NAME,
+    apiKey: process.env.API_KEY,
+    apiSecret: process.env.API_SECRET,
+  },
 }

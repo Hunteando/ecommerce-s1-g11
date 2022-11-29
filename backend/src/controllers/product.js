@@ -1,6 +1,7 @@
+const cloudinary = require('../config/cloudinary')
+const fs = require('fs')
 const Image = require('../models/images')
 const Products = require('../models/products')
-
 const createProduct = async (req, res) => {
   const {
     code,
@@ -60,4 +61,29 @@ const getAllProducts = async (req, res) => {
   }
 }
 
-module.exports = { getAllProducts, createProduct }
+const uploadImages = async (req, res) => {
+  const uploader = async (path) => await cloudinary.uploads(path, 'Images')
+  const urls = []
+  const files = req.files
+  if (req.method === 'POST') {
+    for (const file of files) {
+      const { path } = file
+      const newPath = await uploader(path)
+      urls.push(newPath)
+      fs.unlinkSync(path)
+    }
+    res.status(200).json({
+      success: true,
+      data: urls,
+    })
+  } else {
+    res.status(405).json({
+      success: false,
+      message: 'Image not uploaded successfully',
+    })
+  }
+  // INSERCIÓN A LA BASE DE DATOS
+  // ACA VIENEN LAS URLS
+  console.log(urls)
+}
+module.exports = { getAllProducts, createProduct, uploadImages }

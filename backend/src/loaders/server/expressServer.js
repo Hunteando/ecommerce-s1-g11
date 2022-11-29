@@ -5,6 +5,7 @@ const mysql = require('mysql2/promise')
 const userRouter = require('../../routes/user')
 const authRouter = require('../../routes/auth')
 const productRouter = require('../../routes/product')
+const { urlencoded } = require('express')
 require('../../libs/relations')
 
 class ExpressServer {
@@ -37,6 +38,7 @@ class ExpressServer {
 
   routes() {
     this.app.use(express.json())
+    this.app.use(express.urlencoded())
     this.app.use('/auth', userRouter)
     this.app.use('/auth', authRouter)
     this.app.use('/', productRouter)
