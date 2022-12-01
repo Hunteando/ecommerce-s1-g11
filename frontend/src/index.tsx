@@ -1,10 +1,11 @@
 import * as React from 'react';
 import { createRoot } from "react-dom/client";
 import "./index.scss";
-import App from './App';
+import App from '../App';
 import { BrowserRouter } from "react-router-dom";
 import AppBar from './components/AppBar/AppBar';
 import Footer from './components/Footer/Footer';
+import MainRoutes from '../MainRoutes';
 
 
 const rootElement = document.getElementById("root");
@@ -14,7 +15,7 @@ root.render(
   <React.StrictMode>
     <BrowserRouter>
     <AppBar/>
-      <App />
+      <MainRoutes />
      <Footer/>
     </BrowserRouter>
   </React.StrictMode>

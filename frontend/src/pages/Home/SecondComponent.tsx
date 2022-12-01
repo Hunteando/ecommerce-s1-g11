@@ -48,7 +48,7 @@ const SecondComponent = () => {
         <Typography component="h2" variant='h3' sx={{fontFamily:'comspotM' , fontSize:'5rem'}}>Expo Teré en el @ccu.unne</Typography>
         <Typography component="h6" variant='h6' sx={{fontFamily:'comspotM', mt:3 , color:'#6d6d6d'}}>¡Gracias a quienes apoyan el trabajo artístico!  
          Si aún no pudieron ir de lunes a viernes de 9 a 12 y de 17 a 20 en Córdoba 794, esquina 9 de julio, permanece la muestra. </Typography>
-         <CustomButton>Ver Más</CustomButton>
+         <Link to="/dashboard/admin"><CustomButton>DashBoard admin</CustomButton></Link> 
 
          <Typography component="h4" variant='h4'sx={{fontFamily:'comspotM', mt:3 , color:'#6d6d6d'}} >01</Typography>
          <Typography component="h6" variant='h6'sx={{fontFamily:'comspotM',  color:'#1e1e1e'}}>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nostrum officia dolore.sit amet consectetur adipisicing elit

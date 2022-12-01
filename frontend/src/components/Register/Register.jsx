@@ -3,6 +3,7 @@ import { Box , Typography, Button } from "@mui/material";
 import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2/dist/sweetalert2.js'
 import 'sweetalert2/src/sweetalert2.scss'
+import imagenRegistro from '../../assets/images/registro.jpg'
 
 
 
@@ -74,7 +75,7 @@ const Register = () => {
     <Box sx={{maxWidth:'120rem', height:'45rem', pb:'3rem', display:'flex'}}>
     <Box sx={{Width:'55rem', height:'30rem', pb:'3rem', display:'flex',justifyContent:'space-around', margin:' 2rem auto'}} >
     <Box sx={{width:'35rem', height:'20rem' , display:'flex',justifyContent:'center', alignItems:'center'}}>
-        <Box component="img" src={'https://scontent.fmdz9-1.fna.fbcdn.net/v/t39.30808-6/310442005_414525844192382_5378049077231322815_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=730e14&_nc_eui2=AeH6kY8adI-uurdyvez9SP3IxCvwue7RH27EK_C57tEfbjwunrFfWScpFwumtS_eT58&_nc_ohc=WKEbFxE3F-QAX9hzTiM&_nc_ht=scontent.fmdz9-1.fna&oh=00_AfDnBxKnFtE3fbD38QxXUMK2dw4ym06Uu2C1u7dBdawrEA&oe=63875338'} width={470} height={370} />
+        <Box component="img" src={imagenRegistro} width={470} height={370} />
     </Box>
     <Box sx={{width:'25rem', height:'40rem', display:'flex',flexDirection:'column',alignItems:'center', boxShadow:'0 0 .5rem #7d7d7d', borderRadius:'.5rem'}}>
         <Box component="img" src={"https://img.freepik.com/vector-gratis/registrarse-ilustracion-concepto_114360-7885.jpg?w=740&t=st=1669431786~exp=1669432386~hmac=c7a542ff21c4700b569c8be35dadaa0b2df71c36e2f44c94a5061999334138b2"} width={240} height={260}/>

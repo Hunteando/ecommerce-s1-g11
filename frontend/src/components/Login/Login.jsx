@@ -1,6 +1,7 @@
 import React , { useState } from 'react'
 import { Box , Button, Typography } from '@mui/material'
-import login from '../../assets/images/login.jpg'
+import imagenLogin from '../../assets/images/login.jpg'
+import imgLogin from '../../assets/images/pajaroamor.jpg'
 import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2/dist/sweetalert2.js'
 import 'sweetalert2/src/sweetalert2.scss'
@@ -35,7 +36,7 @@ const Login = () => {
                     'success'
                   )
               setTimeout(()=>{
-                 window.location.href="/Productos"
+                 window.location.href="/"
               },3000)
                
               
@@ -83,10 +84,10 @@ const Login = () => {
     <Box sx={{maxWidth:'120rem', height:'45rem', pb:'3rem', display:'flex'}}>
         <Box sx={{Width:'55rem', height:'30rem', pb:'3rem', display:'flex',justifyContent:'space-around', margin:' 2rem auto'}} >
         <Box sx={{width:'35rem', height:'20rem' , display:'flex',justifyContent:'center', alignItems:'center'}}>
-            <Box component="img" src={'https://scontent.fmdz9-1.fna.fbcdn.net/v/t39.30808-6/310437216_413859047592395_3560829447993387725_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=730e14&_nc_eui2=AeHpDhViUjz4Shq9xFGbRFcw-d1fLbzykJb53V8tvPKQlvteUnFPfBJkfqpRrTGxv90&_nc_ohc=wxqvoBD6UioAX-mGNyt&_nc_ht=scontent.fmdz9-1.fna&oh=00_AfDRKDVDo39P3EGWSMySazlKoueFaxCSL9FMU50NuqHxdQ&oe=6385679D'} width={470} height={370} />
+            <Box component="img" src={imgLogin} width={470} height={370} />
         </Box>
         <Box sx={{width:'20rem', height:'38rem', display:'flex',flexDirection:'column',alignItems:'center', boxShadow:'0 0 .5rem #7d7d7d', borderRadius:'.5rem'}}>
-            <Box component="img" src={login} width={240} height={260}/>
+            <Box component="img" src={imagenLogin} width={240} height={260}/>
             <Typography component="body" variant="body1" style={style.labelDos}>
             Correo
             </Typography>

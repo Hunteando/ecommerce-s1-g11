@@ -1,16 +1,17 @@
+
 import * as React from 'react';
 import { Box } from '@mui/material';
 import { Routes, Route } from 'react-router-dom';
-import HomePage from '../src/pages/Home';
-import ViewCart from './components/Cart/ViewCart';
-import ProductDetail from './components/ProductDetail/ProductDetail';
-import MainProductItem from './components/ProductItem/MainProductItem/MainProductItem';
-import Products from './containers/Products';
-import Login from './components/Login/Login';
-import Register from './components/Register/Register';
-import DashBoardAdmin from './components/DashBoardAdmin/DashBoardAdmin';
-import AgregarProducto from './components/DashBoardAdmin/AgregarProducto';
-import EditarProducto from './components/DashBoardAdmin/EditarProducto';
+import HomePage from './src/pages/Home/index';
+import ViewCart from './src/components/Cart/ViewCart';
+import ProductDetail from './src/components/ProductDetail/ProductDetail';
+import MainProductItem from './src/components/ProductItem/MainProductItem/MainProductItem';
+import Products from './src/containers/Products';
+import Login from './src/components/Login/Login';
+import Register from './src/components/Register/Register';
+import DashBoardAdmin from './src/components/DashBoardAdmin/DashBoardAdmin';
+import AgregarProducto from './src/components/DashBoardAdmin/AgregarProducto';
+import EditarProducto from './src/components/DashBoardAdmin/EditarProducto';
 
 function MainRoutes() {
 
@@ -18,8 +19,8 @@ function MainRoutes() {
     <Box>  
      
         <Routes >
-          <Route path="/Productos" element={ <Products /> } />
-          <Route path="/MainProduct" element={ <MainProductItem /> } />
+          <Route path="/lista/productos" element={ <Products/> } />
+          <Route path="/mainProduct" element={ <MainProductItem /> } />
           <Route path="/login" element={<Login/>}/>
           <Route path="/" element={ <HomePage /> } />
           <Route path='/viewCart' element={<ViewCart/>}/>
