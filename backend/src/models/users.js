@@ -20,6 +20,7 @@ const User = sequelize.define('Users', {
     defaultValue: 'user',
     allowNull: false,
   },
+  //el enable sirve para cuando se persista el usuario por primera ves lo va a habilitar y despues el usuario adm lo va a deshabilitar
   // enable: {
   //   type: DataTypes.BOOLEAN,
   //   allowNull: null,
