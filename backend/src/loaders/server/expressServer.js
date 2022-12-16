@@ -17,16 +17,16 @@ class ExpressServer {
 
   async dbConnect() {
     try {
-      const connection = await mysql.createConnection({
-        host: config.dataBase.host,
-        port: config.dataBase.port,
-        user: config.dataBase.username,
-        password: config.dataBase.password,
-      })
-      await connection.query(
-        `CREATE DATABASE IF NOT EXISTS \`${config.dataBase.name}\`;`
-      )
-      await sequelize.authenticate()
+      // const connection = await mysql.createConnection({
+      //   host: config.dataBase.host,
+      //   port: config.dataBase.port,
+      //   user: config.dataBase.username,
+      //   password: config.dataBase.password,
+      // })
+      // await connection.query(
+      //   `CREATE DATABASE IF NOT EXISTS \`${config.dataBase.name}\`;`
+      // )
+      // await sequelize.authenticate()
       await sequelize.sync()
       // await sequelize.sync({ alter: true, force: true })
       // TODO:alter y force solo deben ser usados en desarrollo

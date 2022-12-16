@@ -8,8 +8,9 @@ const TypeDocument = sequelize.define('TypeDocument', {
     allowNull: false,
   },
   nameTD: {
-    type: DataTypes.ENUM('DNI', 'Passport'),
-    default: 'DNI',
+    type: DataTypes.ENUM,
+    values: ['DNI', 'Passport'],
+    defaultValue: 'DNI',
   },
 })
 

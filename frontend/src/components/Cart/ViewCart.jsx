@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
-import "../Cart/viewCart.css";
+// import "../Cart/viewCart.css";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { Link } from "react-router-dom";
 import ButtonUnstyled from "@mui/base/ButtonUnstyled";
 import { styled } from "@mui/system";
 import Counter from "../Counter/Counter";
 import { Box, Typography } from "@mui/material";
+import s from "./ViewCart.module.css"
 
 const CustomButton = styled(ButtonUnstyled)`
   font-family: comspotM;
@@ -98,7 +99,7 @@ const ViewCart = () => {
   return cart.length === 0 ? (
     <Box
       component="div"
-      style={style.sombras}
+      style={s.sombras}
       sx={{
         width: "30rem",
         height: "30rem",
@@ -122,10 +123,10 @@ const ViewCart = () => {
       </Link>
     </Box>
   ) : (
-    <div className="contenedor_card">
+    <div className={s.contenedor_card}>
       <h2>Mis Compras</h2>
-      <div className="contenedor_productos">
-        <div className="contenedor_productosTotales">
+      <div className={s.contenedor_productos}>
+        <div className={s.contenedor_productosTotales}>
           {cart.map((item) => {
             return (
               <Box
@@ -140,10 +141,10 @@ const ViewCart = () => {
                   padding: "1rem",
                 }}
               >
-                <div className="card_productos-imagenes">
+                <div className={s.card_productos_imagenes}>
                   <img src={item.imagen} alt="img" />
                 </div>
-                <div className="card_productos-informacion">
+                <div className={s.card_productos_informacion}>
                   <h3>Precio: ${item.precio}</h3>
                   <Typography
                     component="body"
@@ -154,7 +155,7 @@ const ViewCart = () => {
                   </Typography>
                   <Counter />
                 </div>
-                <div className="card_productos-eliminar">
+                <div className={s.card_productos_eliminar}>
                   <Link to="/">
                     <DeleteIcon color="error" sx={{ marginLeft: 5 }} />
                   </Link>
@@ -163,13 +164,13 @@ const ViewCart = () => {
             );
           })}
         </div>
-        <div className="contenedor_totales">
+        <div className={s.contenedor_totales}>
           <h2>precios totales</h2>
           <h3>Productos en total : {cart.length}</h3>
           <h3>
             Envio : <span>FREE</span>
           </h3>
-          <h2 className="texto_total">Total : $ {total}</h2>
+          <h2 className={s.texto_total}>Total : $ {total}</h2>
           <CheckOut>CheckOut</CheckOut>
         </div>
       </div>
@@ -183,13 +184,13 @@ const ViewCart = () => {
   );
 };
 
-const style = {
-  sombras: {
-    boxShadow: "0 0 1rem #ededed",
-    margin: "0 auto",
-    marginBottom: "4rem",
-    padding: "2rem",
-  },
-};
+// const style = {
+//   sombras: {
+//     boxShadow: "0 0 1rem #ededed",
+//     margin: "0 auto",
+//     marginBottom: "4rem",
+//     padding: "2rem",
+//   },
+// };
 
 export default ViewCart;

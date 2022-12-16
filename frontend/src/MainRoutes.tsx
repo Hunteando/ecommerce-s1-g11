@@ -6,7 +6,7 @@ import Login from './components/Login/Login';
 import Register from './components/Register/Register';
 import HomePage from '../src/pages/Home'
 import ProductDetail from './components/ProductDetail/ProductDetail';
-import ViewCart from './components/Cart/ViewCart';
+import ViewCart from './components/Cart/ViewCart.jsx';
 
 
 function MainRoutes() {

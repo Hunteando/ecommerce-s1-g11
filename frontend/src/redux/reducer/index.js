@@ -6,7 +6,7 @@ const initialState = {
 
 const rootReducer = (state = initialState, action) => {
   switch (action.type) {
-    case GET_RATING:
+    case "GET_RATING":
       return {
         ...state,
         rating: action.payload,
