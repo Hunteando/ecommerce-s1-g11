@@ -1,22 +1,25 @@
-import * as React from 'react';
+import * as React from "react";
 import { createRoot } from "react-dom/client";
 import "./index.scss";
-import App from './App';
+import App from "./App";
+import { Provider } from "react-redux";
+import store from "./redux/store/index";
 import { BrowserRouter } from "react-router-dom";
-import AppBar from './components/AppBar/AppBar';
-import Footer from './components/Footer/Footer';
-
+import AppBar from "./components/AppBar/AppBar";
+import Footer from "./components/Footer/Footer";
 
 const rootElement = document.getElementById("root");
 
 const root = createRoot(rootElement!);
 root.render(
   <React.StrictMode>
-    <BrowserRouter>
-    <AppBar/>
-      <App />
-     <Footer/>
-    </BrowserRouter>
+    <Provider store={store}>
+      <BrowserRouter>
+        <AppBar />
+        <App />
+        <Footer />
+      </BrowserRouter>
+    </Provider>
   </React.StrictMode>
 );
 
