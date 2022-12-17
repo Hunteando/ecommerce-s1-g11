@@ -8,9 +8,10 @@ import { BrowserRouter } from "react-router-dom";
 import AppBar from "./components/AppBar/AppBar";
 import Footer from "./components/Footer/Footer";
 import axios from "axios";
+import BotonWapp from "./components/BotonWapp/BotonWapp";
 
 // axios.defaults.baseURL = process.env.REACT_APP_API || "http://localhost:3001";
-axios.defaults.baseURL = "http://localhost:3001"
+axios.defaults.baseURL = "http://localhost:3001";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
@@ -21,7 +22,8 @@ root.render(
         <AppBar />
         <App />
         <Footer />
-      </BrowserRouter> 
+        <BotonWapp />
+      </BrowserRouter>
     </Provider>
   </React.StrictMode>
 );
