@@ -16,11 +16,14 @@
 }
 
 .contenedor_card {
+  width: 100%;
   max-width: 1200px;
   height: auto;
   padding: 40px 20px;
   margin: 0 auto;
   display: flex;
+  flex-direction: column;
+  align-items: center;
   justify-content: space-around;
   font-family: comspotM;
 }
@@ -111,6 +114,13 @@
   width: 400px;
   height: 300px;
   margin-left: 150px;
+}
+
+.links{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  width: 100%;
 }
 
 .sombras {

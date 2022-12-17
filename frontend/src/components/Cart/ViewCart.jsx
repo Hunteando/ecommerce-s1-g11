@@ -6,7 +6,7 @@ import ButtonUnstyled from "@mui/base/ButtonUnstyled";
 import { styled } from "@mui/system";
 import Counter from "../Counter/Counter";
 import { Box, Typography } from "@mui/material";
-import s from "./ViewCart.module.css"
+import s from "./ViewCart.module.css";
 
 const CustomButton = styled(ButtonUnstyled)`
   font-family: comspotM;
@@ -174,23 +174,16 @@ const ViewCart = () => {
           <CheckOut>CheckOut</CheckOut>
         </div>
       </div>
-      <Link to="/">
-        <CustomButton>Volver a comprar</CustomButton>
-      </Link>
-      <CustomButton onClick={handlerVaciar} sx={{ backgroundColor: "red" }}>
-        Vaciar carrito
-      </CustomButton>
+      <div className={s.links}>
+        <Link to="/">
+          <CustomButton>Volver a comprar</CustomButton>
+        </Link>
+        <CustomButton onClick={handlerVaciar} sx={{ backgroundColor: "red" }}>
+          Vaciar carrito
+        </CustomButton>
+      </div>
     </div>
   );
 };
-
-// const style = {
-//   sombras: {
-//     boxShadow: "0 0 1rem #ededed",
-//     margin: "0 auto",
-//     marginBottom: "4rem",
-//     padding: "2rem",
-//   },
-// };
 
 export default ViewCart;

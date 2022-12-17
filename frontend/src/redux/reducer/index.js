@@ -1,15 +1,16 @@
-import {} from "./../actions/index.js";
+import { GET_USER } from "./../actions/actionsLogin";
 
 const initialState = {
+  usuario: {},
   carro: [],
 };
 
 const rootReducer = (state = initialState, action) => {
   switch (action.type) {
-    case "GET_RATING":
+    case GET_USER:
       return {
         ...state,
-        rating: action.payload,
+        usuario: action.payload,
       };
 
     default:
