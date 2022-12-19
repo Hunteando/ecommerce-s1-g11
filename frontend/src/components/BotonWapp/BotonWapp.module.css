@@ -15,7 +15,8 @@
   height: 8vw;
   background-color: #075e54;
   color: #ece5dd;
-  border-radius: 25px;
+  border-radius: 50%;
+  padding: 10px;
   transition: all 0.3s;
 }
 

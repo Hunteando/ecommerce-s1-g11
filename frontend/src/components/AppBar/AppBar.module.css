@@ -48,19 +48,19 @@
   width: 130px;
   height: 20px;
   padding: 5px;
-  border-radius: 10px;
+  border-radius: 8px;
   display: flex;
   align-items: center;
-  border: 1px solid #1e1e1e;
+  border: 1px solid #666666;
   font-family: comspotM;
 }
-.input {
+/* .input {
   border: none;
   background-color: transparent;
   margin-left: 10px;
   outline: none;
   width: 90px;
-}
+} */
 .imgSearch {
   width: 15px;
   height: 15px;
@@ -79,16 +79,16 @@
 
 .input {
   height: 2rem;
-  margin-left: 15px;
+  /* margin-left: px; */
   outline: none;
   background-color: transparent;
   border: 0;
-  margin-top: -5px;
+  /* margin-top: -5px; */
   width: 4rem;
 }
 .btnBorde {
-  border: 1px solid #1e1e1e;
-  border-radius: 15px;
+  border: 1px solid #666666;
+  border-radius: 8px;
   padding: 5px;
   display: flex;
 }

@@ -48,7 +48,6 @@ export const iniciarSesion = (datosUsuario) => {
         withCredentials: true,
         url: "/auth/login",
       });
-      console.log(res.data);
       if (res.data.success === true) {
         localStorage.setItem("token", res.data.token);
         return dispatch({
@@ -66,5 +65,16 @@ export const iniciarSesion = (datosUsuario) => {
     };
   } catch (error) {
     return { success: false, mensaje: error.message };
+  }
+};
+
+export const cerrarSesion = (dispatch) => {
+  try {
+    return dispatch({
+      type: GET_USER,
+      payload: {},
+    });
+  } catch (e) {
+    return e;
   }
 };
