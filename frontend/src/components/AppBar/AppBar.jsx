@@ -1,19 +1,27 @@
-import React from "react";
+import React, { useState } from "react";
 import s from "./AppBar.module.css";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { cerrarSesion } from "../../redux/actions/actionsLogin";
 import { BiSearchAlt } from "react-icons/bi";
-import { AiOutlineShoppingCart } from "react-icons/ai";
+import {
+  AiOutlineShoppingCart,
+  AiOutlineUser,
+  AiOutlineMenu,
+} from "react-icons/ai";
+import MenuHeader from "./MenuHeader/MenuHeader";
 
 export default function AppBar() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const usuario = useSelector((e) => e.usuario);
 
-  function handleCerrarSesion() {
+  const [mostrarMenuHeader, setMostrarMenuHeader] = useState(false);
+
+  async function handleCerrarSesion() {
     try {
-      dispatch(cerrarSesion);
+      await dispatch(cerrarSesion);
+      alert("Sesión cerrada correctamente");
     } catch (error) {
       console.log(error);
     }
@@ -29,6 +37,18 @@ export default function AppBar() {
 
   return (
     <div className={s.contenedorHeader}>
+      <AiOutlineMenu
+        className={s.botonMenuHeader}
+        onClick={() => setMostrarMenuHeader(!mostrarMenuHeader)}
+      />
+
+      <MenuHeader
+        mostrarMenu={mostrarMenuHeader}
+        setMostrarMenu={setMostrarMenuHeader}
+        cerrarSesion={handleCerrarSesion}
+        usuario={usuario}
+      />
+
       <Link to="/" className={s.tituloHeader}>
         Melinda Muriel
       </Link>
@@ -36,8 +56,16 @@ export default function AppBar() {
       <div className={s.contenedorDerecha}>
         <div className={s.contenedorBuscar}>
           <BiSearchAlt className={s.imagenBuscador} />
-          <input type="text" placeholder="Buscar" className={s.input} />
+          <input
+            type="text"
+            placeholder="Buscar"
+            className={s.inputBuscarHeader}
+          />
         </div>
+        <BiSearchAlt
+          className={s.imagenBuscadorTablet}
+          onClick={() => setMostrarMenuHeader(true)}
+        />
 
         <select className={s.selectHeader}>
           <option>Español (Latinoaméricano)</option>
@@ -60,6 +88,12 @@ export default function AppBar() {
               Iniciar sesión
             </div>
           )}
+          <AiOutlineUser
+            className={s.iconoUsuarioTablet}
+            onClick={
+              usuario.username ? handleCerrarSesion : handleIniciarSesion
+            }
+          />
         </div>
       </div>
     </div>

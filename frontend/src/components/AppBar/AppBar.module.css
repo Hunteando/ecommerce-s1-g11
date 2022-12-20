@@ -45,7 +45,7 @@
   margin-left: 10px;
 }
 
-.input {
+.inputBuscarHeader {
   outline: none;
   background-color: transparent;
   border: 0;
@@ -61,11 +61,13 @@
 
 .carritoHeader {
   cursor: pointer;
-  width: calc(var(--altura-header) * 0.6);
-  height: calc((var(--altura-header) - 30px) * 0.5);
+  border-radius: 8px;
+  width: calc(var(--altura-header) * 0.4);
+  height: calc((var(--altura-header) - 30px) * 0.4);
 }
 
 .contenedorBotonHeader {
+  min-width: fit-content;
   height: 60%;
   display: flex;
   flex-direction: column;
@@ -77,7 +79,7 @@
   transition: all 150ms ease;
 }
 
-.contenedorBotonHeader:hover {
+.contenedorBotonHeader:active {
   background-color: #1e1e1e;
 }
 
@@ -87,4 +89,79 @@
   font-size: 0.875rem;
   padding: 0 24px;
   color: #fff;
+}
+
+.botonMenuHeader {
+  display: none;
+  width: 0px;
+  cursor: pointer;
+  width: calc(var(--altura-header) * 0.4);
+  height: calc((var(--altura-header) - 30px) * 0.4);
+}
+
+.imagenBuscadorTablet {
+  display: none;
+}
+
+.iconoUsuarioTablet {
+  display: none;
+}
+
+@media (max-width: 800px) {
+  .contenedorHeader {
+    justify-content: space-between;
+  }
+
+  .botonMenuHeader {
+    display: inline;
+    margin-left: 3vw;
+  }
+
+  .botonMenuHeader:active {
+    background-color: #1e1e1e;
+    color: white;
+  }
+
+  .tituloHeader {
+    font-size: 2.5rem;
+  }
+  .contenedorDerecha {
+    max-width: 40%;
+  }
+  .contenedorBuscar {
+    display: none;
+  }
+  .selectHeader {
+    display: none;
+  }
+  .imagenBuscadorTablet {
+    border-radius: 8px;
+    cursor: pointer;
+    width: calc(var(--altura-header) * 0.4);
+    height: calc((var(--altura-header) - 30px) * 0.4);
+    display: inline;
+  }
+  .imagenBuscadorTablet:active {
+    background-color: #1e1e1e;
+    color: white;
+  }
+  .botonHeader {
+    display: none;
+  }
+  .contenedorBotonHeader {
+    height: 50%;
+    background-color: transparent;
+  }
+  .contenedorBotonHeader:active {
+    color: white;
+  }
+  .iconoUsuarioTablet {
+    display: inline;
+    width: calc(var(--altura-header) * 0.4);
+    height: calc((var(--altura-header) - 30px) * 0.4);
+  }
+  .carritoHeader:active {
+    background-color: #1e1e1e;
+    color: white;
+  }
 }
