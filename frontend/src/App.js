@@ -1,16 +1,16 @@
 import React, { useEffect } from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-// import MainRoutes from "./MainRoutes";
-import "./App.scss";
+import { useSelector } from "react-redux";
+import "./App.css";
+
+// COMPONENTES
+import AppBar from "./components/AppBar/AppBar";
+import HomePage from "./pages/Home";
 import Login from "./components/Login/Login";
 import Register from "./components/Register/Register";
-import HomePage from "./pages/Home";
-import ProductDetail from "./components/ProductDetail/ProductDetail";
 import ViewCart from "./components/Cart/ViewCart.jsx";
 import { Products } from "./containers/Products";
-import { useSelector } from "react-redux";
-
-import AppBar from "./components/AppBar/AppBar";
+import ProductDetail from "./components/ProductDetail/ProductDetail";
 import Footer from "./components/Footer/Footer";
 import BotonWapp from "./components/BotonWapp/BotonWapp";
 

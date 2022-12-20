@@ -69,7 +69,7 @@ export default function Login() {
     <div className={s.contenedorGeneralLogin}>
       <div className={s.contenedorLogin}>
         <div className={s.contenedorIzquierdo}>
-          <h1>Iniciar sesión</h1>
+          <h1 className={s.tituloIniciarSesion}>Iniciar sesión</h1>
           <div className={s.contenedorLogeoGoogle}>
             <img src={logoGoogle} alt="logo Google" className={s.logoGoogle} />
             <p className={s.tituloGoogle}>Continuar con google</p>

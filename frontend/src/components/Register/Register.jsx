@@ -75,7 +75,7 @@ export default function Register() {
     <div className={s.contenedorGeneralRegistro}>
       <div className={s.contenedorRegistro}>
         <div className={s.contenedorIzquierdo}>
-          <h1>Crear una cuenta</h1>
+          <h1 className={s.tituloRegistrarse}>Crear una cuenta</h1>
           <div className={s.contenedorLogeoGoogle}>
             <img src={logoGoogle} alt="logo Google" className={s.logoGoogle} />
             <p className={s.tituloGoogle}>Continuar con google</p>
@@ -184,9 +184,13 @@ export default function Register() {
                   onClick={() => setMostrarContrasena(!mostrarContrasena)}
                   className={s.renglonMostrarContrasena}
                 >
-                  <AiFillEyeInvisible className={s.iconoMostrarContrasena} />
+                  {mostrarContrasena ? (
+                    <AiFillEyeInvisible className={s.iconoMostrarContrasena} />
+                  ) : (
+                    <AiFillEye className={s.iconoMostrarContrasena} />
+                  )}
                   <p className={s.textoMostrarContrasena}>
-                    {mostrarContrasena ? "Ocultar" : "Mostrar"}
+                    {mostrarContrasena ? "    Ocultar" : "    Mostrar"}
                   </p>
                 </div>
               </div>
