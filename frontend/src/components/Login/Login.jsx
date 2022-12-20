@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Copyright } from "../../utils/utils";
 import logoGoogle from "../../assets/images/logoGoogle.png";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import s from "./Login.module.css";
 import { useFormik } from "formik";
 import * as Yup from "yup";
@@ -16,13 +16,22 @@ export default function Login() {
   const [mostrarContrasena, setMostrarContrasena] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const params = useParams();
 
   async function onSubmit(e) {
     const registro = await dispatch(iniciarSesion(e));
-    if (registro.success === true) {
-      navigate("/");
+    if (params.id !== undefined) {
+      if (registro.success === true) {
+        navigate(`/productos/detalle/${params.id}`);
+      } else {
+        alert(registro.mensaje);
+      }
     } else {
-      alert(registro.mensaje);
+      if (registro.success === true) {
+        navigate("/");
+      } else {
+        alert(registro.mensaje);
+      }
     }
   }
 
