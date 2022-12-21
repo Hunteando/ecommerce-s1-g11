@@ -8,7 +8,7 @@ import AppBar from "./components/AppBar/AppBar";
 import HomePage from "./pages/Home";
 import Login from "./components/Login/Login";
 import Register from "./components/Register/Register";
-import ViewCart from "./components/Cart/ViewCart.jsx";
+import Cart from "./components/Cart/Cart.jsx";
 import { Products } from "./containers/Products";
 import ProductDetail from "./components/ProductDetail/ProductDetail";
 import Footer from "./components/Footer/Footer";
@@ -31,7 +31,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/login/:id" element={<Login />} />
         <Route path="/registrarse" element={<Register />} />
-        <Route path="/carrito" element={<ViewCart />} />
+        <Route path="/carrito" element={<Cart />} />
         <Route path="/productos" element={<Products />} />
         <Route path="/productos/detalle/:id" element={<ProductDetail />} />
         {/* <Route exact path="/dashboard" element={ <Dashboard /> } /> */}
