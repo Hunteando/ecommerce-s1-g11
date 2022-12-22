@@ -8,6 +8,7 @@ const productRouter = require("../../routes/product");
 const { urlencoded } = require("express");
 const cors = require("cors");
 require("../../libs/relations");
+const paymentRouter = require("../../routes/payment");
 
 class ExpressServer {
   constructor() {
@@ -49,6 +50,7 @@ class ExpressServer {
     );
     this.app.use("/auth", userRouter);
     this.app.use("/auth", authRouter);
+    this.app.use("/pagos", paymentRouter);
     this.app.use("/", productRouter);
   }
   async start() {
