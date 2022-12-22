@@ -1,0 +1,25 @@
+.contenedorSegundoComponente {
+  width: 100%;
+  height: 45rem;
+  display: flex;
+}
+
+.contenedorImagenHome {
+  width: 100%;
+  height: 100%;
+}
+
+.imagenHome {
+  width: 100%;
+  height: 100%;
+}
+
+.contenedorDerechaHome {
+  width: 100%;
+  height: 100%;
+}
+
+.tituloContenedorDerecha {
+  font-family: comspotM;
+  font-size: 4rem;
+}

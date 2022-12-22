@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import imagen from "../../assets/images/pajaroamor.jpg";
 import s from "./ProductDetail.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";

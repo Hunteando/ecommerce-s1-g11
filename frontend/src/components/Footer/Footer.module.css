@@ -16,7 +16,7 @@
 .nombreFooter {
   font-family: arsenale;
   text-align: center;
-  font-size: 4rem;
+  font-size: 3.5rem;
   white-space: nowrap;
 }
 
@@ -54,6 +54,8 @@
 .columnaContenedorDos {
   width: 50%;
   height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .tituloContenedorDos {
@@ -64,7 +66,9 @@
 .textoContenedorDos {
   font-family: comspotM;
   color: #808080;
+  text-decoration: none;
   margin-top: 7%;
+  cursor: pointer;
 }
 
 .contenedorTres {

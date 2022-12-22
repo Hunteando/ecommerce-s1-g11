@@ -1,6 +1,7 @@
 import React from "react";
 import s from "./Footer.module.css";
 import { BsFacebook, BsInstagram, BsTwitter } from "react-icons/bs";
+import { Link } from "react-router-dom";
 
 export default function Footer() {
   return (
@@ -41,16 +42,16 @@ export default function Footer() {
       <div className={s.contenedorDos}>
         <div className={s.columnaContenedorDos}>
           <div className={s.tituloContenedorDos}>La artista</div>
-          <div className={s.textoContenedorDos}>Home</div>
-          <div className={s.textoContenedorDos}>Carrito</div>
-          <div className={s.textoContenedorDos}>Sobre mi obra</div>
+          <Link to="/" className={s.textoContenedorDos}>Home</Link>
+          <Link to="/carrito" className={s.textoContenedorDos}>Carrito</Link>
+          <Link to="/" className={s.textoContenedorDos}>Sobre mi obra</Link>
         </div>
 
         <div className={s.columnaContenedorDos}>
           <div className={s.tituloContenedorDos}>FAQ</div>
-          <div className={s.textoContenedorDos}>Preguntas frecuentes</div>
-          <div className={s.textoContenedorDos}>Políticas de Privacidad</div>
-          <div className={s.textoContenedorDos}>Contáctame</div>
+          <Link className={s.textoContenedorDos}>Preguntas frecuentes</Link>
+          <Link className={s.textoContenedorDos}>Políticas de Privacidad</Link>
+          <Link className={s.textoContenedorDos}>Contáctame</Link>
         </div>
       </div>
       <div className={s.contenedorTres}>

@@ -5,7 +5,8 @@ import "./App.css";
 
 // COMPONENTES
 import AppBar from "./components/AppBar/AppBar";
-import HomePage from "./pages/Home";
+import HomePage from "./components/Home/Home";
+
 import Login from "./components/Login/Login";
 import Register from "./components/Register/Register";
 import Cart from "./components/Cart/Cart.jsx";
