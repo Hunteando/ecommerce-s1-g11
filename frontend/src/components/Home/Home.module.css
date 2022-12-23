@@ -1,4 +1,5 @@
 .contenedorHome {
   width: 100%;
   margin-top: var(--altura-header);
+  overflow: hidden;
 }

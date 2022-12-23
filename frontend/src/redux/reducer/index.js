@@ -48,6 +48,76 @@ const initialState = {
         "https://images-na.ssl-images-amazon.com/images/I/71i5DxLhSkL._UX385_.jpg",
       disponible: 10,
     },
+    {
+      id: 4,
+      nombre: "gorra",
+      precio: 100,
+      cantidad: 1,
+      info: "Gorra tipo trucker - logo pintado a mano",
+      imagen:
+        "https://images-na.ssl-images-amazon.com/images/I/71i5DxLhSkL._UX385_.jpg",
+      disponible: 10,
+    },
+    {
+      id: 5,
+      nombre: "gorra",
+      precio: 100,
+      cantidad: 1,
+      info: "Gorra tipo trucker - logo pintado a mano",
+      imagen:
+        "https://images-na.ssl-images-amazon.com/images/I/71i5DxLhSkL._UX385_.jpg",
+      disponible: 10,
+    },
+    {
+      id: 6,
+      nombre: "gorra",
+      precio: 100,
+      cantidad: 1,
+      info: "Gorra tipo trucker - logo pintado a mano",
+      imagen:
+        "https://images-na.ssl-images-amazon.com/images/I/71i5DxLhSkL._UX385_.jpg",
+      disponible: 10,
+    },
+    {
+      id: 7,
+      nombre: "gorra",
+      precio: 100,
+      cantidad: 1,
+      info: "Gorra tipo trucker - logo pintado a mano",
+      imagen:
+        "https://images-na.ssl-images-amazon.com/images/I/71i5DxLhSkL._UX385_.jpg",
+      disponible: 10,
+    },
+    {
+      id: 8,
+      nombre: "gorra",
+      precio: 100,
+      cantidad: 1,
+      info: "Gorra tipo trucker - logo pintado a mano",
+      imagen:
+        "https://images-na.ssl-images-amazon.com/images/I/71i5DxLhSkL._UX385_.jpg",
+      disponible: 10,
+    },
+    {
+      id: 9,
+      nombre: "gorra",
+      precio: 100,
+      cantidad: 1,
+      info: "Gorra tipo trucker - logo pintado a mano",
+      imagen:
+        "https://images-na.ssl-images-amazon.com/images/I/71i5DxLhSkL._UX385_.jpg",
+      disponible: 10,
+    },
+    {
+      id: 10,
+      nombre: "gorra",
+      precio: 100,
+      cantidad: 1,
+      info: "Gorra tipo trucker - logo pintado a mano",
+      imagen:
+        "https://images-na.ssl-images-amazon.com/images/I/71i5DxLhSkL._UX385_.jpg",
+      disponible: 10,
+    },
   ],
 };
 
@@ -89,7 +159,7 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         carro: [],
       };
-      
+
     default:
       return { ...state };
   }

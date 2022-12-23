@@ -9,7 +9,7 @@ const PaymentInstance = new PaymentController(new PaymentService());
 
 const { ACCESS_TOKEN_MP } = process.env;
 
-paymentRouter.get("/mercadopago", (req, res, next) => {
+paymentRouter.get("/mercadopago", (req, res, next) => { // <==== ACA VA .POST
   //   console.log(req.body);
   PaymentInstance.getPaymentLink(req.body, res);
 });

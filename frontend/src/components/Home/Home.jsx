@@ -1,19 +1,18 @@
 import React from "react";
 import s from "./Home.module.css";
 
-import { Link } from "react-router-dom";
+import Slider from "./Slider/Slider";
 import SecondComponent from "./segundo/SegundoComponente";
-import ThirtComponent from "../../pages/Home/ThirtComponent";
+import MiTienda from "./Swiper/Swiper";
 import FourComponent from "../../pages/Home/FourComponent";
 
-import Slider from "./Slider/Slider";
 
 export default function HomePage() {
   return (
     <div className={s.contenedorHome}>
       <Slider />
       <SecondComponent />
-      <ThirtComponent />
+      <MiTienda />
       <FourComponent />
     </div>
   );

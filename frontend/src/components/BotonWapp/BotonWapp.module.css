@@ -7,12 +7,15 @@
   overflow: hidden;
   display: flex;
   align-items: center;
+  z-index: 2;
 }
 
 .logoWapp {
   cursor: pointer;
   width: 8vw;
+  min-width: 50px;
   height: 8vw;
+  min-height: 50px;
   background-color: #075e54;
   color: #ece5dd;
   border-radius: 50%;
