@@ -4,7 +4,7 @@ import s from "./Home.module.css";
 import Slider from "./Slider/Slider";
 import SecondComponent from "./segundo/SegundoComponente";
 import MiTienda from "./Swiper/Swiper";
-import FourComponent from "../../pages/Home/FourComponent";
+import SobreMi from "./SobreMi/SobreMi";
 
 
 export default function HomePage() {
@@ -13,7 +13,7 @@ export default function HomePage() {
       <Slider />
       <SecondComponent />
       <MiTienda />
-      <FourComponent />
+      <SobreMi />
     </div>
   );
 }
