@@ -4,7 +4,8 @@ export const GET_USER = "GET_USER";
 
 export const registroUsuario = (datosUsuario) => {
   let dataUser = {
-    username: `${datosUsuario.nombre} ${datosUsuario.apellido}`,
+    // username: `${datosUsuario.nombre} ${datosUsuario.apellido}`,
+    username: datosUsuario.email,
     email: datosUsuario.email,
     password: datosUsuario.contrasena,
   };

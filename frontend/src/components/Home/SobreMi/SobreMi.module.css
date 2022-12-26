@@ -1,0 +1,75 @@
+.contenedorSobreMi {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.primerParteSobreMi {
+  text-align: center;
+  margin: 10vh 0;
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.tituloSobreMi {
+  font-family: comspotM;
+  font-size: 4rem;
+}
+
+.textoSobreMi {
+  font-family: comspotExI;
+  color: #7d7d7d;
+  font-size: 2rem;
+  margin: 5vh 0;
+}
+
+.contenedorBotonSobreMi {
+  font-family: comspotM;
+  font-size: 12px;
+  font-weight: bold;
+  background-color: #f99716;
+  padding: 6px 24px;
+  border-radius: var(--border-radius-boton);
+  width: 130px;
+  height: 40px;
+  color: #ffffff;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+
+.contenedorBotonSobreMi:hover {
+  background-color: #1e1e1e;
+  color: #ffffff;
+}
+
+.imagenSobreMi {
+  width: 100%;
+}
+
+@media (max-width: 800px) {
+  .tituloSobreMi {
+    font-size: 3rem;
+  }
+}
+
+@media (max-width: 450px) {
+  .primerParteSobreMi {
+    width: 90%;
+  }
+  .tituloSobreMi {
+    font-size: 2rem;
+  }
+  .textoSobreMi {
+    font-size: 1rem;
+  }
+  .imagenSobreMi {
+    width: 100%;
+  }
+}

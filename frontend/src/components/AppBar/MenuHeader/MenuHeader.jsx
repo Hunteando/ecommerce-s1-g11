@@ -45,6 +45,13 @@ export default function MenuHeader({
         </div>
 
         <Link
+          to="/panel"
+          onClick={() => setMostrarMenu(false)}
+          className={s.itemsMenu}
+        >
+          Mi cuenta
+        </Link>
+        <Link
           to="/"
           onClick={() => setMostrarMenu(false)}
           className={s.itemsMenu}

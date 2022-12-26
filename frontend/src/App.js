@@ -14,6 +14,7 @@ import { Products } from "./containers/Products";
 import ProductDetail from "./components/ProductDetail/ProductDetail";
 import Footer from "./components/Footer/Footer";
 import BotonWapp from "./components/BotonWapp/BotonWapp";
+import Dashboard from "./components/Dashboard/Dashboard";
 
 function App() {
   const usuario = useSelector((e) => e.usuario);
@@ -35,7 +36,7 @@ function App() {
         <Route path="/carrito" element={<Cart />} />
         <Route path="/productos" element={<Products />} />
         <Route path="/productos/detalle/:id" element={<ProductDetail />} />
-        {/* <Route exact path="/dashboard" element={ <Dashboard /> } /> */}
+        <Route exact path="/panel" element={<Dashboard usuario={usuario} />} />
         <Route path="*" element={<Navigate to="/" replace={true} />} />
       </Routes>
       <Footer />
