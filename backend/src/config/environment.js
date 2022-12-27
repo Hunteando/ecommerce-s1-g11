@@ -23,4 +23,7 @@ module.exports = {
     apiKey: process.env.API_KEY,
     apiSecret: process.env.API_SECRET,
   },
+  mercadoPago: {
+    mercadoPagoToken: process.env.MERCADO_PAGO_TOKEN,
+  },
 }

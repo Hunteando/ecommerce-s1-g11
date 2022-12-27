@@ -1,5 +1,6 @@
 const User = require('../models/users')
-
+const UserDetails = require('../models/usersdetails')
+const Addresses = require('../models/addresses')
 const getAllUsers = async (req, res) => {
   try {
     const users = await User.findAll()
@@ -66,6 +67,7 @@ const getUserById = async (req, res) => {
       where: {
         id,
       },
+      include: { all: true },
     })
 
     if (user) {
@@ -83,6 +85,69 @@ const getUserById = async (req, res) => {
     })
   }
 }
-const getUserData = (user) => {}
 
-module.exports = { getAllUsers, getUserByEmail, getUserById, getUserByUsername }
+const dashboardUser = async (req, res) => {
+  try {
+    const { id } = req.params
+    const { password, firstName, lastName, country, city, province } = req.body
+    const result = await User.update(password, {
+      where: {
+        id,
+      },
+    })
+    //     await Image.create({ url, ProductId: id })
+    const userDetails = await UserDetails.create({
+      firstName,
+      lastName,
+      UserId: id,
+    })
+    // UserDetailId
+    await Addresses.upd({
+      country,
+      city,
+      province,
+      UserDetailId: userDetails.id,
+    })
+    return res.status(200).json({
+      success: true,
+    })
+  } catch (error) {
+    return res.status(400).json({
+      success: false,
+    })
+  }
+}
+
+const updateRoleUser = async (req, res) => {
+  try {
+    const { id } = req.params
+
+    const user = await User.findOne({
+      where: {
+        id,
+      },
+    })
+    if (user) {
+      user.role = 'admin'
+      await user.save()
+    }
+    return res.status(200).json({
+      success: true,
+      user,
+    })
+  } catch (error) {
+    return res.status(400).json({
+      success: false,
+      error,
+    })
+  }
+}
+
+module.exports = {
+  getAllUsers,
+  getUserByEmail,
+  getUserById,
+  getUserByUsername,
+  updateRoleUser,
+  dashboardUser,
+}

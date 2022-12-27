@@ -2,7 +2,12 @@ const { check } = require('express-validator')
 const { validateResult } = require('../helpers/validateHelper')
 
 const validateCreate = [
-  check('username').exists().isLength({ min: 5 }).not().isEmpty(),
+  check('username')
+    .exists()
+    .isLength({ min: 5 })
+    .withMessage('Username must have a minimum of 5 characters')
+    .not()
+    .isEmpty(),
   check('email').exists().isEmail().not().isEmpty(),
   check('password').exists().not().isEmpty(),
   (req, res, next) => {

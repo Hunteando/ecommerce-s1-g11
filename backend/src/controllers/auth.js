@@ -1,20 +1,43 @@
-const User = require('../models/users')
+const Users = require('../models/users')
+const UserDetails = require('../models/usersdetails')
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 const { jwtSecret } = require('../config/environment')
+const Cart = require('../models/cart')
 const signUp = async (req, res) => {
   try {
     const { username, email, password } = req.body
 
-    const user = await User.create({
+    const user = await Users.create({
       username,
       email,
       password: await encrypt(password),
     })
+    // console.log('aquiiiii' + user.id)
+    // console.log('asdasdasdasdasdasdasdasdasdasdasdasdsad' + user)
+    const userDetail = await UserDetails.create({
+      UserId: user.id,
+      country: '',
+      city: '',
+      province: '',
+    })
+    console.log(userDetail.id)
+    // instancia del carrito
+    const cart = await Cart.create({
+      UserDetailId: userDetail.id,
+      num: 0,
+      date: new Date().getDate(),
+      cantProducts: 0,
+      subtotal: 0,
+      total: 0,
+    })
+
     generateAuthData(res, user)
   } catch (error) {
+    const { message } = error.errors[0]
     console.log(error)
     return res.json({
+      message,
       error,
     })
   }
