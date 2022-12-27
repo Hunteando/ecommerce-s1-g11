@@ -26,4 +26,5 @@ module.exports = {
   mercadoPago: {
     mercadoPagoToken: process.env.MERCADO_PAGO_TOKEN,
   },
+
 }

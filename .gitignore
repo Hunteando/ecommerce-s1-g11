@@ -32,4 +32,7 @@ yarn-debug.log*
 yarn-error.log*
 
 /backend/.env
-node_modules
+
+
+# Local Netlify folder
+.netlify

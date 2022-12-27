@@ -1,6 +1,6 @@
 import Link from '@mui/material/Link';
 import Typography from '@mui/material/Typography';
-import React from 'react';
+import * as React from 'react';
 
 export function Copyright(props: any) {
   return (
