@@ -8,6 +8,8 @@ import s from "./Cart.module.css";
 import { MdDelete } from "react-icons/md";
 import imgCarroVacio from "../../assets/images/vacio.jpg";
 
+import Swal from "sweetalert2";
+
 import {
   eliminarProductoCarrito,
   vaciarCarrito,
@@ -23,12 +25,25 @@ export default function Cart() {
   const [total, setTotal] = useState(0);
 
   async function handleVaciarCarrito() {
-    dispatch(vaciarCarrito(usuario.id));
+    Swal.fire({
+      icon: "question",
+      title: "Seguro desea eliminar todo del carrito?",
+      showDenyButton: true,
+      denyButtonText: "Volver",
+    }).then(({ isConfirmed }) => {
+      if (isConfirmed) dispatch(vaciarCarrito(usuario.id));
+    });
   }
 
   function handleEliminarProducto(e) {
-    console.log(e);
-    dispatch(eliminarProductoCarrito(e));
+    Swal.fire({
+      icon: "question",
+      title: "Seguro desea eliminar el producto?",
+      showDenyButton: true,
+      denyButtonText: "Volver",
+    }).then(({ isConfirmed }) => {
+      if (isConfirmed) dispatch(eliminarProductoCarrito(e));
+    });
   }
 
   useEffect(() => {
@@ -77,6 +92,9 @@ export default function Cart() {
                     cantidadInicial={item.cantidad}
                     cantidadDisponible={item.disponible}
                     idProducto={item.id}
+                    handleEliminarProducto={() =>
+                      handleEliminarProducto(item.id)
+                    }
                   />
                 </div>
                 <MdDelete
