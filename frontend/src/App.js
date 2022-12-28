@@ -14,7 +14,8 @@ import { Products } from "./containers/Products";
 import ProductDetail from "./components/ProductDetail/ProductDetail";
 import Footer from "./components/Footer/Footer";
 import BotonWapp from "./components/BotonWapp/BotonWapp";
-import Dashboard from "./components/Dashboard/Dashboard";
+import DashboardUsuario from "./components/Dashboard/DashboardUsuario/DashboardUsuario";
+import DashboardAdmin from "./components/Dashboard/DashboardAdmin/DashboardAdmin";
 
 function App() {
   const usuario = useSelector((e) => e.usuario);
@@ -27,7 +28,7 @@ function App() {
 
   return (
     <BrowserRouter>
-      <AppBar />
+      <AppBar usuario={usuario} />
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/login" element={<Login />} />
@@ -36,7 +37,26 @@ function App() {
         <Route path="/carrito" element={<Cart />} />
         <Route path="/productos" element={<Products />} />
         <Route path="/productos/detalle/:id" element={<ProductDetail />} />
-        <Route exact path="/panel" element={<Dashboard usuario={usuario} />} />
+        <Route
+          path="/panel/administrador"
+          element={
+            // usuario.idAdmins === true ? (
+            <DashboardAdmin usuario={usuario} />
+            // ) : (
+            //   <Navigate to="/" replace={true} />
+            // )
+          }
+        />
+        <Route
+          path="/panel/usuario"
+          element={
+            // usuario.username ? (
+            <DashboardUsuario usuario={usuario} />
+            // ) : (
+            //   <Navigate to="/" replace={true} />
+            // )
+          }
+        />
         <Route path="*" element={<Navigate to="/" replace={true} />} />
       </Routes>
       <Footer />

@@ -10,23 +10,48 @@ import {
   AiOutlineMenu,
 } from "react-icons/ai";
 import MenuHeader from "./MenuHeader/MenuHeader";
+import MenuUser from "./MenuUser/MenuUser";
+import Swal from "sweetalert2";
 
-export default function AppBar() {
+export default function AppBar({ usuario }) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const usuario = useSelector((e) => e.usuario);
 
   const [mostrarMenuHeader, setMostrarMenuHeader] = useState(false);
+  const [mostrarMiCuenta, setMostrarMiCuenta] = useState(false);
 
   async function handleCerrarSesion() {
     try {
-      await dispatch(cerrarSesion);
-      alert("Sesión cerrada correctamente");
+      Swal.fire({
+        icon: "question",
+        title: "Seguro desea cerrar sesión?",
+        confirmButtonText: "Cerrar",
+        showDenyButton: true,
+        denyButtonText: "Cancelar",
+      }).then(({ isConfirmed }) => {
+        console.log(isConfirmed);
+        if (isConfirmed) {
+          console.log("cerrando");
+          dispatch(cerrarSesion()).then(
+            Swal.fire({
+              icon: "success",
+              title: "Sesión cerrada correctamente!",
+              text: "Te esperamos de nuevo!",
+            })
+          );
+          localStorage.removeItem("token");
+          navigate("/");
+        }
+      });
     } catch (error) {
-      console.log(error);
+      Swal.fire({
+        icon: "error",
+        title: "Error al cerrar sesión!",
+        text: "Vuelve a intentarlo!",
+      });
     }
-    localStorage.removeItem("token");
   }
+
   function handleIniciarSesion() {
     navigate("/login");
   }
@@ -37,64 +62,77 @@ export default function AppBar() {
 
   return (
     <div className={s.contenedorHeader}>
-      <AiOutlineMenu
-        className={s.botonMenuHeader}
-        onClick={() => setMostrarMenuHeader(!mostrarMenuHeader)}
-      />
+      <div className={s.overflowContenedorHeader}>
+        <AiOutlineMenu
+          className={s.botonMenuHeader}
+          onClick={() => setMostrarMenuHeader(!mostrarMenuHeader)}
+        />
 
-      <MenuHeader
-        mostrarMenu={mostrarMenuHeader}
-        setMostrarMenu={setMostrarMenuHeader}
-        cerrarSesion={handleCerrarSesion}
-        usuario={usuario}
-      />
+        <MenuHeader
+          mostrarMenu={mostrarMenuHeader}
+          setMostrarMenu={setMostrarMenuHeader}
+          cerrarSesion={handleCerrarSesion}
+          usuario={usuario}
+        />
 
-      <Link to="/" className={s.tituloHeader}>
-        Melinda Muriel
-      </Link>
+        <Link to="/" className={s.tituloHeader}>
+          Melinda Muriel
+        </Link>
 
-      <div className={s.contenedorDerecha}>
-        <div className={s.contenedorBuscar}>
-          <BiSearchAlt className={s.imagenBuscador} />
-          <input
-            type="text"
-            placeholder="Buscar"
-            className={s.inputBuscarHeader}
+        <div className={s.contenedorDerecha}>
+          <div className={s.contenedorBuscar}>
+            <BiSearchAlt className={s.imagenBuscador} />
+            <input
+              type="text"
+              placeholder="Buscar"
+              className={s.inputBuscarHeader}
+            />
+          </div>
+
+          <BiSearchAlt
+            className={s.imagenBuscadorTablet}
+            onClick={() => setMostrarMenuHeader(true)}
           />
-        </div>
-        <BiSearchAlt
-          className={s.imagenBuscadorTablet}
-          onClick={() => setMostrarMenuHeader(true)}
-        />
 
-        <select className={s.selectHeader}>
-          <option>Español (Latinoaméricano)</option>
-          <option>English (U.S)</option>
-          <option>Portugues (Europa)</option>
-        </select>
+          <select className={s.selectHeader}>
+            <option>Español (Latinoaméricano)</option>
+            <option>English (U.S)</option>
+            <option>Portugues (Europa)</option>
+          </select>
 
-        <AiOutlineShoppingCart
-          onClick={handlerCarrito}
-          className={s.carritoHeader}
-        />
+          <AiOutlineShoppingCart
+            onClick={handlerCarrito}
+            className={s.carritoHeader}
+          />
 
-        <div className={s.contenedorBotonHeader}>
-          {usuario.username ? (
-            <div onClick={handleCerrarSesion} className={s.botonHeader}>
-              Cerrar sesión
-            </div>
-          ) : (
-            <div onClick={handleIniciarSesion} className={s.botonHeader}>
-              Iniciar sesión
-            </div>
-          )}
-          <AiOutlineUser
-            className={s.iconoUsuarioTablet}
+          <div
             onClick={
-              usuario.username ? handleCerrarSesion : handleIniciarSesion
+              usuario.username
+                ? () => setMostrarMiCuenta(!mostrarMiCuenta)
+                : handleIniciarSesion
             }
-          />
+            className={s.contenedorBotonHeader}
+          >
+            <div className={s.botonHeader}>
+              {usuario.username ? "Mi cuenta" : "Iniciar sesión"}
+            </div>
+            <AiOutlineUser className={s.iconoUsuarioTablet} />
+          </div>
         </div>
+
+        {/* <MenuUser
+          setMostrarMiCuenta={setMostrarMiCuenta}
+          usuario={usuario}
+          handleCerrarSesion={handleCerrarSesion}
+        /> */}
+
+        {mostrarMiCuenta && (
+          <MenuUser
+            setMostrarMiCuenta={setMostrarMiCuenta}
+            usuario={usuario}
+            handleCerrarSesion={handleCerrarSesion}
+          />
+        )}
       </div>
     </div>
   );

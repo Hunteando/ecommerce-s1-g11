@@ -69,13 +69,33 @@ export const iniciarSesion = (datosUsuario) => {
   }
 };
 
-export const cerrarSesion = (dispatch) => {
+// export const cerrarSesion = (dispatch) => {
+//   try {
+//     return dispatch({
+//       type: GET_USER,
+//       payload: {},
+//     });
+//   } catch (e) {
+//     return e;
+//   }
+// };
+
+export const cerrarSesion = () => {
   try {
-    return dispatch({
-      type: GET_USER,
-      payload: {},
-    });
-  } catch (e) {
-    return e;
+    return async function (dispatch) {
+      // let res = await axios({
+      //   method: "POST",
+      //   data: dataUser,
+      //   withCredentials: true,
+      //   url: "/auth/login",
+      // });
+
+      return dispatch({
+        type: GET_USER,
+        payload: {},
+      });
+    };
+  } catch (error) {
+    return { success: false, mensaje: error.message };
   }
 };

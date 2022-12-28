@@ -44,13 +44,13 @@ export default function MenuHeader({
           />
         </div>
 
-        <Link
+        {/* <Link
           to="/panel"
           onClick={() => setMostrarMenu(false)}
           className={s.itemsMenu}
         >
           Mi cuenta
-        </Link>
+        </Link> */}
         <Link
           to="/"
           onClick={() => setMostrarMenu(false)}

@@ -104,9 +104,12 @@
 
   .textoContenedorDerecha {
     padding: 5% 0;
+    width: 95%;
   }
 
   .textoSecundarioContenedorDerecha {
+    width: 95%;
+
     padding: 5% 0;
   }
 }

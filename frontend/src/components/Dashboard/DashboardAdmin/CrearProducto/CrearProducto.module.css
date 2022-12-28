@@ -1,0 +1,89 @@
+.contenedorCrearProducto {
+  width: calc(100vw - 15vw);
+  min-height: calc(100vh - var(--altura-header));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 5%;
+}
+
+.formularioCrearProducto {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 95%;
+  max-width: 600px;
+  min-height: 100%;
+  margin: 0 auto;
+}
+
+.titulo {
+  font-size: 2rem;
+  font-family: comspotM;
+  padding: 5% 0;
+}
+
+.inputFormCrear {
+  margin-top: 5%;
+}
+
+/* TEXT AREA */
+.textareaLabelCrear {
+  margin-top: 5%;
+  width: 100%;
+}
+
+.textareaCrear {
+}
+
+.input {
+  border: 1px solid grey;
+  border-radius: 8px;
+  padding: 5px 10px;
+  width: calc(100% - 20px);
+  font-size: 100%;
+  font-family: "Rubik", sans-serif;
+  resize: none;
+}
+
+.msjError {
+  font-size: 0.75rem;
+  width: 100%;
+}
+
+.error {
+  color: red;
+  border-color: red;
+}
+
+.input.error.input::placeholder {
+  color: red;
+}
+
+
+
+/* BOTON CREAR */
+.botonCrear {
+  margin-top: 5%;
+  min-width: fit-content;
+  min-height: 30px;
+  background-color: #f99716;
+  cursor: pointer;
+  border: 0;
+  border-radius: var(--border-radius-boton);
+  font-family: comspotM;
+  font-weight: bold;
+  font-size: 0.875rem;
+  padding: 10px 24px;
+  color: #fff;
+  transition: all 150ms ease;
+}
+
+.botonCrear:active {
+  background-color: #1e1e1e;
+}
+
+.botonCrear:hover {
+  background-color: #f9971695;
+}

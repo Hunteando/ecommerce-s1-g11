@@ -113,3 +113,26 @@ export const vaciarCarrito = (datosProducto) => {
     return { success: false, mensaje: error.message };
   }
 };
+
+
+export function crearProducto(producto) {
+  return async function (dispatch) {
+    try {
+      const res = await axios({
+        method: "post",
+        withCredentials: true,
+        url: "/productos/nuevo",
+        data: producto,
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+      return dispatch({
+        type: GET_USER,
+        payload: res.data.usuario,
+      });
+    } catch (e) {
+      throw new Error(e.message);
+    }
+  };
+}
