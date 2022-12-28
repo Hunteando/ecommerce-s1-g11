@@ -11,6 +11,10 @@ export default function ProductDetail() {
   const producto = useSelector((e) => e.detalleProducto);
   const usuario = useSelector((e) => e.usuario);
   const [pedido, setPedido] = useState({ cantidad: 1 });
+  const [imagenSeleccionada, setImagenSeleccionada] = useState(
+    producto.imagen[0]
+  );
+  const [cantidadSeleccionada, setCantidadSeleccionada] = useState(1);
 
   async function handleAgregarCarrito() {
     if (usuario.username) {
@@ -20,25 +24,54 @@ export default function ProductDetail() {
     }
   }
 
+  function handleSeleccionarImagen(foto) {
+    setImagenSeleccionada(foto);
+  }
+
+  function handleCantidadSeleccionada(e) {
+    console.log(e.target.value);
+    setCantidadSeleccionada(e.target.value);
+  }
+
   return (
     <div className={s.contenedorDetalle}>
+      <div className={`${s.nombreProducto} ${s.nombreProductoCel}`}>
+        {producto.nombre}
+      </div>
+
       <div className={s.contenedorIzquierdo}>
         <img
           className={s.imagenProducto}
-          src={producto.imagen}
+          src={imagenSeleccionada}
           alt="imagen producto"
         />
+        <div className={s.contenedorImagenesMiniaturaProducto}>
+          {producto.imagen.map((i) => {
+            return (
+              <img
+                onClick={() => handleSeleccionarImagen(i)}
+                className={s.imagenMiniaturaProducto}
+                src={i}
+                alt="imagen producto"
+              />
+            );
+          })}
+        </div>
       </div>
 
       <div className={s.contenedorDerecho}>
         <div className={s.detalles}>
           <div className={s.nombreProducto}>{producto.nombre}</div>
           <div className={s.precioProducto}>
-            $ {parseInt(producto.precio).toLocaleString("es")}
+            ${" "}
+            {parseInt(producto.precio * cantidadSeleccionada).toLocaleString(
+              "es"
+            )}
           </div>
           <div className={s.contenedorCantidad}>
             <div>Cantidad</div>
             <select
+              onChange={handleCantidadSeleccionada}
               className={s.selectCantidadProducto}
               name="cantidad"
               id="cantidad"

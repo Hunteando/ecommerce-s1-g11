@@ -12,9 +12,9 @@ const initialState = {
     nombre: "Nombre del productoo",
     imagen: [
       "https://artelista.s3.amazonaws.com/obras/big/0/4/1/7382666047536905.jpg",
+      "https://i.pinimg.com/736x/69/51/d3/6951d3a58296c1e2886972c9f187478c.jpg",
       "https://artelista.s3.amazonaws.com/obras/big/0/4/1/7382666047536905.jpg",
-      "https://artelista.s3.amazonaws.com/obras/big/0/4/1/7382666047536905.jpg",
-      "https://artelista.s3.amazonaws.com/obras/big/0/4/1/7382666047536905.jpg",
+      "https://i.pinimg.com/736x/69/51/d3/6951d3a58296c1e2886972c9f187478c.jpg",
       "https://artelista.s3.amazonaws.com/obras/big/0/4/1/7382666047536905.jpg",
     ],
     precio: "15000",
@@ -31,9 +31,9 @@ const initialState = {
       descripcion: "Remera estampada super liviana algodon",
       imagen: [
         "https://artelista.s3.amazonaws.com/obras/big/0/4/1/7382666047536905.jpg",
+        "https://i.pinimg.com/736x/69/51/d3/6951d3a58296c1e2886972c9f187478c.jpg",
         "https://artelista.s3.amazonaws.com/obras/big/0/4/1/7382666047536905.jpg",
-        "https://artelista.s3.amazonaws.com/obras/big/0/4/1/7382666047536905.jpg",
-        "https://artelista.s3.amazonaws.com/obras/big/0/4/1/7382666047536905.jpg",
+        "https://i.pinimg.com/736x/69/51/d3/6951d3a58296c1e2886972c9f187478c.jpg",
         "https://artelista.s3.amazonaws.com/obras/big/0/4/1/7382666047536905.jpg",
       ],
       disponible: 10,
