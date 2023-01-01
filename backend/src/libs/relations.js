@@ -9,9 +9,9 @@ User.belongsTo(UserDetails, {
   onDelete: 'CASCADE',
 })
 
-Product.hasMany(Image, {
-  onDelete: 'CASCADE',
-})
-Image.belongsTo(Product, {
-  onDelete: 'CASCADE',
-})
+// Product.hasMany(Image, {
+//   onDelete: 'CASCADE',
+// })
+// Image.belongsTo(Product, {
+//   onDelete: 'CASCADE',
+// })
