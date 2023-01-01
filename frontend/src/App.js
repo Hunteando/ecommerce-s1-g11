@@ -38,7 +38,7 @@ function App() {
         <Route path="/productos" element={<Products />} />
         <Route path="/productos/detalle/:id" element={<ProductDetail />} />
         <Route
-          path="/panel/administrador"
+          path="/dashboard/admin"
           element={
             // usuario.idAdmins === true ? (
             <DashboardAdmin usuario={usuario} />
@@ -48,7 +48,7 @@ function App() {
           }
         />
         <Route
-          path="/panel/usuario"
+          path="/dashboard/client"
           element={
             // usuario.username ? (
             <DashboardUsuario usuario={usuario} />

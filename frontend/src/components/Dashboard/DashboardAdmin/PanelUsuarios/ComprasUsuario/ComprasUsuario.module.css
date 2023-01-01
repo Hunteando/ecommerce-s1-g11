@@ -1,0 +1,79 @@
+.iconoCerrar {
+  position: absolute;
+  top: 4vh;
+  right: 8%;
+  cursor: pointer;
+  color: red;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+}
+
+.iconoCerrar:hover {
+  background-color: red;
+  color: white;
+}
+
+.iconoCerrar:active {
+  opacity: 0.7;
+}
+
+.contenedorComprasUsuario {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-height: calc(100% - 6vh);
+  background-color: rgba(128, 128, 128, 0.361);
+  padding: 3vh 0;
+}
+
+.contenedorIntermedioComprasUsuario {
+  width: 90%;
+  padding: 2vh 0;
+  background-color: white;
+  margin: 0 auto;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.tituloComprasUsuario {
+  font-size: 2rem;
+  padding: 2vh 0;
+}
+
+.tablaComprasUsuario {
+  width: 100%;
+  text-align: center;
+}
+
+.encabezadoComprasUsuario {
+  padding-bottom: 15%;
+  border-bottom: 1px solid black;
+}
+
+.bodyComprasUsuario tr {
+  line-height: 25px;
+}
+
+.bodyComprasUsuario tr:nth-child(even) {
+  background: #d8d8d8;
+}
+
+.tituloProductosComprasUsuario {
+  text-align: center;
+  width: 100%;
+  border-top: 1px solid orange;
+  font-size: 1.5rem;
+  padding: 1vh 0;
+  margin-top: 2vh;
+}
+
+.statusVenta {
+  color: white;
+  line-height: 150%;
+  border-radius: 25px;
+  font-size: 0.8rem;
+}

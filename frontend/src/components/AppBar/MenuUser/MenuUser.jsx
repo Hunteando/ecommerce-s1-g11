@@ -19,7 +19,7 @@ function MenuUser({ setMostrarMiCuenta, usuario, handleCerrarSesion }) {
         </div>
         {usuario.isAdmin === true ? null : (
           <Link
-            to="/panel/usuario"
+            to="/dashboard/client"
             onClick={() => setMostrarMiCuenta(false)}
             className={s.itemMenuUser}
           >
@@ -28,7 +28,7 @@ function MenuUser({ setMostrarMiCuenta, usuario, handleCerrarSesion }) {
         )}
 
         {usuario.isAdmin === true ? (
-          <Link to="/panel/administrador" className={s.itemMenuUser}>
+          <Link to="/dashboard/admin" className={s.itemMenuUser}>
             Panel administrador
           </Link>
         ) : null}

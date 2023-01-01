@@ -4,6 +4,7 @@ export const ADD_PRODUCT_CART = "ADD_PRODUCT_CART";
 export const DELETE_PRODUCT_CART = "DELETE_PRODUCT_CART";
 export const MODIFY_PRODUCT_CART = "MODIFY_PRODUCT_CART";
 export const DELETE_CART = "DELETE_CART";
+export const GET_PRODUCTS = "GET_PRODUCTS";
 
 export const agregarProductoCarrito = (datosProducto) => {
   try {
@@ -114,7 +115,6 @@ export const vaciarCarrito = (datosProducto) => {
   }
 };
 
-
 export function crearProducto(producto) {
   return async function (dispatch) {
     try {
@@ -136,3 +136,28 @@ export function crearProducto(producto) {
     }
   };
 }
+
+export const obtenerTodosLosProductos = (queHacer) => {
+  try {
+    return async function (dispatch) {
+      if (queHacer === "reset") {
+        return dispatch({
+          type: GET_PRODUCTS,
+          payload: [],
+        });
+      } else {
+        let res = await axios({
+          method: "GET",
+          withCredentials: true,
+          url: "/dashboard/admin/products",
+        });
+        return dispatch({
+          type: GET_PRODUCTS,
+          payload: res.data.products,
+        });
+      }
+    };
+  } catch (error) {
+    return { success: false, mensaje: error.message };
+  }
+};

@@ -1,15 +1,25 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import s from "./ProductosCreados.module.css";
 
 import { AiFillEdit, AiFillDelete } from "react-icons/ai";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import ModalProductosCreados from "./ModalProductosCreados/ModalProductosCreados";
 
+import { ordenarProductos } from "../../../../redux/actions/actionsDashboard";
+import { obtenerTodosLosProductos } from "../../../../redux/actions/actionsProductos";
+
 function ProductosCreados() {
-  const productos = useSelector((e) => e.carro);
+  const dispatch = useDispatch();
+  const productos = useSelector((e) => e.productos);
 
   const [editarProducto, setEditarProducto] = useState(false);
   const [producto, setProducto] = useState({});
+
+  const [cambioOrden, setCambioOrden] = useState(false);
+  function handleOrdernar(columna) {
+    dispatch(ordenarProductos(columna));
+    setCambioOrden(!cambioOrden);
+  }
 
   function handleEditarProducto(e, producto) {
     setEditarProducto(true);
@@ -18,14 +28,28 @@ function ProductosCreados() {
 
   function handleEliminarProducto(e, producto) {}
 
+  useEffect(() => {
+    dispatch(obtenerTodosLosProductos("todos"));
+
+    return () => {
+      dispatch(obtenerTodosLosProductos("reset"));
+    };
+  }, []);
+
   return (
     <div className={s.contenedorProductosCreados}>
       <table className={s.tablaProductosCreados}>
         <thead>
           <tr className={s.encabezadoProductosCreados}>
-            <th>Id</th>
-            <th>Nombre</th>
-            <th>Precio</th>
+            <th onClick={() => handleOrdernar("id")} className={s.cursor}>
+              Id
+            </th>
+            <th onClick={() => handleOrdernar("name")} className={s.cursor}>
+              Nombre
+            </th>
+            <th onClick={() => handleOrdernar("price")} className={s.cursor}>
+              Precio
+            </th>
             <th>Descripción</th>
             <th>Editar</th>
             <th>Eliminar</th>
@@ -37,9 +61,9 @@ function ProductosCreados() {
               return (
                 <tr key={"listaProductos" + a.id}>
                   <td>{a.id}</td>
-                  <td>{a.nombre}</td>
-                  <td>{a.precio}</td>
-                  <td>{a.descripcion.substring(0, 20)}</td>
+                  <td>{a.name}</td>
+                  <td>{a.price}</td>
+                  <td>{a.description.substring(0, 20)}</td>
                   <td>
                     <div
                       className={s.botonEditarProducto}
