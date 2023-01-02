@@ -29,7 +29,10 @@ function DashboardAdmin() {
 
   return (
     <div className={s.contenedorDashboardAdmin}>
-      <PanelLateralAdmin handleMostrarMenuAdmin={handleMostrarMenuAdmin} />
+      <PanelLateralAdmin
+        mostrarMenuAdmin={mostrarMenuAdmin}
+        handleMostrarMenuAdmin={handleMostrarMenuAdmin}
+      />
 
       {mostrarMenuAdmin.crearProducto && (
         <CrearProducto handleMostrarMenuAdmin={handleMostrarMenuAdmin} />

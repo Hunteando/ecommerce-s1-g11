@@ -120,16 +120,16 @@ export function crearProducto(producto) {
     try {
       const res = await axios({
         method: "post",
-        withCredentials: true,
-        url: "/productos/nuevo",
+        // withCredentials: true,
+        url: "/dashboard/admin/producto/nuevo",
         data: producto,
         headers: {
           "Content-Type": "multipart/form-data",
         },
       });
       return dispatch({
-        type: GET_USER,
-        payload: res.data.usuario,
+        type: GET_PRODUCTS,
+        payload: res.data.products,
       });
     } catch (e) {
       throw new Error(e.message);

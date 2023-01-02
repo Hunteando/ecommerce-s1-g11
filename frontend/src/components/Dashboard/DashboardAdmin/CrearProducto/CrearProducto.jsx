@@ -12,10 +12,11 @@ import InputFormulario from "../../../../ui/InputFormulario/InputFormulario";
 import ImagenesVender from "./ImagenesVender/ImagenesVender";
 
 import { crearProducto } from "../../../../redux/actions/actionsProductos";
+import Swal from "sweetalert2";
 
 let verificarDosNumerosDespuesDeLaComa = /^\d+(\.\d{0,2})?$/;
 
-function CrearProducto() {
+function CrearProducto({ handleMostrarMenuAdmin }) {
   const dispatch = useDispatch();
 
   const [imagen1, setImagen1] = useState("");
@@ -138,32 +139,27 @@ function CrearProducto() {
       }
     }
 
-    nombreImagenes[0].length && formData.append("imagen", imagen1);
-    nombreImagenes[1].length && formData.append("imagen", imagen2);
-    nombreImagenes[2].length && formData.append("imagen", imagen3);
-    nombreImagenes[3].length && formData.append("imagen", imagen4);
-    nombreImagenes[4].length && formData.append("imagen", imagen5);
+    nombreImagenes[0].length && formData.append("image", imagen1);
+    nombreImagenes[1].length && formData.append("image", imagen2);
+    nombreImagenes[2].length && formData.append("image", imagen3);
+    nombreImagenes[3].length && formData.append("image", imagen4);
+    nombreImagenes[4].length && formData.append("image", imagen5);
 
-    formData.append("nombre", e.nombre);
-    formData.append("precio", e.precio);
-    formData.append("descripcion", e.descripcion);
-    formData.append("cantidad", e.cantidad);
+    formData.append("name", e.nombre);
+    formData.append("price", e.precio);
+    formData.append("description", e.descripcion);
+    formData.append("stock", e.cantidad);
 
     try {
       await dispatch(crearProducto(formData));
       Swal.fire({
         icon: "success",
         title: "Producto creado correctamente!",
-        text: "Cualquier novedad te enviaremos un mail!",
+        text: "Puedes verlo y/o modificarlo!",
       }).then(() => {
-        setMostrarMenu({
-          menuPerfil: false,
-          menuCompras: false,
-          menuVentas: true,
-          menuVender: false,
-        });
+        handleMostrarMenuAdmin("productosCreados");
+        resetForm();
       });
-      resetForm();
     } catch (e) {
       console.log(e);
       Swal.fire({

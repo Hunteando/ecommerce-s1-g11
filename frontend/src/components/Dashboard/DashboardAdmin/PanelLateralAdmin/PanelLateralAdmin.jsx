@@ -1,18 +1,15 @@
-import React, { useState } from "react";
+import React from "react";
 import s from "./PanelLateralAdmin.module.css";
 
-function PanelLateralAdmin({ handleMostrarMenuAdmin }) {
-  const [menuElegido, setMenuElegido] = useState("");
-
+function PanelLateralAdmin({ handleMostrarMenuAdmin, mostrarMenuAdmin }) {
   return (
     <div className={s.contenedorPanelLateralAdmin}>
       <div
         onClick={() => {
           handleMostrarMenuAdmin("crearProducto");
-          setMenuElegido("crearProducto");
         }}
         className={`${s.itemPanelLateralAdmin} ${
-          menuElegido === "crearProducto" && s.itemPanelLateralAdminSeleccionado
+          mostrarMenuAdmin.crearProducto && s.itemPanelLateralAdminSeleccionado
         }`}
       >
         Crear Producto
@@ -20,10 +17,9 @@ function PanelLateralAdmin({ handleMostrarMenuAdmin }) {
       <div
         onClick={() => {
           handleMostrarMenuAdmin("productosCreados");
-          setMenuElegido("productosCreados");
         }}
         className={`${s.itemPanelLateralAdmin} ${
-          menuElegido === "productosCreados" &&
+          mostrarMenuAdmin.productosCreados &&
           s.itemPanelLateralAdminSeleccionado
         }`}
       >
@@ -32,10 +28,9 @@ function PanelLateralAdmin({ handleMostrarMenuAdmin }) {
       <div
         onClick={() => {
           handleMostrarMenuAdmin("ventas");
-          setMenuElegido("ventas");
         }}
         className={`${s.itemPanelLateralAdmin} ${
-          menuElegido === "ventas" && s.itemPanelLateralAdminSeleccionado
+          mostrarMenuAdmin.ventas && s.itemPanelLateralAdminSeleccionado
         }`}
       >
         Ventas
@@ -43,10 +38,9 @@ function PanelLateralAdmin({ handleMostrarMenuAdmin }) {
       <div
         onClick={() => {
           handleMostrarMenuAdmin("usuarios");
-          setMenuElegido("usuarios");
         }}
         className={`${s.itemPanelLateralAdmin} ${
-          menuElegido === "usuarios" && s.itemPanelLateralAdminSeleccionado
+          mostrarMenuAdmin.usuarios && s.itemPanelLateralAdminSeleccionado
         }`}
       >
         Usuarios
