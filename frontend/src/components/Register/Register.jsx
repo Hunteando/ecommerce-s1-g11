@@ -3,7 +3,6 @@ import { Copyright } from "../../utils/utils";
 import logoGoogle from "../../assets/images/logoGoogle.png";
 import { Link } from "react-router-dom";
 import s from "./Register.module.css";
-import imagenRegistro from "../../assets/images/imagenRegistro.png";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import YupPassword from "yup-password";

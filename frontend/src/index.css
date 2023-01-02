@@ -161,4 +161,7 @@ table {
   --color-border: #fafafa;
   --altura-header: 112px;
   --border-radius-boton: 5px;
+  --ancho-menu-admin: 20vw;
+  --ancho-menu-usuario: 20vw;
+  --alto-menu-usuario: 5vh;
 }

@@ -1,6 +1,12 @@
 .contenedorDashboardUsuario {
   width: 100%;
-  min-height: calc(100vh - var(--altura-header));
+  height: calc(100vh - var(--altura-header));
   margin-top: var(--altura-header);
+  display: flex;
+}
 
+@media (max-width: 800px) {
+  .contenedorDashboardUsuario {
+    flex-direction: column-reverse;
+  }
 }
