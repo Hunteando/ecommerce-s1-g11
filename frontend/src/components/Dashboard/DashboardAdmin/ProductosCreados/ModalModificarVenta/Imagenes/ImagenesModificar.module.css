@@ -1,0 +1,27 @@
+/* IMAGENES */
+.contenedorImagenes {
+  width: calc(100% - 4px);
+  margin-top: 2px;
+  padding: 2px;
+  background-color: rgb(240, 240, 240);
+  border: 1px solid grey;
+  border-radius: 8px;
+  margin-top: 5%;
+}
+
+.textoImagenes {
+  width: 100%;
+  text-align: center;
+  padding: 2px 0;
+  font-family: comspotM;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.imagenes {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+}

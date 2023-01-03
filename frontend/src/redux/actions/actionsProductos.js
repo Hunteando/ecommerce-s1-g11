@@ -6,6 +6,78 @@ export const MODIFY_PRODUCT_CART = "MODIFY_PRODUCT_CART";
 export const DELETE_CART = "DELETE_CART";
 export const GET_PRODUCTS = "GET_PRODUCTS";
 
+export const obtenerTodosLosProductos = (queHacer) => {
+  try {
+    return async function (dispatch) {
+      if (queHacer === "reset") {
+        return dispatch({
+          type: GET_PRODUCTS,
+          payload: [],
+        });
+      } else {
+        let res = await axios({
+          method: "GET",
+          withCredentials: true,
+          url: "/dashboard/admin/products",
+        });
+        return dispatch({
+          type: GET_PRODUCTS,
+          payload: res.data.products,
+        });
+      }
+    };
+  } catch (error) {
+    return { success: false, mensaje: error.message };
+  }
+};
+
+export function crearProducto(producto) {
+  console.log(producto);
+  return async function (dispatch) {
+    try {
+      const res = await axios({
+        method: "post",
+        // withCredentials: true,
+        url: "/dashboard/admin/producto/nuevo",
+        data: producto,
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+      return dispatch({
+        type: GET_PRODUCTS,
+        payload: res.data.products,
+      });
+    } catch (e) {
+      throw new Error(e.message);
+    }
+  };
+}
+
+export function modificarProducto(id, producto) {
+  return async function (dispatch) {
+    try {
+      const res = await axios({
+        method: "put",
+        // withCredentials: true,
+        url: "/dashboard/admin/producto/modificar/" + id,
+        data: producto,
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+      return dispatch({
+        type: GET_PRODUCTS,
+        payload: res.data.products,
+      });
+    } catch (e) {
+      throw new Error(e.message);
+    }
+  };
+}
+
+// ------------------ ACTIONS CARRITO ------------------
+
 export const agregarProductoCarrito = (datosProducto) => {
   try {
     return async function (dispatch) {
@@ -109,53 +181,6 @@ export const vaciarCarrito = (datosProducto) => {
       //       mensaje: res.data.error.errors[0].message || "Error al eliminar producto",
       //     };
       //   }
-    };
-  } catch (error) {
-    return { success: false, mensaje: error.message };
-  }
-};
-
-export function crearProducto(producto) {
-  return async function (dispatch) {
-    try {
-      const res = await axios({
-        method: "post",
-        // withCredentials: true,
-        url: "/dashboard/admin/producto/nuevo",
-        data: producto,
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      });
-      return dispatch({
-        type: GET_PRODUCTS,
-        payload: res.data.products,
-      });
-    } catch (e) {
-      throw new Error(e.message);
-    }
-  };
-}
-
-export const obtenerTodosLosProductos = (queHacer) => {
-  try {
-    return async function (dispatch) {
-      if (queHacer === "reset") {
-        return dispatch({
-          type: GET_PRODUCTS,
-          payload: [],
-        });
-      } else {
-        let res = await axios({
-          method: "GET",
-          withCredentials: true,
-          url: "/dashboard/admin/products",
-        });
-        return dispatch({
-          type: GET_PRODUCTS,
-          payload: res.data.products,
-        });
-      }
     };
   } catch (error) {
     return { success: false, mensaje: error.message };

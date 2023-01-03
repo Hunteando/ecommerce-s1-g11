@@ -3,10 +3,10 @@ import s from "./ProductosCreados.module.css";
 
 import { AiFillEdit, AiFillDelete } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
-import ModalProductosCreados from "./ModalProductosCreados/ModalProductosCreados";
 
 import { ordenarProductos } from "../../../../redux/actions/actionsDashboard";
 import { obtenerTodosLosProductos } from "../../../../redux/actions/actionsProductos";
+import ModalModificarVenta from "./ModalModificarVenta/ModalModificarVenta";
 
 function ProductosCreados() {
   const dispatch = useDispatch();
@@ -21,9 +21,9 @@ function ProductosCreados() {
     setCambioOrden(!cambioOrden);
   }
 
-  function handleEditarProducto(e, producto) {
+  function handleEditarProducto(e, prod) {
     setEditarProducto(true);
-    setProducto(producto);
+    setProducto(prod);
   }
 
   function handleEliminarProducto(e, producto) {}
@@ -86,7 +86,7 @@ function ProductosCreados() {
         </tbody>
       </table>
       {editarProducto && (
-        <ModalProductosCreados
+        <ModalModificarVenta
           producto={producto}
           editarProducto={editarProducto}
           setEditarProducto={setEditarProducto}

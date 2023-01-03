@@ -96,7 +96,7 @@
 .botonCancelar {
   background-color: red;
   margin-bottom: 3%;
-  width: stretch
+  width: stretch;
 }
 
 .botonCancelar:hover {

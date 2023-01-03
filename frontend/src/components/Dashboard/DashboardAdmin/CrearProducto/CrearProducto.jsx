@@ -42,7 +42,6 @@ function CrearProducto({ handleMostrarMenuAdmin }) {
     precio: Yup.number()
       .positive("*El precio debe ser positivo")
       .min(0.01, "*Precio minimo $ 0,01")
-      .max(100000000, "*Precio maximo $100.000.000")
       .test("is-decimal", "*Maximo dos decimales ej: 9.99", (val) => {
         if (val != undefined) {
           return verificarDosNumerosDespuesDeLaComa.test(val);
@@ -205,7 +204,6 @@ function CrearProducto({ handleMostrarMenuAdmin }) {
           id={"nombre"}
           label={"Nombre"}
         />
-
         <InputFormulario
           placeholder="Entre $0,01 y $100.000.000"
           tipo="number"
