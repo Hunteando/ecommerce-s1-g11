@@ -5,9 +5,6 @@ const jwt = require('jsonwebtoken')
 const { jwtSecret } = require('../config/environment')
 const Cart = require('../models/cart')
 const User = require('../models/users')
-const bcrypt = require('bcrypt')
-const jwt = require('jsonwebtoken')
-const { jwtSecret } = require('../config/environment')
 
 const signUp = async (req, res) => {
   try {

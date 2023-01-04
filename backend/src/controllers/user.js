@@ -1,9 +1,16 @@
 const User = require('../models/users')
 const UserDetails = require('../models/usersdetails')
 const Addresses = require('../models/addresses')
+const Cart = require('../models/cart')
+const Products = require('../models/products')
 const getAllUsers = async (req, res) => {
   try {
-    const users = await User.findAll()
+    const users = await User.findAll({
+      include: {
+        model: UserDetails,
+        include: [{ model: Cart, include: Products }],
+      },
+    })
     return res.json({
       message: 'succesfully',
       users,
@@ -67,9 +74,12 @@ const getUserById = async (req, res) => {
       where: {
         id,
       },
-      include: { all: true },
+      include: {
+        model: UserDetails,
+        include: [{ model: Cart, include: Products }],
+      },
     })
-
+    console.log(user)
     if (user) {
       const newUser = user.toJSON()
       delete newUser.password
