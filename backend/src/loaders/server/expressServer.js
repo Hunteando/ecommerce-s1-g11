@@ -44,7 +44,7 @@ class ExpressServer {
     this.app.use(
       cors({
         // origin: `${process.env.PATH_FRONT}`, //URL DEL FRONT!!
-        origin: "http://localhost:64340",
+        origin: "http://localhost:3000",
         credentials: true,
       })
     );
