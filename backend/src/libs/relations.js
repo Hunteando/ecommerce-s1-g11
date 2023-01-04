@@ -18,12 +18,12 @@ UserDetails.belongsTo(User, {
   onDelete: 'CASCADE',
 })
 
-Product.hasMany(Image, {
-  onDelete: 'CASCADE',
-})
-Image.belongsTo(Product, {
-  onDelete: 'CASCADE',
-})
+// Product.hasMany(Image, {
+//   onDelete: 'CASCADE',
+// })
+// Image.belongsTo(Product, {
+//   onDelete: 'CASCADE',
+// })
 
 UserDetails.hasMany(Addresses, {
   onDelete: 'CASCADE',

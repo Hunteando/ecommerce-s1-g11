@@ -15,8 +15,8 @@ const Products = sequelize.define('Products', {
   stock: DataTypes.INTEGER(255),
   colors: DataTypes.TEXT,
   weight: DataTypes.DECIMAL,
-  freeshipping: DataTypes.TINYINT,
-  averageRating: DataTypes.TINYINT(5),
+  // freeshipping: DataTypes.TINYINT,
+  // averageRating: DataTypes.TINYINT(5),
   numOfReviews: DataTypes.INTEGER,
 })
 

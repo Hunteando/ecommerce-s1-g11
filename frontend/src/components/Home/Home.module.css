@@ -1,0 +1,6 @@
+.contenedorHome {
+  width: 100%;
+  max-width: 100vw;
+  margin-top: var(--altura-header);
+  /* overflow: hidden; */
+}

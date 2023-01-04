@@ -1,0 +1,58 @@
+.contenedorCounter {
+  width: 200px;
+  height: 40px;
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
+}
+.contenedorCounter button {
+  background-color: #f99716;
+  border: none;
+  width: 30px;
+  height: 30px;
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 20px;
+  border-radius: 5px;
+}
+
+.contenedorContador {
+  display: flex;
+  justify-content: space-around;
+  width: 10rem;
+}
+
+.contenedorBotonContador {
+  font-family: comspotM;
+  font-weight: bold;
+  font-size: 1rem;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 0.1rem;
+  background-color: #f99716;
+  color: #fff;
+  transition: all 150ms ease;
+  cursor: pointer;
+  border: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.contenedorBotonContador:hover {
+  background-color: #1e1e1e;
+  color: #ffffff;
+}
+
+.contenedorCantidad {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: comspotM;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.botonDesabilitado {
+  opacity: 0.7;
+}
