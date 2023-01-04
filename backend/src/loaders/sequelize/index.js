@@ -18,8 +18,8 @@ const sequelize =
         config.dataBase.username,
         config.dataBase.password,
         {
-          host: "localhost",
-          dialect: "postgres",
+          host: config.dataBase.host,
+          dialect: config.dataBase.dialect,
           logging: false,
         }
       )
