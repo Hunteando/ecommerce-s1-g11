@@ -1,15 +1,16 @@
 const { DataTypes } = require('sequelize')
 const sequelize = require('../loaders/sequelize')
 
-const UserDetails = sequelize.define('UserDetails', {
+const Addresses = sequelize.define('Addresses', {
   id: {
     type: DataTypes.INTEGER,
     autoIncrement: true,
     primaryKey: true,
     allowNull: false,
   },
-  firstname: DataTypes.STRING(50),
-  lastname: DataTypes.STRING(255),
+  country: DataTypes.STRING(45),
+  city: DataTypes.STRING(40),
+  province: DataTypes.STRING(45),
 })
 
-module.exports = UserDetails
+module.exports = Addresses

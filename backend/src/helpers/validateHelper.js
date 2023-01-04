@@ -5,8 +5,8 @@ const validateResult = (req, res, next) => {
     validationResult(req).throw();
     return next();
   } catch (error) {
-    res.status(403);
-    res.send({ errors: error.array() });
+    res.status(403)
+    res.send({ message: error.errors[0].msg })
   }
 };
 module.exports = { validateResult };
