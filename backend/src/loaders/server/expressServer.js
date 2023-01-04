@@ -54,7 +54,7 @@ class ExpressServer {
     this.app.use("/pagos", paymentRouter);
     this.app.use("/", productRouter);
     this.app.use((req, res, next) => {
-      res.header("Access-Control-Allow-Origin", "*"); // update to match the domain you will make the request from
+      res.header("Access-Control-Allow-Origin", `${config.pathFront}`); // update to match the domain you will make the request from
       res.header("Access-Control-Allow-Credentials", "true");
       res.header(
         "Access-Control-Allow-Headers",
@@ -62,7 +62,7 @@ class ExpressServer {
       );
       res.header(
         "Access-Control-Allow-Methods",
-        "GET, POST, OPTIONS, PUT, DELETE"
+        "GET, POST, OPTIONS, PUT, DELETE, PATCH"
       );
       next();
     });
