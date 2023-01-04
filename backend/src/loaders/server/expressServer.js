@@ -43,8 +43,8 @@ class ExpressServer {
     this.app.use(express.json());
     this.app.use(
       cors({
-        // origin: `${process.env.PATH_FRONT}`, //URL DEL FRONT!!
-        origin: "http://localhost:3000",
+        origin: `${config.pathFront}`, //URL DEL FRONT!!
+        // origin: "http://localhost:3000",
         credentials: true,
       })
     );
