@@ -42,16 +42,30 @@ class ExpressServer {
     this.app.use(express.urlencoded());
     this.app.use(express.json());
     this.app.use(
-      cors({
-        origin: `${config.pathFront}`, //URL DEL FRONT!!
-        // origin: "http://localhost:3000",
-        credentials: true,
-      })
+      cors()
+      //   {
+      //   origin: `${config.pathFront}`, //URL DEL FRONT!!
+      //   // origin: "http://localhost:3000",
+      //   credentials: true,
+      // }
     );
     this.app.use("/auth", userRouter);
     this.app.use("/auth", authRouter);
     this.app.use("/pagos", paymentRouter);
     this.app.use("/", productRouter);
+    this.app.use((req, res, next) => {
+      res.header("Access-Control-Allow-Origin", "*"); // update to match the domain you will make the request from
+      res.header("Access-Control-Allow-Credentials", "true");
+      res.header(
+        "Access-Control-Allow-Headers",
+        "Origin, X-Requested-With, Content-Type, Accept"
+      );
+      res.header(
+        "Access-Control-Allow-Methods",
+        "GET, POST, OPTIONS, PUT, DELETE"
+      );
+      next();
+    });
   }
   async start() {
     this.app.listen(this.port, (error) => {
