@@ -48,14 +48,12 @@ const createProduct = async (req, res) => {
 
 const crearProducto = async (req, res, next) => {
   const { name, price, description, stock } = req.body;
-
   let imagenes = [];
   if (req.files.length) {
     for (let i = 0; i < req.files.length; i++) {
       imagenes.push(req.files[i].path);
     }
   }
-
   const producto = await Products.create({
     name,
     description,
@@ -63,28 +61,21 @@ const crearProducto = async (req, res, next) => {
     stock,
     image: imagenes,
   });
-
   const products = await Products.findAll({ include: { all: true } });
-
   res.status(200).json({ message: "Product created", products });
 };
 
 const modificarProducto = async (req, res, next) => {
   const { id } = req.params;
-
   let imagenesNuevas = [];
   if (req.files.length) {
     for (let i = 0; i < req.files.length; i++) {
       imagenesNuevas.push(req.files[i].path);
     }
   }
-
   const producto = await Products.findByPk(id);
-
   const imagenesABorrar = req.body.imagenesABorrar?.split(",");
-
   let imagenesProducto = producto.image;
-
   if (imagenesABorrar?.length) {
     for (let i = 0; i < imagenesABorrar?.length; i++) {
       const imagenBorrar = `${imagenesABorrar[i].split("/").reverse()[1]}/${
