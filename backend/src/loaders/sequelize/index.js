@@ -24,15 +24,10 @@ const sequelize =
         }
       )
     : new Sequelize(
-        config.dataBase.name,
-        config.dataBase.username,
-        config.dataBase.password,
+        `postgres://${config.dataBase.username}:${config.dataBase.password}@${config.dataBase.host}:${config.dataBase.port}/${config.dataBase.host}`,
         {
-          host: config.dataBase.host,
-          dialect: config.dataBase.dialect,
-          logging: false,
-          native: false,
+          logging: false, // set to console.log to see the raw SQL queries
+          native: false, // lets Sequelize know we can use pg-native for ~30% more speed
         }
       );
-
 module.exports = sequelize;
