@@ -14,7 +14,6 @@
   box-shadow: 0 0 1rem #ededed;
   margin-bottom: 4rem;
   padding: 2rem;
-
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -65,19 +64,21 @@
 .contenedorCarro {
   margin-top: var(--altura-header);
   width: 100%;
-  max-width: 1200px;
-  padding: 0 2vw;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .contenedorPanel {
-  width: 100%;
-  padding: 2vh 1vw;
+  width: 90%;
+  max-width: 1200px;
+  padding: 2vh 0;
   display: flex;
 }
 
 .contenedorProductos {
-  width: 100%;
+  width: 60%;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -90,12 +91,13 @@
   display: flex;
   border: 1px solid #ededed;
   margin-bottom: 1rem;
-  padding: 1rem;
+  /* padding: 1rem; */
 }
 
 .contenedorImagenTarjeta {
   display: flex;
   justify-content: center;
+  align-self: center;
   align-items: center;
   width: 150px;
   height: 100%;
@@ -110,9 +112,11 @@
   text-align: left;
   width: 100%;
   height: 100%;
+  align-self: center;
 }
 
 .contenedorInformacionTarjeta h3 {
+  margin-top: 2%;
   color: #f99716;
 }
 .contenedorInformacionTarjeta p {
@@ -132,7 +136,7 @@
 }
 
 .contenedorTotales {
-  width: 80%;
+  width: 40%;
   height: fit-content;
   box-shadow: 0 0 10px #dadada;
   line-height: 80px;
@@ -193,4 +197,21 @@
   flex-direction: row;
   justify-content: space-evenly;
   width: 100%;
+}
+
+@media (max-width: 800px) {
+  .contenedorPanel {
+    flex-direction: column;
+    align-items: center;
+  }
+  .contenedorProductos {
+    min-width: 300px;
+  }
+  .contenedorTotales {
+    min-width: 300px;
+    line-height: 60px;
+  }
+  .links {
+    flex-wrap: wrap;
+  }
 }

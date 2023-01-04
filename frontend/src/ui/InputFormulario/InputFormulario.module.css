@@ -1,0 +1,26 @@
+.contenedor {
+    width: 100%;
+}
+
+.input {
+    border: 1px solid grey;
+    border-radius: 8px;
+    padding: 5px 10px;
+    margin-top: 2px;
+    width: calc(100% - 20px);
+    height: 30px;
+    font-size: 100%;
+}
+
+.msjError {
+    font-size: 0.75rem;
+}
+
+.error {
+    color: red;
+    border-color: red;
+}
+
+.input.error.input::placeholder {
+    color: red;
+}

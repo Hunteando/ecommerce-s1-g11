@@ -12,10 +12,8 @@
 
 .logoWapp {
   cursor: pointer;
-  width: 8vw;
-  min-width: 50px;
-  height: 8vw;
-  min-height: 50px;
+  width: 50px;
+  height: 50px;
   background-color: #075e54;
   color: #ece5dd;
   border-radius: 50%;
@@ -24,19 +22,17 @@
 }
 
 .logoWapp:hover {
-  width: 12vw;
-  height: 12vw;
+  width: 70px;
+  height: 70px;
   transform: rotate(1turn);
 }
 
 .textoWapp {
-  /* display: none; */
   visibility: hidden;
   border-radius: 15px;
   width: 0px;
   font-size: 0rem;
   transition: all 0.7s;
-  /* height: 0px; */
 }
 
 .textoWappActivo {

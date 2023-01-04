@@ -1,0 +1,104 @@
+.contenedorModalModificarProducto {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  min-height: calc(100% - var(--altura-header));
+  background-color: rgba(128, 128, 128, 0.361);
+  padding: 3vh 0;
+}
+
+.contenedorModalIntermedio {
+  width: 90%;
+  background-color: white;
+  margin: 0 auto;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.formularioModificarProducto {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 95%;
+  max-width: 600px;
+  min-height: 100%;
+  margin: 0 auto;
+}
+
+.titulo {
+  font-size: 2rem;
+  font-family: comspotM;
+  padding: 5% 0;
+}
+
+.inputFormModificar {
+  margin-top: 5%;
+}
+
+/* TEXT AREA */
+.textareaLabelModificar {
+  margin-top: 5%;
+  width: 100%;
+}
+
+.input {
+  border: 1px solid grey;
+  border-radius: 8px;
+  padding: 5px 10px;
+  width: calc(100% - 20px);
+  font-size: 100%;
+  font-family: "Rubik", sans-serif;
+  resize: none;
+}
+
+.msjError {
+  font-size: 0.75rem;
+  width: 100%;
+}
+
+.error {
+  color: red;
+  border-color: red;
+}
+
+.input.error.input::placeholder {
+  color: red;
+}
+
+/* BOTON MODIFICAR */
+.botonModificar {
+  margin-top: 5%;
+  min-width: fit-content;
+  min-height: 30px;
+  background-color: #f99716;
+  cursor: pointer;
+  border: 0;
+  border-radius: var(--border-radius-boton);
+  font-family: comspotM;
+  font-weight: bold;
+  font-size: 0.875rem;
+  padding: 10px 24px;
+  color: #fff;
+  transition: all 150ms ease;
+}
+
+.botonModificar:active {
+  background-color: #1e1e1e;
+}
+
+.botonModificar:hover {
+  background-color: #f9971695;
+}
+
+.botonCancelar {
+  background-color: red;
+  margin-bottom: 3%;
+  width: stretch;
+}
+
+.botonCancelar:hover {
+  background-color: rgba(255, 0, 0, 0.684);
+}

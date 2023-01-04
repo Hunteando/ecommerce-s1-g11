@@ -1,0 +1,11 @@
+.contenedorPanelComprasUsuario {
+  width: 100%;
+  min-height: calc(100% - var(--alto-menu-usuario));
+  display: flex;
+  justify-content: center;
+}
+
+.tituloComprasUsuarios {
+  font-size: 1.2rem;
+  font-weight: bold;
+}

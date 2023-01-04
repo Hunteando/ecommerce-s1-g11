@@ -1,0 +1,44 @@
+.contenedorProductosCreados {
+  position: relative;
+  width: calc(100vw - 15vw);
+  min-height: calc(100vh - var(--altura-header));
+  height: fit-content;
+  /* display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 5%; */
+  overflow: hidden;
+  overflow-y: auto;
+}
+
+.tablaProductosCreados {
+  width: 100%;
+  text-align: center;
+}
+
+.encabezadoProductosCreados {
+  padding-bottom: 15%;
+  border-bottom: 1px solid black;
+}
+
+.bodyProductosCreados tr {
+  line-height: 25px;
+}
+
+.bodyProductosCreados tr:nth-child(even) {
+  background: #d8d8d8;
+}
+
+.cursor {
+  cursor: pointer;
+}
+
+.botonEditarProducto:hover {
+  cursor: pointer;
+  color: #f99716;
+}
+
+.botonEliminarProducto:hover {
+  cursor: pointer;
+  color: red;
+}

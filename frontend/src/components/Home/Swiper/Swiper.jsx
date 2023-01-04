@@ -41,7 +41,7 @@ export default function ComponenteSwiper() {
         slidesPerView={cantidadTarjetas}
         // onSlideChange={() => console.log("slide change")}
         // onSwiper={(swiper) => console.log(swiper)}
-        className={cantidadTarjetas < 3 ? s.swiper : null}
+        // className={cantidadTarjetas < 3 ? s.swiper : null}
       >
         {productos.map((i) => {
           return (

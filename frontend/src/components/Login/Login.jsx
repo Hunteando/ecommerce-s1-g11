@@ -72,7 +72,7 @@ export default function Login() {
           <h1 className={s.tituloIniciarSesion}>Iniciar sesión</h1>
           <div className={s.contenedorLogeoGoogle}>
             <img src={logoGoogle} alt="logo Google" className={s.logoGoogle} />
-            <p className={s.tituloGoogle}>Continuar con google</p>
+            <p className={s.tituloGoogle}>Continuar con Google</p>
           </div>
           <p className={s.renglonSeparador}>
             ---------- o Inicie con su Email ----------
@@ -152,14 +152,14 @@ export default function Login() {
               )}
             </div>
 
-            <button className={s.botonRegistrarse} type="submit">
+            <button className={s.botonIniciarSesion} type="submit">
               Iniciar Sesión
             </button>
           </form>
 
-          <div className={s.renglonLinkRegistrarse}>
+          <div className={s.renglonLinkIniciarSesion}>
             <p>¿No está registrado? </p>
-            <Link to="/registrarse" className={s.linkRegistrarse}>
+            <Link to="/registrarse" className={s.linkIniciarSesion}>
               Cree una cuenta nueva.
             </Link>
           </div>

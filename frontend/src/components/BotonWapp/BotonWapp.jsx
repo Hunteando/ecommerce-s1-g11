@@ -6,7 +6,7 @@ import resizeHook from "../../hooks/resizeHook";
 export default function BotonWapp() {
   const [wappActivo, setWappActivo] = useState(false);
   function handlerWapp() {
-    open("http://wa.me/+5493564659560", "_blank");
+    open("http://wa.me/+549ELNUMERODELACHICA", "_blank");
   }
 
   const tamanoPantalla = resizeHook();
@@ -15,7 +15,7 @@ export default function BotonWapp() {
     <div className={s.contenedorWapp} onClick={handlerWapp}>
       <p
         className={`${s.textoWapp} ${
-          wappActivo || tamanoPantalla.width < 800
+          wappActivo && tamanoPantalla.width > 800
             ? s.textoWappActivo
             : undefined
         }`}

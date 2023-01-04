@@ -1,32 +1,23 @@
-const multer = require('multer')
 
-const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, '../../ecommerce-s1-g11/backend/src/uploads')
-    // C:\Users\Ulver\Desktop\Proyectos\Hunteando\ecommerce-s1-g11\backend\src\uploads
-  },
-  filename: function (req, file, cb) {
-    cb(null, Date.now() + '-' + file.originalname)
-  },
-})
+const multer = require("multer");
 
-// validación
-const fileFilter = (req, file, cb) => {
-  if (
-    file.mimetype === 'image/jpeg' ||
-    file.mimetype === 'image/jpg' ||
-    file.mimetype === 'image/png'
-  ) {
-    cb(null, true)
-  } else {
-    cb({ message: 'Unsupported File Format' }, false)
-  }
-}
+const { storage } = require("./cloudinary");
 
 const upload = multer({
-  storage: storage,
-  limits: { fileSize: 1024 * 1024 },
-  fileFilter: fileFilter,
-})
+  // dest: "./src/utilidades/imagenesMulter",
+  storage,
+  fileFilter: (req, file, cb) => {
+    if (
+      file.mimetype == "image/png" ||
+      file.mimetype == "image/jpg" ||
+      file.mimetype == "image/jpeg"
+    ) {
+      cb(null, true);
+    } else {
+      cb(null, false);
+      return cb(new Error("Only .png, .jpg and .jpeg format allowed!"));
+    }
+  },
+});
 
-module.exports = upload
+module.exports = upload;

@@ -2,11 +2,14 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { modificarCantidadProductoCarrito } from "../../../redux/actions/actionsProductos";
 import s from "./Counter.module.css";
+import { MdDelete } from "react-icons/md";
+import Swal from "sweetalert2";
 
 export default function Counter({
   cantidadInicial,
   cantidadDisponible,
   idProducto,
+  handleEliminarProducto,
 }) {
   const dispatch = useDispatch();
 
@@ -19,7 +22,11 @@ export default function Counter({
         })
       );
     } else {
-      alert(`Disculpa... Hay ${cantidadDisponible} unidades disponibles`);
+      Swal.fire({
+        icon: "warning",
+        title: "Disculpa",
+        text: `Hay ${cantidadDisponible} unidades disponibles`,
+      });
     }
   }
 
@@ -32,7 +39,7 @@ export default function Counter({
         })
       );
     } else {
-      alert(`Minimo 1 unidad`);
+      handleEliminarProducto();
     }
   }
 
@@ -55,7 +62,7 @@ export default function Counter({
         }`}
         onClick={handlerRestar}
       >
-        <div>-</div>
+        {cantidadInicial <= 1 ? <MdDelete color="red" /> : <div>-</div>}
       </div>
     </div>
   );

@@ -3,7 +3,6 @@ import { Copyright } from "../../utils/utils";
 import logoGoogle from "../../assets/images/logoGoogle.png";
 import { Link } from "react-router-dom";
 import s from "./Register.module.css";
-import imagenRegistro from "../../assets/images/imagenRegistro.png";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import YupPassword from "yup-password";
@@ -31,8 +30,8 @@ export default function Register() {
   }
 
   const initialValues = {
-    nombre: "",
-    apellido: "",
+    // nombre: "",
+    // apellido: "",
     email: "",
     contrasena: "",
   };
@@ -48,15 +47,12 @@ export default function Register() {
       .minLowercase(1, "La contraseña debe tener al menos 1 minúscula")
       .minNumbers(1, "La contraseña debe tener al menos 1 número")
       .required("*Campo obligatorio"),
-    // contrasena2: Yup.string()
-    //   .oneOf([Yup.ref("contrasena"), null], "Las contraseñas no coinciden")
+    // nombre: Yup.string()
+    //   .max(20, "El nombre debe tener máximo 20 carácteres")
     //   .required("*Campo obligatorio"),
-    nombre: Yup.string()
-      .max(20, "El nombre debe tener máximo 20 carácteres")
-      .required("*Campo obligatorio"),
-    apellido: Yup.string()
-      .max(20, "El apellido debe tener máximo 20 carácteres")
-      .required("*Campo obligatorio"),
+    // apellido: Yup.string()
+    //   .max(20, "El apellido debe tener máximo 20 carácteres")
+    //   .required("*Campo obligatorio"),
   });
 
   const formik = useFormik({ initialValues, validationSchema, onSubmit });
@@ -84,7 +80,7 @@ export default function Register() {
             ---------- o Inicie con su Email ----------
           </p>
           <form className={s.contenedorFormRegistro} onSubmit={handleSubmit}>
-            <div className={s.renglonNombreApellido}>
+            {/* <div className={s.renglonNombreApellido}>
               <div className={s.divInputLabel}>
                 <label
                   className={`${s.labelRegistro} ${
@@ -139,7 +135,7 @@ export default function Register() {
                   </div>
                 )}
               </div>
-            </div>
+            </div> */}
             <div className={s.divInputLabel}>
               <label
                 className={`${s.labelRegistro} ${
