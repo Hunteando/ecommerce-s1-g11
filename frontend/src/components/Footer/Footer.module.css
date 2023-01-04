@@ -1,0 +1,176 @@
+.contenedorFooter {
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  background-color: #f5f5f5;
+  padding: 2% 0;
+}
+
+.contenedorUno {
+  width: 30%;
+  height: 100%;
+}
+
+.nombreFooter {
+  font-family: arsenale;
+  text-align: center;
+  font-size: 3.5rem;
+  white-space: nowrap;
+}
+
+.textoRedesFooter {
+  font-family: comspotExI;
+  text-align: center;
+  font-size: 1rem;
+}
+
+.contenedorIconosRedesFooter {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 10%;
+}
+
+.iconosredesfooter {
+  cursor: pointer;
+  width: 2rem;
+  height: 2rem;
+  color: #f99716;
+}
+
+.iconosredesfooter:active {
+  opacity: 0.7;
+}
+
+.contenedorDos {
+  width: 40%;
+  height: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.columnaContenedorDos {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.tituloContenedorDos {
+  font-family: comspotM;
+  font-size: 1.5rem;
+}
+
+.textoContenedorDos {
+  font-family: comspotM;
+  color: #808080;
+  text-decoration: none;
+  margin-top: 7%;
+  cursor: pointer;
+}
+
+.contenedorTres {
+  height: 100%;
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+}
+
+.tituloContenedorTres {
+  font-family: comspotM;
+  font-size: 1.5rem;
+}
+
+.inputSuscribirse {
+  border: 0;
+  width: 70%;
+  background-color: transparent;
+  border-bottom: 1px solid black;
+  padding: 3% 0;
+  outline: none;
+  font-size: 1rem;
+}
+
+.inputSuscribirse:hover {
+  border-bottom: 2px solid black;
+}
+
+.inputSuscribirse::placeholder {
+  font-size: 1rem;
+}
+
+.contenedorBotonFooter {
+  font-family: comspotM;
+  font-weight: bold;
+  font-size: 0.875rem;
+  background-color: #f99716;
+  padding: 6px 24px;
+  border-radius: 12px;
+  width: 130px;
+  height: 40px;
+  color: #ffffff;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  margin: 3% 0;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.contenedorBotonFooter:hover {
+  background-color: #1e1e1e;
+  color: #ffffff;
+}
+
+.contenedorBotonFooter:active {
+  opacity: 0.7;
+}
+
+@media (max-width: 800px) {
+  .nombreFooter {
+    font-size: 2rem;
+  }
+  .textoRedesFooter {
+    font-size: 0.7rem;
+  }
+  .iconosredesfooter {
+    width: 1rem;
+    height: 1rem;
+  }
+  .tituloContenedorDos {
+    font-size: 1rem;
+  }
+  .tituloContenedorTres {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 450px) {
+  .contenedorFooter {
+    flex-direction: column;
+  }
+  .contenedorUno {
+    width: fit-content;
+    height: fit-content;
+    margin: 3% 0;
+  }
+  .nombreFooter {
+    font-size: 2rem;
+  }
+  .contenedorIconosRedesFooter {
+    justify-content: space-between;
+  }
+  .contenedorDos {
+    width: 90%;
+    height: fit-content;
+    margin: 3% 0;
+  }
+  .contenedorTres {
+    margin: 3% 0;
+    width: 90%;
+    height: fit-content;
+  }
+}

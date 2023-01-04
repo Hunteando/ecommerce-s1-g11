@@ -36,3 +36,7 @@ yarn-error.log*
 
 # Local Netlify folder
 .netlify
+
+package-lock.json
+settings.json
+frontend/dist/bundle.js

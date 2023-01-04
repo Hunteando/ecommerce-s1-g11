@@ -1,0 +1,40 @@
+.contenedorGralMenuUser {
+  z-index: 999 !important;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(207, 207, 207, 0.601);
+}
+
+.contenedorMenuUser {
+  background-color: white;
+  border-radius: 16px;
+  position: inherit;
+  top: var(--altura-header);
+  right: 1vw;
+  width: 30vw;
+  min-width: fit-content;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.tituloMenuUser {
+  text-align: center;
+  width: 80%;
+  padding: 3% 0;
+  font-family: comspotM;
+  font-size: 1.8rem;
+  border-bottom: 2px solid #f99716;
+}
+
+.itemMenuUser {
+  text-decoration: none;
+  color: black;
+  cursor: pointer;
+  margin: 3% 0;
+  font-family: comspotM;
+  font-size: 1.5rem;
+}

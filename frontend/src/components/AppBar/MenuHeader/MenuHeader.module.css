@@ -1,0 +1,118 @@
+.contenedorMenuHeader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow-y: visible;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  visibility: hidden;
+  transform: translate(-100%, 0);
+  transition: all 0.6s ease-in;
+}
+
+.activo {
+  transform: translate(0, 0);
+  visibility: visible;
+}
+
+.menuHeader {
+  background-color: #e5e5e5;
+  width: 80%;
+  height: 100vh;
+  padding: 5vh 5%;
+}
+
+.encabezadoMenu {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.tituloHeader {
+  font-size: 2.5rem;
+  font-family: arsenale;
+  font-weight: 500;
+  text-decoration: none;
+  color: #1e1e1e;
+  white-space: nowrap;
+  padding: 0;
+}
+
+.botonCerrarMenu {
+  cursor: pointer;
+  height: 100%;
+  width: 30px;
+}
+
+.contenedorBuscar {
+  display: flex;
+  align-items: center;
+  height: 8%;
+  width: 100%;
+  background-color: #f5f5f5;
+  border: 1px solid #ababab;
+  border-radius: 8px;
+  padding: 5px;
+  align-self: center;
+  margin: 5% 0;
+}
+
+.imagenBuscador {
+  margin-left: 10px;
+}
+
+.inputBuscarMenu {
+  outline: none;
+  background-color: transparent;
+  border: 0;
+  width: 100%;
+}
+
+.itemsMenu {
+  display: block;
+  font-family: comspotM;
+  font-weight: 500;
+  font-size: 24px;
+  margin: 3% 0;
+  text-decoration: none;
+  color: #4a4b4d;
+}
+
+.itemsUsuarioMenu {
+  border-top: 1px solid #d8d8d8;
+  position: absolute;
+  bottom: 15%;
+  width: 70%;
+}
+
+.renglonMiCuenta {
+  display: flex;
+  align-items: center;
+}
+
+.miCuentaIcono {
+  width: 20px;
+  height: 20px;
+  margin-right: 3%;
+}
+
+.renglonCerrarSesion {
+  display: flex;
+  align-items: center;
+}
+
+.cerrarSesionIcono {
+  width: 20px;
+  height: 20px;
+  color: #f99716;
+  margin-right: 3%;
+}
+
+.cerrarSesionTexto {
+  width: 100%;
+  color: #f99716;
+}

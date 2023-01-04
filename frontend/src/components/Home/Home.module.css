@@ -1,0 +1,9 @@
+.contenedorHome {
+  width: 100%;
+  max-width: 100vw;
+  margin-top: var(--altura-header);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

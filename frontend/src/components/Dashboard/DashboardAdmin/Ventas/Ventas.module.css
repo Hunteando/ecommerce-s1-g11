@@ -1,0 +1,47 @@
+.contenedorVentas {
+  position: relative;
+  width: calc(100vw - 15vw);
+  min-height: calc(100vh - var(--altura-header));
+  height: fit-content;
+  overflow: hidden;
+  overflow-y: auto;
+}
+
+.tablaVentas {
+  width: 100%;
+  text-align: center;
+}
+
+.encabezadoVentas {
+  padding-bottom: 15%;
+  border-bottom: 1px solid black;
+}
+
+.bodyVentas tr {
+  line-height: 25px;
+}
+
+.bodyVentas tr:nth-child(even) {
+  background: #d8d8d8;
+}
+
+.statusVenta {
+  color: white;
+  line-height: 150%;
+  border-radius: 25px;
+  font-size: 0.8rem;
+  width: 90%;
+  /* height: 20px; */
+}
+
+.botonDetallesVenta {
+  cursor: pointer;
+}
+
+.botonDetallesVenta:hover {
+  color: #f99716;
+}
+
+.cursor {
+  cursor: pointer;
+}

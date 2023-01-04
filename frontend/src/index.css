@@ -1,0 +1,167 @@
+/* TIPO DE LETRA */
+/* @import url("https://fonts.googleapis.com/css2?family=Rubik:wght@400;600;700;900&display=swap"); */
+
+@font-face {
+  font-family: arsenale;
+  src: url("./assets/fonts/arsenale_white.ttf");
+}
+@font-face {
+  font-family: comspotM;
+  src: url("./assets/fonts/Comspot-Medium.ttf");
+}
+@font-face {
+  font-family: comspotI;
+  src: url("./assets/fonts/Comspot-RegularItalic.ttf");
+}
+@font-face {
+  font-family: comspotExI;
+  src: url("./assets/fonts/Comspot-ExtraLightItalic.ttf");
+}
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+  font-family: "Rubik", sans-serif;
+  scroll-behavior: smooth;
+}
+
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+blockquote,
+q {
+  quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* FIN RESETEO CSS */
+
+/* VARIABLES CSS */
+:root {
+  --color-primario: #112708;
+  --color-bg-claro: #fafafa;
+  --color-bg-oscuro: #236803;
+  --color-border: #fafafa;
+  --altura-header: 112px;
+  --border-radius-boton: 5px;
+  --ancho-menu-admin: 20vw;
+  --ancho-menu-usuario: 20vw;
+  --alto-menu-usuario: 5vh;
+}

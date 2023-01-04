@@ -1,0 +1,35 @@
+.contenedorPanelUsuarios {
+  position: relative;
+  width: calc(100vw - 15vw);
+  min-height: calc(100vh - var(--altura-header));
+  height: fit-content;
+  overflow: hidden;
+  overflow-y: auto;
+}
+
+.tablaPanelUsuarios {
+  width: 100%;
+  text-align: center;
+}
+
+.encabezadoPanelUsuarios {
+  padding-bottom: 15%;
+  border-bottom: 1px solid black;
+}
+
+.bodyPanelUsuarios tr {
+  line-height: 25px;
+}
+
+.bodyPanelUsuarios tr:nth-child(even) {
+  background: #d8d8d8;
+}
+
+.botonComprasUsuario:hover {
+  cursor: pointer;
+  color: #f99716;
+}
+
+.cursor {
+  cursor: pointer;
+}

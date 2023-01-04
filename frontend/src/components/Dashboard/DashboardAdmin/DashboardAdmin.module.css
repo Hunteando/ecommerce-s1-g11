@@ -1,0 +1,6 @@
+.contenedorDashboardAdmin {
+  width: 100%;
+  min-height: calc(100vh - var(--altura-header));
+  margin-top: var(--altura-header);
+  display: flex;
+}

@@ -1,0 +1,35 @@
+.contenedorPanelLateralAdmin {
+  position: sticky;
+  top: var(--altura-header);
+  left: 0;
+  background-color: gray;
+  height: calc(100vh - var(--altura-header));
+  width: 20vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  word-break: keep-all;
+  white-space: break-spaces;
+}
+
+.itemPanelLateralAdmin {
+  padding: 5% 0;
+  margin-top: 3vh;
+  width: 100%;
+  color: white;
+  font-family: comspotM;
+  font-size: 1.5rem;
+  cursor: pointer;
+  word-wrap: break-word;
+}
+
+.itemPanelLateralAdmin:hover {
+  background-color: white;
+  color: black;
+}
+
+.itemPanelLateralAdminSeleccionado {
+  background-color: white;
+  color: black;
+}
