@@ -29,7 +29,7 @@ class ExpressServer {
       //   `CREATE DATABASE IF NOT EXISTS \`${config.dataBase.name}\`;`
       // )
       // await sequelize.authenticate()
-      await sequelize.sync();
+      await sequelize.sync({ force: false });
       // await sequelize.sync({ alter: true, force: true })
       // TODO:alter y force solo deben ser usados en desarrollo
       console.log("Connection has been established successfully.");

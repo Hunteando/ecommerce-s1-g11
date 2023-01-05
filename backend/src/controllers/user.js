@@ -4,7 +4,6 @@ const Addresses = require("../models/addresses");
 const Cart = require("../models/cart");
 const Products = require("../models/products");
 const getAllUsers = async (req, res) => {
-  console.log("hola mundo");
   try {
     const users = await User.findAll({
       // include: {

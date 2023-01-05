@@ -2,45 +2,19 @@ const { cloudinary } = require("../config/cloudinary");
 const fs = require("fs");
 const Image = require("../models/images");
 const Products = require("../models/products");
+const Op = require("sequelize").Op;
 
-const createProduct = async (req, res) => {
-  const {
-    code,
-    name,
-    description,
-    price,
-    stock,
-    colors,
-    weight,
-    freeshipping,
-    averageRating,
-    numOfReviews,
-    url,
-  } = req.body;
-
+const getAllProducts = async (req, res) => {
   try {
-    const product = await Products.create({
-      code,
-      name,
-      description,
-      price,
-      stock,
-      colors,
-      weight,
-      freeshipping,
-      averageRating,
-      numOfReviews,
-    });
-    const { id } = product.toJSON();
-    await Image.create({ url, ProductId: id });
+    const products = await Products.findAll({ include: { all: true } });
 
     return res.status(200).json({
       success: true,
-      product,
+      products,
     });
   } catch (error) {
-    return res.status(400).json({
-      success: false,
+    res.status(404).json({
+      succes: false,
       message: error,
     });
   }
@@ -103,51 +77,76 @@ const modificarProducto = async (req, res, next) => {
   res.status(200).json({ mensaje: "Modified product", products });
 };
 
-const getAllProducts = async (req, res) => {
+const eliminarProducto = async (req, res, next) => {
   try {
+    const { id } = req.params;
+    const deleted = await Products.findByPk(id);
+
+    deleted &&
+      (await Products.destroy({
+        where: {
+          id,
+        },
+      }));
+
     const products = await Products.findAll({ include: { all: true } });
 
-    return res.status(200).json({
-      success: true,
-      products,
-    });
+    deleted
+      ? res
+          .status(200)
+          .json({ mensaje: "Product deleted successfully", products })
+      : res
+          .status(200)
+          .json({ mensaje: "The product was already deleted", products });
   } catch (error) {
-    res.status(404).json({
-      succes: false,
-      message: error,
-    });
+    res.status(400).send({ data: error.message });
   }
 };
 
-const uploadImages = async (req, res) => {
-  const uploader = async (path) => await cloudinary.uploads(path, "Images");
-  const urls = [];
-  const files = req.files;
-  if (req.method === "POST") {
-    for (const file of files) {
-      const { path } = file;
-      const newPath = await uploader(path);
-      urls.push(newPath);
-      fs.unlinkSync(path);
-    }
-    res.status(200).json({
-      success: true,
-      data: urls,
+const obtenerProductosEliminados = async (req, res) => {
+  try {
+    const eliminados = await Products.findAll({
+      where: {
+        destroyTime: {
+          [Op.ne]: null,
+        },
+      },
+      paranoid: false,
     });
-  } else {
-    res.status(405).json({
-      success: false,
-      message: "Image not uploaded successfully",
-    });
+    eliminados.length
+      ? res
+          .status(200)
+          .json({ mensaje: "Deleted product/s", products: eliminados })
+      : res
+          .status(200)
+          .json({ mensaje: "No deleted products found", products: [] });
+  } catch (error) {
+    res.status(400).send({ data: error.message });
   }
-  // INSERCIÓN A LA BASE DE DATOS
-  // ACA VIENEN LAS URLS
-  console.log(urls);
 };
+
+const restaurarProductoEliminado = async (req, res) => {
+  try {
+    const { id } = req.params;
+    await Products.restore({
+      where: {
+        id,
+      },
+    });
+    const products = await Products.findAll({ include: { all: true } });
+    res
+      .status(200)
+      .json({ mensaje: "Package restored successfully", products });
+  } catch (error) {
+    res.status(400).send({ data: error.message });
+  }
+};
+
 module.exports = {
   getAllProducts,
-  createProduct,
-  uploadImages,
   crearProducto,
   modificarProducto,
+  eliminarProducto,
+  obtenerProductosEliminados,
+  restaurarProductoEliminado,
 };
