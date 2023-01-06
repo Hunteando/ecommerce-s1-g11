@@ -33,10 +33,10 @@ const signUp = async (req, res) => {
 
     generateAuthData(res, user);
   } catch (error) {
-    const { message } = error.errors[0];
+    // const { message } = error.errors[0];
     console.log(error);
-    return res.json({
-      message,
+    return res.status(400).json({
+      // message,
       error,
     });
   }
