@@ -2,6 +2,9 @@ const dotenv = require("dotenv");
 const Sequelize = require("sequelize");
 const Producto = require("./src/models/products");
 const express = require("express");
+const User = require("./src/models/users");
+const UserDetails = require("./src/models/usersdetails");
+const { encrypt } = require("./src/controllers/auth");
 
 const app = express();
 
@@ -11,10 +14,7 @@ const {
   DB_PASSWORD,
   DB_DIALECT,
   DB_HOST,
-  DB_PORT,
-  SECRETO_HASHEO,
-  CONTRASENA_MONGO,
-  CONTRASENA_MONGO2,
+  DB_POSTGRES_DEPLOY,
 } = process.env;
 
 const productosIniciales = [
@@ -124,6 +124,13 @@ const productosIniciales = [
   },
 ];
 
+const adminInicial = {
+  email: "a@a.a",
+  username: "a@a.a",
+  password: "Asd123",
+  role: "admin",
+};
+
 const sequelize = new Sequelize(DB_NAME, DB_USER, DB_PASSWORD, {
   host: DB_HOST,
   dialect: DB_DIALECT,
@@ -131,9 +138,16 @@ const sequelize = new Sequelize(DB_NAME, DB_USER, DB_PASSWORD, {
   native: false,
 });
 
+const sequelizeDeploy = new Sequelize(`${DB_POSTGRES_DEPLOY}`, {
+  logging: false, // set to console.log to see the raw SQL queries
+  native: false, // lets Sequelize know we can use pg-native for ~30% more speed
+});
+
 async function main() {
   try {
-    await sequelize.sync({ force: false });
+    // await sequelize.sync({ force: true });
+    await sequelizeDeploy.sync({ force: false });
+
     console.log("Connection has been established successfully.");
     // app.listen(3008, () => {
     //   console.log("Server listening on http://localhost:3008");
@@ -141,9 +155,34 @@ async function main() {
     try {
       await Producto.bulkCreate(productosIniciales);
       console.log("Exito: Productos creados");
+      const user = await User.create({
+        username: adminInicial.username,
+        email: adminInicial.email,
+        password: await encrypt(adminInicial.password),
+        role: "admin",
+      });
+      await UserDetails.create({
+        UserId: user.id,
+      });
+      console.log("Exito: Usuario admin creado");
     } catch (e) {
       console.log(e);
       console.log("Error: productos no creados");
+    }
+    try {
+      const user = await User.create({
+        username: adminInicial.username,
+        email: adminInicial.email,
+        password: await encrypt(adminInicial.password),
+        role: "admin",
+      });
+      await UserDetails.create({
+        UserId: user.id,
+      });
+      console.log("Exito: Usuario admin creado");
+    } catch (e) {
+      console.log(e);
+      console.log("Error: Usuario admin no creado");
     }
     console.log("Server is Ok");
   } catch (error) {
@@ -152,84 +191,3 @@ async function main() {
 }
 
 main();
-
-// try {
-//   const productos = await Producto.bulkCreate(productosIniciales);
-//   console.log("Exito: Productos creados");
-// } catch (e) {
-//   console.log(e);
-//   console.log("Error: productos no creados");
-// }
-
-// mongoose
-//   .connect(
-//     // `mongodb+srv://lacrus:${CONTRASENA_MONGO}@ecommercelocal.zgfwsmx.mongodb.net/?retryWrites=true&w=majority`,
-//     `mongodb://${DB_HOST}:27017/${DB_NAME}`,
-//     // `mongodb+srv://lacrus:${CONTRASENA_MONGO2}@ecommercelocal.8zp2fv3.mongodb.net/?retryWrites=true&w=majority`,
-//     {}
-//   )
-//   .then(() => {
-//     console.log("Mongo conectado correctamente");
-//   })
-//   .catch((e) => {
-//     console.log(e, "Error al conectar Mongo");
-//   });
-// // let usuario = {};
-// // try {
-// //   usuario = await new Usuario({
-// //     email: "123",
-// //     contrasena: "123",
-// //     rol: "superAdmin",
-// //     verificado: true,
-// //   });
-// //   await usuario.save();
-// //   console.log("Exito: superAdmin creado");
-// // } catch (e) {
-// //   console.log("Error: superAdmin no creado");
-// // }
-
-// // const productosIniciales = [
-// //   { nombre: "iphone 11", categoria: "electronica", subCategoria: {"celulares"}, vendedor: usuario._id },
-// //   { nombre: "prod2", categoria: "cat1", vendedor: usuario._id },
-// //   { nombre: "prod3", categoria: "cat1", vendedor: usuario._id },
-// // ];
-// // try {
-// //   const productos = await Producto.insertMany(productosIniciales);
-// //   console.log("Exito: productos creados");
-// // } catch (e) {
-// //   console.log("Error: productos no creados");
-// // }
-
-// const categoriasIniciales = [
-//   {
-//     nombre: "comestibles",
-//     subCategoria: ["frutas", "verduras", "envasados", "otro"],
-//   },
-//   {
-//     nombre: "bebidas",
-//     subCategoria: ["sin alcohol", "con alcohol", "otro"],
-//   },
-//   {
-//     nombre: "servicios",
-//     subCategoria: [
-//       "electricidad",
-//       "plomeria",
-//       "albañileria",
-//       "pintor",
-//       "de campo",
-//       "otro",
-//     ],
-//   },
-//   {
-//     nombre: "herramientas",
-//     subCategoria: ["electricas", "manuales", "otro"],
-//   },
-//   { nombre: "otro" },
-// ];
-// try {
-//   const categorias = await Categoria.insertMany(categoriasIniciales);
-//   console.log("Exito: categorias creadas");
-// } catch (e) {
-//   console.log(e);
-//   console.log("Error: categorias no creadas");
-// }

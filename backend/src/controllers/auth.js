@@ -4,7 +4,6 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const { jwtSecret } = require("../config/environment");
 const Cart = require("../models/cart");
-const User = require("../models/users");
 
 const signUp = async (req, res) => {
   try {
@@ -59,7 +58,7 @@ const compare = async (password, hash) => {
 const signIn = async (req, res) => {
   try {
     const { email, password } = req.body;
-    const user = await User.findOne({
+    const user = await Users.findOne({
       where: {
         email,
       },
@@ -88,7 +87,7 @@ const generateAuthData = (res, userData) => {
   });
 };
 const logout = async () => {};
-module.exports = { signUp, signIn, logout };
+module.exports = { signUp, signIn, logout, encrypt };
 
 const createToken = (data) => {
   return jwt.sign(data, jwtSecret, {
