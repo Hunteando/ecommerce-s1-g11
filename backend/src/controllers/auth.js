@@ -87,7 +87,27 @@ const generateAuthData = (res, userData) => {
   });
 };
 const logout = async () => {};
-module.exports = { signUp, signIn, logout, encrypt };
+
+const verificarLogueoToken = async (req, res, next) => {
+  try {
+    const usuarioDecodificado = await jwt.verify(req.params?.token, jwtSecret);
+    const user = {
+      id: usuarioDecodificado.id,
+      email: usuarioDecodificado.email,
+      username: usuarioDecodificado.username,
+      role: usuarioDecodificado.role,
+    };
+    return res.status(200).json({
+      success: true,
+      user,
+      token: createToken(user),
+    });
+  } catch (error) {
+    res.status(401).send("Token invalido");
+  }
+};
+
+module.exports = { signUp, signIn, logout, encrypt, verificarLogueoToken };
 
 const createToken = (data) => {
   return jwt.sign(data, jwtSecret, {

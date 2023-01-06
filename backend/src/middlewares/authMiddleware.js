@@ -1,3 +1,15 @@
-const authRole = (req, res, next) => {}
+const jwt = require("jsonwebtoken");
+const { jwtSecret } = require("../config/environment");
 
-module.exports = authRole
+const verificarPermisoAdmin = (req, res, next) => {
+  const decodificar = jwt.verify(req.headers.authorization, jwtSecret);
+  if (decodificar?.role === "admin") {
+    next();
+  } else {
+    return res.status(400).send("Sin permisos de administrador");
+  }
+};
+
+module.exports = {
+  verificarPermisoAdmin,
+};
