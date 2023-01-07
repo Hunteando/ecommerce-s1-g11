@@ -27,7 +27,21 @@ const verificarPermisoAdmin = (req, res, next) => {
   }
 };
 
+const verificarPermisoUsuario = (req, res, next) => {
+  try {
+    const decodificar = jwt.verify(req.headers.authorization, jwtSecret);
+    if (decodificar?.id === parseInt(req.params.id)) {
+      next();
+    } else {
+      return res.status(400).send("Sin permiso de usuario");
+    }
+  } catch (e) {
+    return res.status(400).send("Sin permiso de usuario");
+  }
+};
+
 module.exports = {
   verificarPermisoSuperAdmin,
   verificarPermisoAdmin,
+  verificarPermisoUsuario,
 };
