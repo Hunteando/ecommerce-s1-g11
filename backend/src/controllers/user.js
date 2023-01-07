@@ -138,16 +138,20 @@ const updateRoleUser = async (req, res) => {
       },
     });
     if (user) {
-      user.role = "admin";
-      await user.save();
+      if (user.role === "user") {
+        user.role = "admin";
+        await user.save();
+      } else if (user.role === "admin") {
+        user.role = "user";
+        await user.save();
+      }
     }
+    const users = await User.findAll();
     return res.status(200).json({
-      success: true,
-      user,
+      users,
     });
   } catch (error) {
     return res.status(400).json({
-      success: false,
       error,
     });
   }

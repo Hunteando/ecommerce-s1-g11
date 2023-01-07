@@ -1,13 +1,45 @@
 const express = require("express");
 const config = require("../../config/environment");
 const sequelize = require("../sequelize");
-const userRouter = require("../../routes/user");
+const userRouter = require("../../routes/dashboard/user");
 const authRouter = require("../../routes/auth");
-const productRouter = require("../../routes/product");
+const productRouter = require("../../routes/dashboard/product");
 const { urlencoded } = require("express");
 const cors = require("cors");
 require("../../libs/relations");
 const paymentRouter = require("../../routes/payment");
+
+// SEMILLADO DB
+const User = require("../../models/users");
+const { encrypt } = require("../../controllers/auth");
+const UserDetails = require("../../models/usersdetails");
+const creacionUsuarioSuperAdmin = async () => {
+  try {
+    if (!(await User.findAndCountAll())?.count) {
+      try {
+        const [usuario, creado] = await User.findOrCreate({
+          where: { email: "a@a.a" },
+          defaults: {
+            username: "SUPERADMIN",
+            password: await encrypt("Asd123"),
+            role: "superAdmin",
+          },
+        });
+        if (creado) {
+          await UserDetails.create({
+            UserId: usuario.id,
+          });
+          console.log("Exito: Usuario admin creado");
+        }
+      } catch (e) {
+        console.log("ERROR AL SEMILLAR DB");
+        console.log(e);
+      }
+    }
+  } catch (error) {
+    console.log(error.message);
+  }
+};
 
 class ExpressServer {
   constructor() {
@@ -20,6 +52,8 @@ class ExpressServer {
     try {
       await sequelize.sync({ force: false });
       console.log("Connection has been established successfully.");
+      // SEMILLADO DB
+      await creacionUsuarioSuperAdmin();
     } catch (error) {
       console.error("Unable to connect to the database:", error);
     }
@@ -36,12 +70,8 @@ class ExpressServer {
       //   credentials: true,
       // }
     );
-    this.app.use("/auth", userRouter);
-    this.app.use("/auth", authRouter);
-    this.app.use("/pagos", paymentRouter);
-    this.app.use("/", productRouter);
     this.app.use((req, res, next) => {
-      res.header("Access-Control-Allow-Origin", `${config.pathFront}`); // update to match the domain you will make the request from
+      res.header("Access-Control-Allow-Origin", `${config.pathFront}`);
       res.header("Access-Control-Allow-Credentials", "true");
       res.header(
         "Access-Control-Allow-Headers",
@@ -53,6 +83,11 @@ class ExpressServer {
       );
       next();
     });
+
+    this.app.use("/auth", authRouter);
+    this.app.use("/pagos", paymentRouter);
+    this.app.use("/dashboard/admin/producto", productRouter);
+    this.app.use("/dashboard/admin/users", userRouter);
   }
   async start() {
     this.app.listen(this.port, (error) => {
