@@ -20,7 +20,6 @@ const signUp = async (req, res) => {
       city: "",
       province: "",
     });
-    console.log(userDetail.id);
     // instancia del carrito
     // const cart = await Cart.create({
     //   UserDetailId: userDetail.id,
@@ -30,11 +29,9 @@ const signUp = async (req, res) => {
     //   subtotal: 0,
     //   total: 0,
     // })
-
     generateAuthData(res, user);
   } catch (error) {
     // const { message } = error.errors[0];
-    console.log(error);
     return res.status(400).json({
       // message,
       error,
@@ -62,6 +59,15 @@ const signIn = async (req, res) => {
       where: {
         email,
       },
+      attributes: {
+        exclude: ["update_date", "created_date", "destroyTime"],
+      },
+      include: {
+        model: UserDetails,
+        attributes: {
+          exclude: ["id", "UserId", "createdAt", "updatedAt"],
+        },
+      },
     });
     if (user && (await compare(password, user.toJSON().password))) {
       generateAuthData(res, user);
@@ -79,6 +85,8 @@ const generateAuthData = (res, userData) => {
     email: userData.toJSON().email,
     username: userData.toJSON().username,
     role: userData.toJSON().role,
+    firstname: userData.UserDetail?.firstname || "",
+    lastname: userData.UserDetail?.lastname || "",
   };
   return res.status(200).json({
     success: true,
@@ -91,23 +99,27 @@ const logout = async () => {};
 const verificarLogueoToken = async (req, res, next) => {
   try {
     const usuarioDecodificado = await jwt.verify(req.params?.token, jwtSecret);
-    const user = {
-      id: usuarioDecodificado.id,
-      email: usuarioDecodificado.email,
-      username: usuarioDecodificado.username,
-      role: usuarioDecodificado.role,
-    };
-    return res.status(200).json({
-      success: true,
-      user,
-      token: createToken(user),
+    const user = await Users.findOne({
+      where: {
+        id: usuarioDecodificado.id,
+      },
+      attributes: {
+        exclude: ["password", "update_date", "created_date", "destroyTime"],
+      },
+      include: {
+        model: UserDetails,
+        attributes: {
+          exclude: ["id", "UserId", "createdAt", "updatedAt"],
+        },
+      },
     });
+    generateAuthData(res, user);
   } catch (error) {
     res.status(401).send("Token invalido");
   }
 };
 
-module.exports = { signUp, signIn, logout, encrypt, verificarLogueoToken };
+module.exports = { signUp, signIn, logout, encrypt, verificarLogueoToken, generateAuthData };
 
 const createToken = (data) => {
   return jwt.sign(data, jwtSecret, {
