@@ -10,6 +10,9 @@ const getAllUsers = async (req, res) => {
       //   model: UserDetails,
       //   include: [{ model: Cart, include: Products }],
       // },
+      attributes: {
+        exclude: ["password", "created_date", "update_date", "destroyTime"],
+      },
       order: [["id", "ASC"]],
     });
     return res.json({
@@ -142,7 +145,12 @@ const updateRoleUser = async (req, res) => {
       user.role = role;
       await user.save();
     }
-    const users = await User.findAll({ order: [["id", "ASC"]] });
+    const users = await User.findAll({
+      attributes: {
+        exclude: ["password", "created_date", "update_date", "destroyTime"],
+      },
+      order: [["id", "ASC"]],
+    });
     return res.status(200).json({
       users,
     });
@@ -153,6 +161,27 @@ const updateRoleUser = async (req, res) => {
   }
 };
 
+const userDetails = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const user = await User.findByPk(id, {
+      attributes: {
+        exclude: ["password", "update_date", "created_date", "destroyTime"],
+      },
+      include: {
+        model: UserDetails,
+        attributes: {
+          exclude: ["id", "UserId", "createdAt", "updatedAt"],
+        },
+      },
+    });
+    res.status(200).json({ user });
+  } catch (e) {
+    console.log(e);
+    res.status(400).send(e.message);
+  }
+};
+
 module.exports = {
   getAllUsers,
   getUserByEmail,
@@ -160,4 +189,5 @@ module.exports = {
   getUserByUsername,
   updateRoleUser,
   dashboardUser,
+  userDetails,
 };
