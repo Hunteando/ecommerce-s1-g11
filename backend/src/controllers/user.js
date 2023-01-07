@@ -44,7 +44,6 @@ const userDetails = async (req, res) => {
     });
     res.status(200).json({ user });
   } catch (e) {
-    console.log(e);
     res.status(400).send(e.message);
   }
 };
@@ -81,7 +80,6 @@ const updateRoleUser = async (req, res) => {
 const updateDataUser = async (req, res) => {
   try {
     const { id } = req.params;
-    console.log("req.body", req.body);
     let user = await User.findByPk(parseInt(id), {
       attributes: {
         exclude: ["password", "update_date", "created_date", "destroyTime"],
@@ -90,51 +88,14 @@ const updateDataUser = async (req, res) => {
         model: UserDetails,
       },
     });
-
     await user.update({
       email: req.body.email?.trim(),
     });
-
-    console.log(req.body.nombre?.trim(),req.body.apellido?.trim() );
-
-
-
     await user.UserDetail.update({
       firstname: req.body.nombre?.trim(),
       lastname: req.body.apellido?.trim(),
     });
-    console.log("nuevo user", user);
     generateAuthData(res, user);
-
-    // console.log(
-    //   "user.UserDetail",
-    //   user.UserDetail.firstname !== req.body.nombre
-    // );
-
-    // user.UserDetail.firstname !== req.body.nombre
-    //   ? (user.UserDetail.firstname = req.body.nombre)
-    //   : null;
-    // user.UserDetail.lastname !== req.body.apellido
-    //   ? (user.UserDetail.lastname = req.body.apellido)
-    //   : null;
-
-    // console.log("usuario modificado", user);
-
-    // await user.save();
-
-    // user = await User.findByPk(id, {
-    //   attributes: {
-    //     exclude: ["password", "update_date", "created_date", "destroyTime"],
-    //   },
-    //   include: {
-    //     model: UserDetails,
-    //     attributes: {
-    //       exclude: ["id", "UserId", "createdAt", "updatedAt"],
-    //     },
-    //   },
-    // });
-
-    // return res.status(200).json({ user });
   } catch (e) {
     return res.status(400).send(e.message);
   }
