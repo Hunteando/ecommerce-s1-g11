@@ -6,7 +6,10 @@ const Op = require("sequelize").Op;
 
 const getAllProducts = async (req, res) => {
   try {
-    const products = await Products.findAll({ include: { all: true } });
+    const products = await Products.findAll({
+      include: { all: true },
+      order: [["id", "ASC"]],
+    });
 
     return res.status(200).json({
       success: true,
@@ -35,7 +38,10 @@ const crearProducto = async (req, res, next) => {
     stock,
     image: imagenes,
   });
-  const products = await Products.findAll({ include: { all: true } });
+  const products = await Products.findAll({
+    include: { all: true },
+    order: [["id", "ASC"]],
+  });
   res.status(200).json({ message: "Product created", products });
 };
 
@@ -73,7 +79,10 @@ const modificarProducto = async (req, res, next) => {
       id,
     },
   });
-  const products = await Products.findAll({ include: { all: true } });
+  const products = await Products.findAll({
+    include: { all: true },
+    order: [["id", "ASC"]],
+  });
   res.status(200).json({ mensaje: "Modified product", products });
 };
 
@@ -89,7 +98,10 @@ const eliminarProducto = async (req, res, next) => {
         },
       }));
 
-    const products = await Products.findAll({ include: { all: true } });
+    const products = await Products.findAll({
+      include: { all: true },
+      order: [["id", "ASC"]],
+    });
 
     deleted
       ? res
@@ -112,6 +124,7 @@ const obtenerProductosEliminados = async (req, res) => {
         },
       },
       paranoid: false,
+      order: [["id", "ASC"]],
     });
     eliminados.length
       ? res

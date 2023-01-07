@@ -10,15 +10,16 @@ const getAllUsers = async (req, res) => {
       //   model: UserDetails,
       //   include: [{ model: Cart, include: Products }],
       // },
+      order: [["id", "ASC"]],
     });
     return res.json({
       message: "succesfully",
       users,
     });
   } catch (error) {
-    return {
-      message: error,
-    };
+    return res.status(400).json({
+      message: "succesfully",
+    });
   }
 };
 const getUserByUsername = async (req, res) => {
@@ -131,22 +132,17 @@ const dashboardUser = async (req, res) => {
 const updateRoleUser = async (req, res) => {
   try {
     const { id } = req.params;
-
+    const { role } = req.query;
     const user = await User.findOne({
       where: {
         id,
       },
     });
     if (user) {
-      if (user.role === "user") {
-        user.role = "admin";
-        await user.save();
-      } else if (user.role === "admin") {
-        user.role = "user";
-        await user.save();
-      }
+      user.role = role;
+      await user.save();
     }
-    const users = await User.findAll();
+    const users = await User.findAll({ order: [["id", "ASC"]] });
     return res.status(200).json({
       users,
     });

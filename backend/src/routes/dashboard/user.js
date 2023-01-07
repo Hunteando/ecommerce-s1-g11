@@ -18,7 +18,7 @@ userRouter.get("/", verificarPermisoAdmin, getAllUsers);
 userRouter.post("/", verificarPermisoAdmin, getUserByEmail);
 userRouter.post("/users/:id", getUserById);
 userRouter.get(
-  "/users/updaterole/:id",
+  "/updaterole/:id",
   verificarPermisoSuperAdmin,
   updateRoleUser
 );
