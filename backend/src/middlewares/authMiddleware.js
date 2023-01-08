@@ -31,6 +31,7 @@ const verificarPermisoUsuario = (req, res, next) => {
   try {
     const decodificar = jwt.verify(req.headers.authorization, jwtSecret);
     if (decodificar?.id === parseInt(req.params.id)) {
+      req.user = decodificar;
       next();
     } else {
       return res.status(400).send("Sin permiso de usuario");
