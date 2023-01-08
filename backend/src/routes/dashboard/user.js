@@ -3,6 +3,11 @@ const {
   userDetails,
   updateRoleUser,
   updateDataUser,
+  createAddress,
+  getAddresses,
+  modifyAddress,
+  deleteAddress,
+
   getUserByEmail,
   getUserById,
   getUserByUsername,
@@ -23,6 +28,10 @@ userRouter.get("/updaterole/:id", verificarPermisoSuperAdmin, updateRoleUser);
 
 // dashboard cliente
 userRouter.post("/updateuser/:id", verificarPermisoUsuario, updateDataUser);
+userRouter.get("/addresses/:id", verificarPermisoUsuario, getAddresses);
+userRouter.post("/addresses/:id", verificarPermisoUsuario, createAddress);
+userRouter.put("/addresses/:id", verificarPermisoUsuario, modifyAddress);
+userRouter.delete("/addresses/:id", verificarPermisoUsuario, deleteAddress);
 
 // no se usan
 userRouter.post("/", verificarPermisoAdmin, getUserByEmail);

@@ -32,8 +32,8 @@ const crearProducto = async (req, res, next) => {
     }
   }
   const producto = await Products.create({
-    name,
-    description,
+    name: name.trim().toLowerCase(),
+    description: description.trim().toLowerCase(),
     price,
     stock,
     image: imagenes,
@@ -68,9 +68,9 @@ const modificarProducto = async (req, res, next) => {
     }
   }
   const productoNuevo = {
-    name: req.body.name,
+    name: req.body.name.trim().toLowerCase(),
     price: req.body.price,
-    description: req.body.description,
+    description: req.body.description.trim().toLowerCase(),
     stock: req.body.stock,
     image: imagenesProducto.concat(imagenesNuevas),
   };

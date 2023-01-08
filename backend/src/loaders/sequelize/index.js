@@ -2,19 +2,9 @@ const { Sequelize } = require("sequelize");
 const config = require("../../config/environment");
 
 const sequelize =
-  // new Sequelize(
-  //   config.dataBase.name,
-  //   config.dataBase.username,
-  //   config.dataBase.password,
-  //   {
-  //     host: "localhost",
-  //     dialect: "postgres",
-  //     logging: false,
-  //   }
-  // );
   config.nodeEnv === "production"
     ? new Sequelize(
-        // `${process.env.DB_POSTGRES_DEPLOY}`,
+        // `${process.env.DB_POSTGRES_DEPLOY}`,DB_DIR_COMPLETA
         // {
         //   logging: false, // set to console.log to see the raw SQL queries
         //   native: false, // lets Sequelize know we can use pg-native for ~30% more speed

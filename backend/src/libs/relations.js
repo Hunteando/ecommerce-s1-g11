@@ -1,36 +1,29 @@
-const Addresses = require('../models/addresses')
-const Cart = require('../models/cart')
-const Categorys = require('../models/categorys')
-const OrderSummary = require('../models/orderSummary')
-const Reviews = require('../models/reviews')
-const TypeDocument = require('../models/typedocument')
+const Cart = require("../models/cart");
+const Categorys = require("../models/categorys");
+const OrderSummary = require("../models/orderSummary");
+const Reviews = require("../models/reviews");
+const TypeDocument = require("../models/typedocument");
+const Product = require("../models/products");
 
-const User = require('../models/users')
-const UserDetails = require('../models/usersdetails')
-const Product = require('../models/products')
-const Image = require('../models/images')
+const User = require("../models/users");
+const UserDetails = require("../models/usersdetails");
+const Addresses = require("../models/addresses");
 
 User.hasOne(UserDetails, {
-  onDelete: 'CASCADE',
-})
+  onDelete: "CASCADE",
+});
 
 UserDetails.belongsTo(User, {
-  onDelete: 'CASCADE',
-})
+  onDelete: "CASCADE",
+});
 
-// Product.hasMany(Image, {
-//   onDelete: 'CASCADE',
-// })
-// Image.belongsTo(Product, {
-//   onDelete: 'CASCADE',
-// })
+User.hasMany(Addresses, {
+  onDelete: "CASCADE",
+});
 
-// UserDetails.hasMany(Addresses, {
-//   onDelete: 'CASCADE',
-// })
-// Addresses.belongsTo(UserDetails, {
-//   onDelete: 'CASCADE',
-// })
+Addresses.belongsTo(User, {
+  onDelete: "CASCADE",
+});
 
 // /* çççççççççççççççççççç */
 

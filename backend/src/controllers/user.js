@@ -89,13 +89,104 @@ const updateDataUser = async (req, res) => {
       },
     });
     await user.update({
-      email: req.body.email?.trim(),
+      email: req.body.email?.trim().toLowerCase(),
     });
     await user.UserDetail.update({
-      firstname: req.body.nombre?.trim(),
-      lastname: req.body.apellido?.trim(),
+      firstname: req.body.nombre?.trim().toLowerCase(),
+      lastname: req.body.apellido?.trim().toLowerCase(),
     });
     generateAuthData(res, user);
+  } catch (e) {
+    return res.status(400).send(e.message);
+  }
+};
+
+const getAddresses = async (req, res) => {
+  try {
+    const addresses = await Addresses.findAll({
+      where: {
+        UserId: req.user.id,
+      },
+      attributes: {
+        exclude: ["UserId", "createdAt", "updatedAt"],
+      },
+      order: [["id", "ASC"]],
+    });
+    res.status(200).json({ addresses });
+  } catch (e) {
+    return res.status(400).send(e.message);
+  }
+};
+
+const createAddress = async (req, res) => {
+  try {
+    await Addresses.create({
+      street: req.body.street.toLowerCase(),
+      number: req.body.number,
+      city: req.body.city.toLowerCase(),
+      province: req.body.province,
+      detail: req.body.detail.toLowerCase() || null,
+      contact: req.body.contact || null,
+      UserId: req.user.id,
+    });
+
+    const addresses = await Addresses.findAll({
+      where: {
+        UserId: req.user.id,
+      },
+      attributes: {
+        exclude: ["UserId", "createdAt", "updatedAt"],
+      },
+    });
+    res.status(200).json({ addresses });
+  } catch (e) {
+    return res.status(400).send(e.message);
+  }
+};
+
+const modifyAddress = async (req, res) => {
+  const { id, street, number, city, province, detail, contact } = req.body;
+  try {
+    const direccion = await Addresses.findByPk(id);
+    await direccion.update({
+      street: street?.trim().toLowerCase(),
+      number: number,
+      city: city?.trim().toLowerCase(),
+      province: province,
+      detail: detail?.trim().toLowerCase(),
+      contact: contact,
+    });
+    const addresses = await Addresses.findAll({
+      where: {
+        UserId: req.user.id,
+      },
+      attributes: {
+        exclude: ["UserId", "createdAt", "updatedAt"],
+      },
+      order: [["id", "ASC"]],
+    });
+    res.status(200).json({ addresses });
+  } catch (e) {
+    return res.status(400).send(e.message);
+  }
+};
+
+const deleteAddress = async (req, res) => {
+  try {
+    const { idAddress } = req.query;
+    await Addresses.destroy({
+      where: { id: idAddress },
+    });
+    const addresses = await Addresses.findAll({
+      where: {
+        UserId: req.user.id,
+      },
+      attributes: {
+        exclude: ["UserId", "createdAt", "updatedAt"],
+      },
+      order: [["id", "ASC"]],
+    });
+    res.status(200).json({ addresses });
   } catch (e) {
     return res.status(400).send(e.message);
   }
@@ -215,6 +306,10 @@ module.exports = {
   userDetails,
   updateRoleUser,
   updateDataUser,
+  createAddress,
+  getAddresses,
+  modifyAddress,
+  deleteAddress,
 
   getUserByEmail,
   getUserById,
