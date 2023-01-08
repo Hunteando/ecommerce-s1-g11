@@ -154,7 +154,7 @@ const modifyAddress = async (req, res) => {
       city: city?.trim().toLowerCase(),
       province: province,
       detail: detail?.trim().toLowerCase(),
-      contact: contact,
+      contact: Number.isNaN(parseInt(contact)) ? null : contact,
     });
     const addresses = await Addresses.findAll({
       where: {
@@ -167,6 +167,7 @@ const modifyAddress = async (req, res) => {
     });
     res.status(200).json({ addresses });
   } catch (e) {
+    console.log(e);
     return res.status(400).send(e.message);
   }
 };
