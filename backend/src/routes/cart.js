@@ -1,4 +1,10 @@
-const { getUserCart } = require("../controllers/cart");
+const {
+  getUserCart,
+  addProductToCart,
+  modifyProductInCart,
+  deleteProductInCart,
+  cleanCart,
+} = require("../controllers/cart");
 const {
   verificarPermisoAdmin,
   verificarPermisoUsuario,
@@ -6,13 +12,14 @@ const {
 
 const cartRouter = require("express").Router();
 
-cartRouter.get(
-  "/:id",
-  (req, res, next) => {
-    next();
-  },
-  verificarPermisoUsuario,
-  getUserCart
-);
+cartRouter.get("/:id", verificarPermisoUsuario, getUserCart);
+
+cartRouter.post("/:id", verificarPermisoUsuario, addProductToCart);
+
+cartRouter.put("/:id", verificarPermisoUsuario, modifyProductInCart);
+
+cartRouter.delete("/:id", verificarPermisoUsuario, deleteProductInCart);
+
+cartRouter.patch("/:id", verificarPermisoUsuario, cleanCart);
 
 module.exports = cartRouter;

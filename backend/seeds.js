@@ -145,44 +145,30 @@ const sequelizeDeploy = new Sequelize(`${DB_POSTGRES_DEPLOY}`, {
 
 async function main() {
   try {
-    // await sequelize.sync({ force: true });
-    await sequelizeDeploy.sync({ force: false });
+    await sequelize.sync({ force: true });
+    // await sequelizeDeploy.sync({ force: false });
 
     console.log("Connection has been established successfully.");
     // app.listen(3008, () => {
     //   console.log("Server listening on http://localhost:3008");
     // });
     try {
+      // CREACION PRODUCTOS
       await Producto.bulkCreate(productosIniciales);
       console.log("Exito: Productos creados");
-      const user = await User.create({
-        username: adminInicial.username,
-        email: adminInicial.email,
-        password: await encrypt(adminInicial.password),
-        role: "admin",
-      });
-      await UserDetails.create({
-        UserId: user.id,
-      });
-      console.log("Exito: Usuario admin creado");
+      // // CREACION USUARIO
+      // const user = await User.create({
+      //   username: adminInicial.username,
+      //   email: adminInicial.email,
+      //   password: await encrypt(adminInicial.password),
+      //   role: "superAdmin",
+      // });
+      // await UserDetails.create({
+      //   UserId: user.id,
+      // });
+      // console.log("Exito: Usuario admin creado");
     } catch (e) {
-      console.log(e);
-      console.log("Error: productos no creados");
-    }
-    try {
-      const user = await User.create({
-        username: adminInicial.username,
-        email: adminInicial.email,
-        password: await encrypt(adminInicial.password),
-        role: "admin",
-      });
-      await UserDetails.create({
-        UserId: user.id,
-      });
-      console.log("Exito: Usuario admin creado");
-    } catch (e) {
-      console.log(e);
-      console.log("Error: Usuario admin no creado");
+      console.log("Hubo algun error", e);
     }
     console.log("Server is Ok");
   } catch (error) {

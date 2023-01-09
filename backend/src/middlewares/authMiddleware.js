@@ -30,7 +30,6 @@ const verificarPermisoAdmin = (req, res, next) => {
 const verificarPermisoUsuario = (req, res, next) => {
   try {
     const decodificar = jwt.verify(req.headers.authorization, jwtSecret);
-    console.log("Deco", decodificar);
     if (decodificar?.id === parseInt(req.params.id)) {
       req.user = decodificar;
       next();
