@@ -1,6 +1,5 @@
 const { cloudinary } = require("../config/cloudinary");
 const fs = require("fs");
-const Image = require("../models/images");
 const Products = require("../models/products");
 const Op = require("sequelize").Op;
 

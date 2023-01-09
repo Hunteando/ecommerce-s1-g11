@@ -1,13 +1,17 @@
-const Cart = require("../models/cart");
-const Categorys = require("../models/categorys");
-const OrderSummary = require("../models/orderSummary");
-const Reviews = require("../models/reviews");
-const TypeDocument = require("../models/typedocument");
-const Product = require("../models/products");
+// const Categorys = require("../models/categorys");
+// const OrderSummary = require("../models/orderSummary");
+// const Reviews = require("../models/reviews");
+// const TypeDocument = require("../models/typedocument");
 
 const User = require("../models/users");
 const UserDetails = require("../models/usersdetails");
 const Addresses = require("../models/addresses");
+// const Order = require("../models/Order");
+// const OrderItem = require("../models/OrderItem");
+const Product = require("../models/products");
+
+const Cart = require("../models/cart");
+const CartItem = require("../models/cartItem");
 
 User.hasOne(UserDetails, {
   onDelete: "CASCADE",
@@ -24,6 +28,38 @@ User.hasMany(Addresses, {
 Addresses.belongsTo(User, {
   onDelete: "CASCADE",
 });
+
+// // ORDER
+
+// Order.belongsTo(User, {
+//   as: "user",
+//   foreignKey: "userId",
+// });
+// Order.hasMany(OrderItem, {
+//   as: "orderItems",
+// });
+
+// // ORDER ITEM
+
+// OrderItem.belongsTo(Order, {
+//   as: "order",
+// });
+
+// OrderItem.belongsTo(Product, {
+//   as: "product",
+// });
+
+// OrderItem.belongsTo(Order, {
+//   as: "orderItem",
+// });
+
+// CART
+User.hasOne(Cart);
+Cart.belongsTo(User);
+
+Cart.hasMany(CartItem);
+CartItem.belongsTo(Cart);
+CartItem.belongsTo(Product);
 
 // /* çççççççççççççççççççç */
 

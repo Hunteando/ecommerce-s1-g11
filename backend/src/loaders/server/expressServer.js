@@ -13,6 +13,7 @@ const paymentRouter = require("../../routes/payment");
 const User = require("../../models/users");
 const { encrypt } = require("../../controllers/auth");
 const UserDetails = require("../../models/usersdetails");
+const cartRouter = require("../../routes/cart");
 const creacionUsuarioSuperAdmin = async () => {
   try {
     if (!(await User.findAndCountAll())?.count) {
@@ -85,6 +86,7 @@ class ExpressServer {
     });
 
     this.app.use("/auth", authRouter);
+    this.app.use("/cart", cartRouter);
     this.app.use("/pagos", paymentRouter);
     this.app.use("/dashboard/admin/producto", productRouter);
     this.app.use("/dashboard/admin/users", userRouter);

@@ -2,13 +2,13 @@ const { DataTypes } = require("sequelize");
 const sequelize = require("../loaders/sequelize");
 
 const User = sequelize.define(
-  "Users",
+  "User",
   {
     id: {
       type: DataTypes.INTEGER,
       autoIncrement: true,
       primaryKey: true,
-      allowNull: false,
+      allowNull: false, 
     },
     username: {
       type: DataTypes.STRING(16),

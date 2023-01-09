@@ -1,7 +1,7 @@
 const User = require("../models/users");
 const UserDetails = require("../models/usersdetails");
 const Addresses = require("../models/addresses");
-const Cart = require("../models/cart");
+// const Cart = require("../models/cart");
 const Products = require("../models/products");
 const { generateAuthData } = require("./auth");
 

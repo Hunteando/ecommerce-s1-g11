@@ -14,21 +14,15 @@ const signUp = async (req, res) => {
       email,
       password: await encrypt(password),
     });
-    const userDetail = await UserDetails.create({
+    await UserDetails.create({
       UserId: user.id,
       country: "",
       city: "",
       province: "",
     });
-    // instancia del carrito
-    // const cart = await Cart.create({
-    //   UserDetailId: userDetail.id,
-    //   num: 0,
-    //   date: new Date().getDate(),
-    //   cantProducts: 0,
-    //   subtotal: 0,
-    //   total: 0,
-    // })
+    await Cart.create({
+      UserId: user.id,
+    });
     generateAuthData(res, user);
   } catch (error) {
     // const { message } = error.errors[0];
@@ -119,7 +113,14 @@ const verificarLogueoToken = async (req, res, next) => {
   }
 };
 
-module.exports = { signUp, signIn, logout, encrypt, verificarLogueoToken, generateAuthData };
+module.exports = {
+  signUp,
+  signIn,
+  logout,
+  encrypt,
+  verificarLogueoToken,
+  generateAuthData,
+};
 
 const createToken = (data) => {
   return jwt.sign(data, jwtSecret, {
