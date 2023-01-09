@@ -7,11 +7,12 @@ const {
   updateRoleUser,
   dashboardUser,
 } = require('../controllers/user')
+const authMiddleware = require('../middlewares/authMiddleware')
 const { validateCreate } = require('../middlewares/validators')
 
 const userRouter = require('express').Router()
 
-userRouter.get('/users', getAllUsers)
+userRouter.get('/users', authMiddleware('user'), getAllUsers)
 userRouter.post('/users', getUserByEmail)
 userRouter.post('/users/:id', getUserById)
 userRouter.post('/users/update/:id', updateRoleUser)
