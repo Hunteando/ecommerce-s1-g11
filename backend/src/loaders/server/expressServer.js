@@ -1,20 +1,22 @@
 const express = require("express");
 const config = require("../../config/environment");
 const sequelize = require("../sequelize");
+// const { urlencoded } = require("express");
+const cors = require("cors");
 const userRouter = require("../../routes/dashboard/user");
 const authRouter = require("../../routes/auth");
 const productRouter = require("../../routes/dashboard/product");
-const { urlencoded } = require("express");
-const cors = require("cors");
-require("../../libs/relations");
 const paymentRouter = require("../../routes/payment");
-
-// SEMILLADO DB
-const User = require("../../models/users");
-const { encrypt } = require("../../controllers/auth");
-const UserDetails = require("../../models/usersdetails");
 const cartRouter = require("../../routes/cart");
 const shopRouter = require("../../routes/shop");
+
+require("../../libs/relations");
+
+// SEMILLADO DB
+const { encrypt } = require("../../controllers/auth");
+const User = require("../../models/users");
+const UserDetails = require("../../models/usersdetails");
+const Cart = require("../../models/cart");
 const creacionUsuarioSuperAdmin = async () => {
   try {
     if (!(await User.findAndCountAll())?.count) {
@@ -29,6 +31,9 @@ const creacionUsuarioSuperAdmin = async () => {
         });
         if (creado) {
           await UserDetails.create({
+            UserId: usuario.id,
+          });
+          await Cart.create({
             UserId: usuario.id,
           });
           console.log("Exito: Usuario admin creado");
