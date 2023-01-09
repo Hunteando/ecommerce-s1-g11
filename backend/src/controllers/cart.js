@@ -48,11 +48,15 @@ async function addProductToCart(req, res) {
       },
       include: {
         model: CartItems,
+        include: {
+          model: Products,
+        },
       },
     });
     const cartItem = carrito.CartItems.find((i, idx) => {
       return parseInt(i.ProductId) === parseInt(req.body.id);
     });
+    let mensaje = "added product";
     if (!cartItem) {
       await CartItems.create({
         quantity: req.body.quantity,
@@ -60,9 +64,13 @@ async function addProductToCart(req, res) {
         ProductId: req.body.id,
       });
     } else {
-      await cartItem.update({
-        quantity: (cartItem.quantity += 1), //req.body.quantity,
-      });
+      if (cartItem.quantity < cartItem.Product.stock) {
+        await cartItem.update({
+          quantity: (cartItem.quantity += 1), //req.body.quantity,
+        });
+      } else {
+        mensaje = "stock limit";
+      }
     }
     const cart = await Cart.findOne({
       where: {
@@ -85,7 +93,7 @@ async function addProductToCart(req, res) {
         },
       },
     });
-    res.status(200).json({ cart });
+    res.status(200).json({ cart, message: mensaje });
   } catch (e) {
     return res.status(400).json({ error: e });
   }
