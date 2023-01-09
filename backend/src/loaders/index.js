@@ -7,6 +7,7 @@ const startServer = async () => {
 
   server.routes()
   server.start()
+  // aca puedo crear usuarios, productos,etc rol de admin
   console.log(`Server listening on port ${config.port}`)
 }
 

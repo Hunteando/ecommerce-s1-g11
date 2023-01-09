@@ -8,7 +8,7 @@ const Reviews = sequelize.define('Reviews', {
     primaryKey: true,
     allowNull: false,
   },
-  rating: DataTypes.TINYINT(5),
+  rating: DataTypes.INTEGER,
   title: DataTypes.TEXT,
   comment: DataTypes.TEXT,
 })

@@ -1,7 +1,7 @@
-const { DataTypes } = require("sequelize");
-const sequelize = require("../loaders/sequelize");
+const { DataTypes } = require('sequelize')
+const sequelize = require('../loaders/sequelize')
 
-const Products = sequelize.define("Products", {
+const Products = sequelize.define('Products', {
   id: {
     type: DataTypes.INTEGER,
     autoIncrement: true,
@@ -22,6 +22,6 @@ const Products = sequelize.define("Products", {
   // freeshipping: DataTypes.TINYINT,
   // averageRating: DataTypes.TINYINT(5),
   // numOfReviews: DataTypes.INTEGER,
-});
+})
 
-module.exports = Products;
+module.exports = Products

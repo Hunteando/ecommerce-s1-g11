@@ -15,8 +15,6 @@ const signUp = async (req, res) => {
       email,
       password: await encrypt(password),
     })
-    // console.log('aquiiiii' + user.id)
-    // console.log('asdasdasdasdasdasdasdasdasdasdasdasdsad' + user)
     const userDetail = await UserDetails.create({
       UserId: user.id,
       country: '',
@@ -40,6 +38,24 @@ const signUp = async (req, res) => {
     console.log(error)
     return res.json({
       message,
+      error,
+    })
+  }
+}
+// verificación de token con devolucion del usuario si es valido
+
+const tokenVerify = (req, res) => {
+  const { token } = req.body
+  try {
+    if (jwt.verify(token, jwtSecret)) {
+      return res.json({
+        success: true,
+        data: jwt.decode(token),
+      })
+    }
+  } catch (error) {
+    return res.json({
+      success: false,
       error,
     })
   }
@@ -90,10 +106,9 @@ const generateAuthData = (res, userData) => {
   })
 }
 const logout = async () => {}
-module.exports = { signUp, signIn, logout }
-
 const createToken = (data) => {
   return jwt.sign(data, jwtSecret, {
     expiresIn: '7d',
   })
 }
+module.exports = { signUp, signIn, logout, tokenVerify }

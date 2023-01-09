@@ -1,16 +1,17 @@
-const { signUp, signIn } = require("../controllers/auth");
-const { validateCreate, validateLogin } = require("../middlewares/validators");
+const { signUp, signIn, tokenVerify } = require('../controllers/auth')
+const { validateCreate, validateLogin } = require('../middlewares/validators')
 
-const authRouter = require("express").Router();
+const authRouter = require('express').Router()
 
 authRouter.post(
-  "/register",
+  '/register',
   //   validateCreate,
   signUp
-);
+)
 authRouter.post(
-  "/login",
+  '/login',
   // validateLogin,
   signIn
-);
-module.exports = authRouter;
+)
+authRouter.post('/verifyToken', tokenVerify)
+module.exports = authRouter
