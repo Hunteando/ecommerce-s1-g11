@@ -45,8 +45,8 @@ const Addresses = sequelize.define("Addresses", {
     allowNull: false,
   },
   zipCode: { type: DataTypes.STRING(), allowNull: false },
-  detail: { type: DataTypes.STRING(40) },
+  detail: { type: DataTypes.STRING(100) },
   contact: { type: DataTypes.BIGINT },
 });
 
-module.exports = Addresses;
+module.exports = Addresses; 

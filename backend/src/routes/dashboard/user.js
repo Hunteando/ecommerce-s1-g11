@@ -27,8 +27,8 @@ userRouter.get("/userdetail/:id", verificarPermisoAdmin, userDetails);
 userRouter.get("/updaterole/:id", verificarPermisoSuperAdmin, updateRoleUser);
 
 // dashboard cliente
-userRouter.post("/updateuser/:id", verificarPermisoUsuario, updateDataUser);
 userRouter.get("/addresses/:id", verificarPermisoUsuario, getAddresses);
+userRouter.post("/updateuser/:id", verificarPermisoUsuario, updateDataUser);
 userRouter.post("/addresses/:id", verificarPermisoUsuario, createAddress);
 userRouter.put("/addresses/:id", verificarPermisoUsuario, modifyAddress);
 userRouter.delete("/addresses/:id", verificarPermisoUsuario, deleteAddress);

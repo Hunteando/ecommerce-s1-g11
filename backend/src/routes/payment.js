@@ -2,17 +2,15 @@ const express = require("express");
 const axios = require("axios");
 const paymentRouter = express.Router();
 
+const { verificarPermisoUsuario } = require("../middlewares/authMiddleware");
+const { convertirCarritoEnOrden } = require("../controllers/cart");
+
 const PaymentController = require("../controllers/payment.js");
 const PaymentService = require("../Services/payment.js");
 
 const PaymentInstance = new PaymentController(new PaymentService());
 
 const { ACCESS_TOKEN_MP } = process.env;
-
-paymentRouter.get("/mercadopago", (req, res, next) => { // <==== ACA VA .POST
-  //   console.log(req.body);
-  PaymentInstance.getPaymentLink(req.body, res);
-});
 
 paymentRouter.post("/mercadopago/respuesta", (req, res) => {
   // const { data.id } = req.query
@@ -92,5 +90,14 @@ paymentRouter.post("/mercadopago/respuesta", (req, res) => {
     //   });
   }
 });
+
+paymentRouter.post(
+  "/mercadopago/:id",
+  verificarPermisoUsuario,
+  convertirCarritoEnOrden,
+  (req, res, next) => {
+    PaymentInstance.getPaymentLink(req.body, res);
+  }
+);
 
 module.exports = paymentRouter;

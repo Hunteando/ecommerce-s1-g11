@@ -18,17 +18,20 @@ const Order = sequelize.define(
       type: DataTypes.STRING(25),
       allowNull: false,
     },
-    shippingMethod: {
-      type: DataTypes.STRING(25),
-      allowNull: true,
+    paymentLink: {
+      type: DataTypes.TEXT(),
     },
-    shippingAddress: {
-      type: DataTypes.STRING(),
-      allowNull: true,
-    },
-    status: {
+    paymentStatus: {
       type: DataTypes.ENUM("pending", "paid", "cancel"),
       defaultValue: "pending",
+    },
+    shippingStatus: {
+      type: DataTypes.ENUM("pending", "sending", "completed"),
+      defaultValue: "pending",
+    },
+    shippingAddress: {
+      type: DataTypes.TEXT(),
+      allowNull: true,
     },
   },
   {
