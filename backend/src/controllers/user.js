@@ -79,7 +79,8 @@ const updateRoleUser = async (req, res) => {
 
 const updateDataUser = async (req, res) => {
   try {
-    const { id } = req.params;
+    const id = req.user.id;
+
     let user = await User.findByPk(parseInt(id), {
       attributes: {
         exclude: ["password", "updateAt", "createdAt", "destroyAt"],
@@ -114,6 +115,7 @@ const getAddresses = async (req, res) => {
     });
     res.status(200).json({ addresses });
   } catch (e) {
+    console.log("error", e);
     return res.status(400).send(e.message);
   }
 };
@@ -127,6 +129,7 @@ const createAddress = async (req, res) => {
       province: req.body.province,
       detail: req.body.detail.toLowerCase() || null,
       contact: req.body.contact || null,
+      zipCode: req.body.zipCode,
       UserId: req.user.id,
     });
 
@@ -145,7 +148,8 @@ const createAddress = async (req, res) => {
 };
 
 const modifyAddress = async (req, res) => {
-  const { id, street, number, city, province, detail, contact } = req.body;
+  const { id, street, number, city, province, detail, contact, zipCode } =
+    req.body;
   try {
     const direccion = await Addresses.findByPk(id);
     await direccion.update({
@@ -155,6 +159,7 @@ const modifyAddress = async (req, res) => {
       province: province,
       detail: detail?.trim().toLowerCase(),
       contact: Number.isNaN(parseInt(contact)) ? null : contact,
+      zipCode: zipCode?.trim().toLowerCase(),
     });
     const addresses = await Addresses.findAll({
       where: {
@@ -175,7 +180,7 @@ const deleteAddress = async (req, res) => {
   try {
     const { idAddress } = req.query;
     await Addresses.destroy({
-      where: { id: idAddress },
+      where: { id: idAddress, UserId: req.user.id },
     });
     const addresses = await Addresses.findAll({
       where: {

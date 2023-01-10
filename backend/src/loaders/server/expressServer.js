@@ -57,7 +57,7 @@ class ExpressServer {
 
   async dbConnect() {
     try {
-      await sequelize.sync({ force: true });
+      await sequelize.sync({ force: false });
       console.log("Connection has been established successfully.");
       // SEMILLADO DB
       await creacionUsuarioSuperAdmin();
@@ -94,7 +94,7 @@ class ExpressServer {
     this.app.use("/auth", authRouter);
     this.app.use("/cart", cartRouter);
     this.app.use("/shop", shopRouter);
-    this.app.use("/pagos", paymentRouter);
+    this.app.use("/finalizarcompra", paymentRouter);
     this.app.use("/dashboard/admin/producto", productRouter);
     this.app.use("/dashboard/admin/users", userRouter);
   }

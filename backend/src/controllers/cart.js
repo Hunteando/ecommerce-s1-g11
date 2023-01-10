@@ -99,7 +99,22 @@ async function addProductToCart(req, res) {
 
 async function modifyProductInCart(req, res) {
   try {
-    const cartItem = await CartItems.update(
+    const carrito = await Cart.findOne({
+      where: {
+        UserId: req.user.id,
+      },
+      include: {
+        model: CartItems,
+        where: {
+          id: req.body.id,
+        },
+      },
+    });
+
+    if (!carrito)
+      return res.status(400).send("El carrito/item no es del usuario");
+
+    await carrito.CartItems[0].update(
       {
         quantity: req.body.quantity,
       },
@@ -109,6 +124,7 @@ async function modifyProductInCart(req, res) {
         },
       }
     );
+
     const cart = await Cart.findOne({
       where: {
         UserId: req.user.id,
@@ -138,7 +154,22 @@ async function modifyProductInCart(req, res) {
 
 async function deleteProductInCart(req, res) {
   try {
-    await CartItems.destroy({
+    const carrito = await Cart.findOne({
+      where: {
+        UserId: req.user.id,
+      },
+      include: {
+        model: CartItems,
+        where: {
+          id: req.body.id,
+        },
+      },
+    });
+
+    if (!carrito)
+      return res.status(400).send("El carrito/item no es del usuario");
+
+    await carrito.CartItems[0].destroy({
       where: {
         id: req.body.id,
       },
@@ -172,6 +203,20 @@ async function deleteProductInCart(req, res) {
 
 async function cleanCart(req, res) {
   try {
+    const carrito = await Cart.findOne({
+      where: {
+        id: req.body.id,
+        UserId: req.user.id,
+      },
+      include: {
+        model: CartItems,
+      },
+    });
+
+    console.log("carrito", carrito.CartItems[0]);
+    if (!carrito)
+      return res.status(400).send("El carrito/item no es del usuario");
+
     await CartItems.destroy({
       where: {
         CartId: req.body.id,
