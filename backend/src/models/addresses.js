@@ -44,6 +44,7 @@ const Addresses = sequelize.define("Addresses", {
     ],
     allowNull: false,
   },
+  zipCode: { type: DataTypes.STRING(), allowNull: false },
   detail: { type: DataTypes.STRING(40) },
   contact: { type: DataTypes.BIGINT },
 });

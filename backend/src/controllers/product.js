@@ -118,7 +118,7 @@ const obtenerProductosEliminados = async (req, res) => {
   try {
     const eliminados = await Products.findAll({
       where: {
-        destroyTime: {
+        destroyAt: {
           [Op.ne]: null,
         },
       },

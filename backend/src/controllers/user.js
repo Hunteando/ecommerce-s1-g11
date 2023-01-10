@@ -13,7 +13,7 @@ const getAllUsers = async (req, res) => {
       //   include: [{ model: Cart, include: Products }],
       // },
       attributes: {
-        exclude: ["password", "created_date", "update_date", "destroyTime"],
+        exclude: ["password", "createdAt", "updateAt", "destroyAt"],
       },
       order: [["id", "ASC"]],
     });
@@ -33,7 +33,7 @@ const userDetails = async (req, res) => {
     const { id } = req.params;
     const user = await User.findByPk(id, {
       attributes: {
-        exclude: ["password", "update_date", "created_date", "destroyTime"],
+        exclude: ["password", "updateAt", "createdAt", "destroyAt"],
       },
       include: {
         model: UserDetails,
@@ -63,7 +63,7 @@ const updateRoleUser = async (req, res) => {
     }
     const users = await User.findAll({
       attributes: {
-        exclude: ["password", "created_date", "update_date", "destroyTime"],
+        exclude: ["password", "createdAt", "updateAt", "destroyAt"],
       },
       order: [["id", "ASC"]],
     });
@@ -82,7 +82,7 @@ const updateDataUser = async (req, res) => {
     const { id } = req.params;
     let user = await User.findByPk(parseInt(id), {
       attributes: {
-        exclude: ["password", "update_date", "created_date", "destroyTime"],
+        exclude: ["password", "updateAt", "createdAt", "destroyAt"],
       },
       include: {
         model: UserDetails,

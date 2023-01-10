@@ -21,15 +21,13 @@ async function getUserCart(req, res, next) {
             "updatedAt",
             "CartId",
             "ProductId",
-            "created_date",
-            "update_date",
-            "destroyTime",
+            "destroyAt",
           ],
         },
         include: {
           model: Products,
           attributes: {
-            exclude: ["created_date", "update_date", "destroyTime"],
+            exclude: ["createdAt", "updateAt", "destroyAt"],
           },
         },
       },
@@ -88,7 +86,7 @@ async function addProductToCart(req, res) {
         include: {
           model: Products,
           attributes: {
-            exclude: ["created_date", "update_date", "destroyTime"],
+            exclude: ["createdAt", "updateAt", "destroyAt"],
           },
         },
       },
@@ -127,7 +125,7 @@ async function modifyProductInCart(req, res) {
         include: {
           model: Products,
           attributes: {
-            exclude: ["created_date", "update_date", "destroyTime"],
+            exclude: ["createdAt", "updateAt", "destroyAt"],
           },
         },
       },
@@ -161,7 +159,7 @@ async function deleteProductInCart(req, res) {
         include: {
           model: Products,
           attributes: {
-            exclude: ["created_date", "update_date", "destroyTime"],
+            exclude: ["createdAt", "updateAt", "destroyAt"],
           },
         },
       },
@@ -195,7 +193,7 @@ async function cleanCart(req, res) {
         include: {
           model: Products,
           attributes: {
-            exclude: ["created_date", "update_date", "destroyTime"],
+            exclude: ["createdAt", "updateAt", "destroyAt"],
           },
         },
       },

@@ -54,7 +54,7 @@ const signIn = async (req, res) => {
         email,
       },
       attributes: {
-        exclude: ["update_date", "created_date", "destroyTime"],
+        exclude: ["updateAt", "createdAt", "destroyAt"],
       },
       include: {
         model: UserDetails,
@@ -98,7 +98,7 @@ const verificarLogueoToken = async (req, res, next) => {
         id: usuarioDecodificado.id,
       },
       attributes: {
-        exclude: ["password", "update_date", "created_date", "destroyTime"],
+        exclude: ["password", "updateAt", "createdAt", "destroyAt"],
       },
       include: {
         model: UserDetails,
