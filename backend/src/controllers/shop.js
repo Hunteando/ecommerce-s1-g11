@@ -19,7 +19,6 @@ const getRandomProducts = async (req, res) => {
       products,
     });
   } catch (error) {
-    console.log("error", error);
     res.status(404).json({
       message: error,
     });

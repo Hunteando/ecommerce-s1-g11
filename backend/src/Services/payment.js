@@ -36,7 +36,6 @@ class PaymentService {
           Authorization: `Bearer ${ACCESS_TOKEN_MP}`,
         },
       });
-      console.log("paymentServices", payment.data);
       return payment.data;
     } catch (error) {
       console.log(error);
