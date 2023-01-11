@@ -10,7 +10,8 @@ class PaymentService {
     const body = {
       items: req.productos?.map((p) => ({
         title: p.title,
-        description: req.idOrder,
+        id: req.idOrder,
+        description: p.description,
         picture_url: p.picture_url,
         category_id: p.category_id,
         quantity: p.quantity,
@@ -21,13 +22,7 @@ class PaymentService {
         pending: `${PATH_FRONT}/checkout/pending`,
         success: `${PATH_FRONT}/checkout/confirmation`,
       },
-      payment_methods: {
-        excluded_payment_types: [
-          {
-            // id: "ticket",
-          },
-        ],
-      },
+      external_reference: `id del carrito es: ${req.idOrder}`,
     };
 
     try {

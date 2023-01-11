@@ -376,7 +376,6 @@ async function convertirCarritoEnOrden(req, res, next) {
 
 async function guardarLinkPago(req, res, next) {
   try {
-    console.log("req.payment", req.body.payment.init_point);
     await Order.update(
       { paymentLink: req.body.payment.init_point },
       {
