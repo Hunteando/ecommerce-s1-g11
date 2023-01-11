@@ -121,7 +121,6 @@ const getAddresses = async (req, res) => {
     });
     res.status(200).json({ addresses });
   } catch (e) {
-    console.log("error", e);
     return res.status(400).send(e.message);
   }
 };
@@ -213,12 +212,7 @@ async function getOrdersUser(req, res, next) {
       },
       order: [["id", "ASC"]],
       attributes: {
-        exclude: [
-          "createdAt",
-          "updatedAt",
-          "deletedAt",
-          "userID",
-        ],
+        exclude: ["createdAt", "updatedAt", "deletedAt", "userID"],
       },
     });
     return res.status(200).json({ orders });
@@ -228,6 +222,7 @@ async function getOrdersUser(req, res, next) {
 }
 
 async function getOrderDetailUser(req, res, next) {
+  console.log(req.query);
   const { orderId: id } = req.query;
   try {
     const order = await Order.findOne({
@@ -237,29 +232,32 @@ async function getOrderDetailUser(req, res, next) {
       },
       order: [["id", "ASC"]],
       attributes: {
-        exclude: [
-          "paymentLink",
-          "createdAt",
-          "updatedAt",
-          "deletedAt",
-          "userID",
-        ],
+        exclude: ["paymentLink", "updatedAt", "deletedAt", "userId"],
       },
       include: {
         model: OrderItem,
         attributes: {
-          exclude: ["createdAt", "updatedAt", "destroyAt", "OrderId"],
+          exclude: ["createdAt", "updateAt", "destroyAt", "OrderId"],
         },
-        // include: {
-        //   model: Products,
-        //   attributes: {
-        //     exclude: ["createdAt", "updateAt", "destroyAt"],
-        //   },
-        // },
+        include: {
+          model: Products,
+          attributes: {
+            exclude: [
+              "id",
+              "name",
+              "price",
+              "createdAt",
+              "updateAt",
+              "destroyAt",
+            ],
+          },
+        },
       },
     });
+    console.log("la orden: ", order);
     return res.status(200).json({ order });
   } catch (error) {
+    console.log("el error", error);
     return res.status(400).json({ error });
   }
 }
@@ -288,7 +286,6 @@ const getUserByUsername = async (req, res) => {
 
 const getUserByEmail = async (req, res) => {
   const email = req.body.email;
-  console.log(email);
   try {
     const user = await User.findOne({
       where: { email: email },
@@ -303,7 +300,6 @@ const getUserByEmail = async (req, res) => {
       });
     } else throw new Error("User not exist");
   } catch (error) {
-    console.log(error);
     res.json({
       success: false,
       message: error.message,
@@ -314,7 +310,6 @@ const getUserByEmail = async (req, res) => {
 const getUserById = async (req, res) => {
   try {
     const { id } = req.params;
-    console.log(id);
     const user = await User.findOne({
       where: {
         id,
@@ -324,7 +319,6 @@ const getUserById = async (req, res) => {
         include: [{ model: Cart, include: Products }],
       },
     });
-    console.log(user);
     if (user) {
       const newUser = user.toJSON();
       delete newUser.password;
@@ -383,6 +377,7 @@ module.exports = {
   modifyAddress,
   deleteAddress,
   getOrdersUser,
+  getOrderDetailUser,
 
   getUserByEmail,
   getUserById,

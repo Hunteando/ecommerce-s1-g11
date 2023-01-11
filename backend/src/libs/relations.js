@@ -42,28 +42,28 @@ CartItem.belongsTo(Product);
 // // ORDER
 
 Order.belongsTo(User, {
-  as: "user",
+  // as: "user",
   foreignKey: "userId",
 });
 Order.hasMany(OrderItem, {
-  as: "orderItems",
+  // as: "orderItems",
 });
 
 // // USER ORDER
 
 User.hasMany(Order, {
-  as: "orders",
+  // as: "orders",
   foreignKey: "userId",
-});
+}); 
 
 // // ORDER ITEM
 
 OrderItem.belongsTo(Order, {
-  as: "Order",
+  // as: "Order",
 });
 
-OrderItem.belongsTo(Product, {
-  as: "product", 
+OrderItem.belongsTo(Product, { 
+  // as: "product", 
 });
 
 

@@ -52,7 +52,7 @@ async function addProductToCart(req, res) {
         include: {
           model: Products,
         },
-      },
+      },  
     });
     const cartItem = carrito.CartItems.find((i, idx) => {
       return parseInt(i.ProductId) === parseInt(req.body.id);
@@ -314,7 +314,7 @@ async function convertirCarritoEnOrden(req, res, next) {
           price: itemCarrito.Product.price,
           quantity: itemCarrito.quantity,
           OrderId: order.id,
-          productId: itemCarrito.Product.id,
+          ProductId: itemCarrito.Product.id,
         });
         productoParaReq.push({
           title: itemCarrito.Product.name,

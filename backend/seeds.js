@@ -109,8 +109,8 @@ const sequelizeDeploy = new Sequelize(`${DB_POSTGRES_DEPLOY}`, {
 
 async function main() {
   try {
-    await sequelize.sync({ force: true });
-    // await sequelizeDeploy.sync({ force: false });
+    // await sequelize.sync({ force: true });
+    await sequelizeDeploy.sync({ force: false });
 
     console.log("Connection has been established successfully.");
     // app.listen(3008, () => {

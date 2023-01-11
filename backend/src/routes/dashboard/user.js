@@ -8,6 +8,7 @@ const {
   modifyAddress,
   deleteAddress,
   getOrdersUser,
+  getOrderDetailUser,
 
   getUserByEmail,
   getUserById,
@@ -34,7 +35,7 @@ userRouter.post("/addresses/:id", verificarPermisoUsuario, createAddress);
 userRouter.put("/addresses/:id", verificarPermisoUsuario, modifyAddress);
 userRouter.delete("/addresses/:id", verificarPermisoUsuario, deleteAddress);
 userRouter.get("/compras/:id", verificarPermisoUsuario, getOrdersUser);
-userRouter.get("/detallecompra/:id", verificarPermisoUsuario, getOrdersUser);
+userRouter.get("/detallecompra/:id", verificarPermisoUsuario, getOrderDetailUser);
 
 
 // no se usan
