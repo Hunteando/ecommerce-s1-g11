@@ -3,7 +3,10 @@ const axios = require("axios");
 const paymentRouter = express.Router();
 
 const { verificarPermisoUsuario } = require("../middlewares/authMiddleware");
-const { convertirCarritoEnOrden } = require("../controllers/cart");
+const {
+  convertirCarritoEnOrden,
+  guardarLinkPago,
+} = require("../controllers/cart");
 
 const PaymentController = require("../controllers/payment.js");
 const PaymentService = require("../Services/payment.js");
@@ -15,10 +18,12 @@ const { ACCESS_TOKEN_MP } = process.env;
 paymentRouter.post("/mercadopago/respuesta", (req, res) => {
   // const { data.id } = req.query
   res.status(200).send("ok");
+  console.log("req.body: ", req.body);
+  console.log("req.body.action: ", req.body.action);
   if (req.body.action === "payment.created") {
     const fetch = async (body) => {
       try {
-        console.log(body.data.id);
+        console.log("body.data.id", body.data.id);
         const infoPago = await axios.get(
           "https://api.mercadopago.com/v1/payments/" + body.data.id,
           {
@@ -96,8 +101,9 @@ paymentRouter.post(
   verificarPermisoUsuario,
   convertirCarritoEnOrden,
   (req, res, next) => {
-    PaymentInstance.getPaymentLink(req.body, res);
-  }
+    PaymentInstance.getPaymentLink(req.body, res, next);
+  },
+  guardarLinkPago
 );
 
 module.exports = paymentRouter;

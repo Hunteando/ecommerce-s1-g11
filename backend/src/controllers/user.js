@@ -1,9 +1,13 @@
 const User = require("../models/users");
 const UserDetails = require("../models/usersdetails");
 const Addresses = require("../models/addresses");
-// const Cart = require("../models/cart");
 const Products = require("../models/products");
+const Order = require("../models/Order");
+const OrderItem = require("../models/OrderItem");
+
 const { generateAuthData } = require("./auth");
+
+// --------------- CONTROLADORES USUARIO ---------------
 
 const getAllUsers = async (req, res) => {
   try {
@@ -102,6 +106,8 @@ const updateDataUser = async (req, res) => {
   }
 };
 
+// --------------- CONTROLADORES DIRECCION ---------------
+
 const getAddresses = async (req, res) => {
   try {
     const addresses = await Addresses.findAll({
@@ -196,6 +202,67 @@ const deleteAddress = async (req, res) => {
     return res.status(400).send(e.message);
   }
 };
+
+// --------------- CONTROLADORES ORDENES ---------------
+
+async function getOrdersUser(req, res, next) {
+  try {
+    const orders = await Order.findAll({
+      where: {
+        userId: req.user.id,
+      },
+      order: [["id", "ASC"]],
+      attributes: {
+        exclude: [
+          "createdAt",
+          "updatedAt",
+          "deletedAt",
+          "userID",
+        ],
+      },
+    });
+    return res.status(200).json({ orders });
+  } catch (error) {
+    return res.status(400).json({ error });
+  }
+}
+
+async function getOrderDetailUser(req, res, next) {
+  const { orderId: id } = req.query;
+  try {
+    const order = await Order.findOne({
+      where: {
+        id: id,
+        userId: req.user.id,
+      },
+      order: [["id", "ASC"]],
+      attributes: {
+        exclude: [
+          "paymentLink",
+          "createdAt",
+          "updatedAt",
+          "deletedAt",
+          "userID",
+        ],
+      },
+      include: {
+        model: OrderItem,
+        attributes: {
+          exclude: ["createdAt", "updatedAt", "destroyAt", "OrderId"],
+        },
+        // include: {
+        //   model: Products,
+        //   attributes: {
+        //     exclude: ["createdAt", "updateAt", "destroyAt"],
+        //   },
+        // },
+      },
+    });
+    return res.status(200).json({ order });
+  } catch (error) {
+    return res.status(400).json({ error });
+  }
+}
 
 // --------------------------- NO SE USAN
 
@@ -315,6 +382,7 @@ module.exports = {
   getAddresses,
   modifyAddress,
   deleteAddress,
+  getOrdersUser,
 
   getUserByEmail,
   getUserById,

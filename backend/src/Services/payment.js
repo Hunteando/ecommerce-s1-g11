@@ -5,11 +5,12 @@ const { PATH_FRONT, ACCESS_TOKEN_MP } = process.env;
 
 class PaymentService {
   async createPayment(req) {
+    console.log("req.idOrder", req.idOrder);
     const url = "https://api.mercadopago.com/checkout/preferences";
     const body = {
       items: req.productos?.map((p) => ({
         title: p.title,
-        description: p.description,
+        description: req.idOrder,
         picture_url: p.picture_url,
         category_id: p.category_id,
         quantity: p.quantity,

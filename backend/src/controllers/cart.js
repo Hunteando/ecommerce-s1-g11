@@ -337,7 +337,7 @@ async function convertirCarritoEnOrden(req, res, next) {
       });
       return res.status(400).json({
         message: "Hubo algun problema en la creación de los item de la orden",
-      }); 
+      });
     }
 
     await CartItems.destroy({
@@ -347,6 +347,7 @@ async function convertirCarritoEnOrden(req, res, next) {
     });
 
     req.body.productos = productoParaReq;
+    req.body.idOrder = order.id;
 
     next();
 
@@ -373,6 +374,24 @@ async function convertirCarritoEnOrden(req, res, next) {
   }
 }
 
+async function guardarLinkPago(req, res, next) {
+  try {
+    console.log("req.payment", req.body.payment.init_point);
+    await Order.update(
+      { paymentLink: req.body.payment.init_point },
+      {
+        where: {
+          id: req.body.idOrder,
+        },
+      }
+    );
+    const payment = req.body.payment;
+    return res.json(payment);
+  } catch (error) {
+    return res.status(400).json({ error });
+  }
+}
+
 module.exports = {
   getUserCart,
   addProductToCart,
@@ -380,4 +399,5 @@ module.exports = {
   deleteProductInCart,
   cleanCart,
   convertirCarritoEnOrden,
+  guardarLinkPago,
 };
